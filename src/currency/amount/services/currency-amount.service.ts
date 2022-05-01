@@ -72,7 +72,7 @@ export class CurrencyAmountService {
     return this.factory.priceService.getPriceInUSD(currencySymbol);
   }
 
-  private async getFactory() {
+  async getFactory() {
     if (!this.factory) {
       const shouldUseRealPriceService =
         this.sharedConfigService.shouldUseRealCurrencyPriceService();

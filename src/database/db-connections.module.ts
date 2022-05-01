@@ -3,10 +3,11 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { SharedConfigModule } from "../config/shared-config.module";
 
-import { getTypeOrmConnectionConfig, SharedDatabaseConnectionName } from ".";
+import { SharedDatabaseConnectionName } from "./constants";
+import { getTypeOrmConnectionConfig } from "./functions";
 
 @Module({})
-export class DatabaseConnectionsModule {
+export class SharedDatabaseConnectionsModule {
   /**
    * creates database connections forRoot
    *
@@ -15,7 +16,7 @@ export class DatabaseConnectionsModule {
    */
   static forRoot(envFileRelativePath: string = ".env"): DynamicModule {
     return {
-      module: DatabaseConnectionsModule,
+      module: SharedDatabaseConnectionsModule,
       imports: [
         SharedConfigModule.forRoot(envFileRelativePath),
 
@@ -23,7 +24,7 @@ export class DatabaseConnectionsModule {
           getTypeOrmConnectionConfig(SharedDatabaseConnectionName.CURRENCY)
         ),
       ],
-      exports: [SharedConfigModule],
+      exports: [SharedConfigModule, TypeOrmModule],
     };
   }
 }

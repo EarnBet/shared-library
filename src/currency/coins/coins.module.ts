@@ -1,8 +1,8 @@
 import { DynamicModule, Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { DatabaseConnectionsModule } from "../../database/db-connections.module";
-import { SharedDatabaseConnectionName } from "../../database";
+import { SharedDatabaseConnectionsModule } from "../../database/db-connections.module";
+import { SharedDatabaseConnectionName } from "../../database/constants";
 
 import { CoinsController } from "./controllers/coins.controller";
 import { Coin } from "./entities/coin.entity";
@@ -11,7 +11,7 @@ import { CoinsService } from "./services/coins.service";
 import { CoinDataProvider } from "./services/coin-data-provider";
 
 @Module({})
-export class CurrencyCoinsModule {
+export class SharedCoinsModule {
   /**
    * creates currency coins module forRoot
    *
@@ -20,16 +20,16 @@ export class CurrencyCoinsModule {
    */
   static forRoot(envFileRelativePath: string = ".env"): DynamicModule {
     return {
-      module: CurrencyCoinsModule,
+      module: SharedCoinsModule,
       imports: [
         // for database connection
-        DatabaseConnectionsModule.forRoot(envFileRelativePath),
+        SharedDatabaseConnectionsModule.forRoot(envFileRelativePath),
         // for database entity
         TypeOrmModule.forFeature([Coin], SharedDatabaseConnectionName.CURRENCY),
       ],
       providers: [CoinsService, CoinDataProvider, CoinRepository],
       controllers: [CoinsController],
-      exports: [CoinDataProvider, DatabaseConnectionsModule],
+      exports: [CoinDataProvider, SharedDatabaseConnectionsModule],
     };
   }
 }

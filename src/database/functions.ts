@@ -1,12 +1,9 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 
 import { parseBooleanFromEnv } from "../config";
+import { SharedDatabaseConnectionName } from "./constants";
 
-export enum SharedDatabaseConnectionName {
-  CURRENCY = "CURRENCY",
-}
-
-export const defaultTypeORMOptions: Partial<TypeOrmModuleOptions> = {
+const defaultTypeORMOptions: Partial<TypeOrmModuleOptions> = {
   type: "mariadb",
   autoLoadEntities: true,
   keepConnectionAlive: true,

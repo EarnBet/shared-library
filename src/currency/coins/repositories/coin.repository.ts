@@ -4,7 +4,7 @@ import { Repository } from "typeorm";
 
 import { CoinId } from "./../coins";
 import { Coin } from "../entities/coin.entity";
-import { SharedDatabaseConnectionName } from "../../../database";
+import { SharedDatabaseConnectionName } from "../../../database/constants";
 
 @Injectable()
 export class CoinRepository {

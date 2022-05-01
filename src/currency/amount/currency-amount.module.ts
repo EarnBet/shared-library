@@ -1,6 +1,6 @@
 import { DynamicModule, Module } from "@nestjs/common";
 
-import { CurrencyCoinsModule } from "../coins/currency-coins.module";
+import { SharedCoinsModule } from "../coins/coins.module";
 import { CurrencyAmountService } from "./services/currency-amount.service";
 
 @Module({})
@@ -14,9 +14,9 @@ export class CurrencyAmountModule {
   static forRoot(envFileRelativePath: string = ".env"): DynamicModule {
     return {
       module: CurrencyAmountModule,
-      imports: [CurrencyCoinsModule.forRoot(envFileRelativePath)],
+      imports: [SharedCoinsModule.forRoot(envFileRelativePath)],
       providers: [CurrencyAmountService],
-      exports: [CurrencyAmountService],
+      exports: [CurrencyAmountService, SharedCoinsModule],
     };
   }
 }

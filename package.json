@@ -1,8 +1,9 @@
 {
   "name": "@earnbet/shared",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "EarnBet Shared library",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {},
   "author": "",
   "license": "ISC",
