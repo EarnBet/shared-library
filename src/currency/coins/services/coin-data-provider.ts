@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 
+import { sleep } from "../../../util/timer-util";
 import { CoinId } from "../coins";
 import { SavedCoin } from "../models/saved-coin";
 import { CoinsService } from "./coins.service";
@@ -13,9 +14,11 @@ export class CoinDataProvider implements ICoinDataProvider {
   private data: { [id: number]: SavedCoin } = {};
   private allCoins: SavedCoin[] = [];
 
-  constructor(private readonly database: CoinsService) {}
+  constructor(private readonly database: CoinsService) {
+    this.init();
+  }
 
-  async init() {
+  private async init() {
     this.allCoins = (await this.database.getAllCoins()).map(
       (row) => new SavedCoin(row)
     );
@@ -31,15 +34,15 @@ export class CoinDataProvider implements ICoinDataProvider {
   }
 
   async getCoinDataBySymbol(symbol: string): Promise<SavedCoin> {
+    await this.waitForInit();
+
     const id = await this.getCoinId(symbol);
 
     return this.getCoinData(id);
   }
 
   async getCoinId(symbol: string): Promise<CoinId> {
-    if (!this.isInit) {
-      throw new Error("CoinDataProvider is NOT Initialized!");
-    }
+    await this.waitForInit();
 
     symbol = symbol.toUpperCase();
 
@@ -53,15 +56,15 @@ export class CoinDataProvider implements ICoinDataProvider {
   }
 
   async getCoinSymbol(coinId: CoinId): Promise<string> {
+    await this.waitForInit();
+
     const data = await this.getCoinData(coinId);
 
     return data.symbol;
   }
 
   async getCoinData(coinId: CoinId): Promise<SavedCoin> {
-    if (!this.isInit) {
-      throw new Error("CoinDataProvider is NOT Initialized!");
-    }
+    await this.waitForInit();
 
     const data = this.data[coinId];
 
@@ -73,6 +76,14 @@ export class CoinDataProvider implements ICoinDataProvider {
   }
 
   async getAllCoins() {
+    await this.waitForInit();
+
     return this.allCoins.slice();
+  }
+
+  private async waitForInit() {
+    while (!this.isInit) {
+      await sleep(10);
+    }
   }
 }

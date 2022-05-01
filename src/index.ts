@@ -14,3 +14,5 @@ export * from "./currency/amount/services/currency-amount.service";
 export * from "./currency/amount/factories/interfaces";
 
 export * from "./math/precise-numbers";
+
+export * from "./util/timer-util";

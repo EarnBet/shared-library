@@ -7,8 +7,6 @@ export interface ICoinsService {
 }
 
 export interface ICoinDataProvider {
-  init(): Promise<void>;
-
   getCoinId(symbol: string): Promise<CoinId>;
   getCoinSymbol(coinId: CoinId): Promise<string>;
   getCoinData(coinId: CoinId): Promise<SavedCoin>;
