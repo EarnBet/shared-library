@@ -37,7 +37,7 @@ class PreciseCurrencyAmountWithPrice
 
     return new Big(this.decimal)
       .times(this.priceInUSD)
-      .round(6, RoundingMode.RoundDown)
+      .round(6, Big.roundDown)
       .toString();
   }
 
@@ -103,7 +103,7 @@ class CurrencyAmountWithPrice
       currency.precision,
       new Big(decimalValue)
         .times(Math.pow(10, currency.precision))
-        .round(0, RoundingMode.RoundDown),
+        .round(0, Big.roundDown),
       new PreciseCurrencyAmountWithPriceFactory(currency, priceInUSD)
     );
   }

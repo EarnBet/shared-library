@@ -54,9 +54,7 @@ export class PreciseMath<T extends IPreciseNumber> implements IPreciseMath<T> {
   multiplyDecimal(decimal: BigSource) {
     const product = new Big(this.startingValue.decimal).times(decimal);
 
-    const newInteger = product
-      .times(this.factor)
-      .round(0, RoundingMode.RoundDown);
+    const newInteger = product.times(this.factor).round(0, Big.roundDown);
 
     const newNumber = this.factory.newAmountFromInteger(
       newInteger,

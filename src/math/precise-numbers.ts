@@ -18,7 +18,7 @@ export class PreciseNumber implements IPreciseNumber {
 
     this.bigInteger = new Big(integerValue);
 
-    Big.RM = RoundingMode.RoundDown;
+    Big.RM = Big.roundDown;
     this.decimal = this.bigInteger.div(this.factor).toFixed(precision);
   }
 
@@ -87,7 +87,7 @@ export class PreciseDecimal extends PreciseNumber {
 
     const decimal = new Big(decimalValue);
 
-    super(precision, decimal.times(factor).round(0, RoundingMode.RoundDown));
+    super(precision, decimal.times(factor).round(0, Big.roundDown));
   }
 }
 
@@ -247,6 +247,6 @@ export class DecimalForPreciseMath extends NumberForPreciseMath {
 
     const decimal = new Big(decimalValue);
 
-    super(precision, decimal.times(factor).round(0, RoundingMode.RoundDown));
+    super(precision, decimal.times(factor).round(0, Big.roundDown));
   }
 }

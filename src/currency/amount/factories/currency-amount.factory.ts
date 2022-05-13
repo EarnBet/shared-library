@@ -59,7 +59,7 @@ class CurrencyAmount
       currency.precision,
       new Big(decimalValue)
         .times(Math.pow(10, currency.precision))
-        .round(0, RoundingMode.RoundDown),
+        .round(0, Big.roundDown),
       new PreciseCurrencyAmountFactory(currency)
     );
   }
