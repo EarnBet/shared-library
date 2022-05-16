@@ -1,4 +1,4 @@
-import { Big, RoundingMode, BigSource } from "big.js";
+import { Big, BigSource } from "big.js";
 
 import {
   IMatchingNumberTypeValidator,

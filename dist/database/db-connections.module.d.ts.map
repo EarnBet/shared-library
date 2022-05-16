@@ -1,0 +1,1 @@
+{"version":3,"file":"db-connections.module.d.ts","sourceRoot":"","sources":["../../src/database/db-connections.module.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAU,MAAM,gBAAgB,CAAC;AAQvD,qBACa,+BAA+B;IAO1C,MAAM,CAAC,OAAO,CAAC,mBAAmB,GAAE,MAAe,GAAG,aAAa;CAapE"}

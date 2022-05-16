@@ -1,0 +1,1 @@
+{"version":3,"file":"coins.service.d.ts","sourceRoot":"","sources":["../../../../src/currency/coins/services/coins.service.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,cAAc,EAAE,MAAM,iCAAiC,CAAC;AACjE,OAAO,EAAE,aAAa,EAAE,MAAM,cAAc,CAAC;AAE7C,qBACa,YAAa,YAAW,aAAa;IACpC,OAAO,CAAC,UAAU;gBAAV,UAAU,EAAE,cAAc;IAE9C,WAAW;CAGZ"}

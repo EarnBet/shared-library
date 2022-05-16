@@ -1,4 +1,4 @@
-import Big, { BigSource, RoundingMode } from "big.js";
+import Big, { BigSource } from "big.js";
 
 import { CoinId } from "../../coins/coins";
 import { ICurrency } from "../../coins/entities/interfaces";
@@ -110,16 +110,18 @@ class CurrencyAmountFactory implements ICurrencyAmountFactory {
   }
 }
 
+/*
 let currencyAmountFactory: CurrencyAmountFactory;
 
-export async function getCurrencyAmountFactory(
+export function getCurrencyAmountFactory(
   coinDataProvider: ICoinDataProvider
-): Promise<CurrencyAmountFactory> {
+): CurrencyAmountFactory {
   if (currencyAmountFactory == undefined) {
-    await coinDataProvider.init();
+    //await coinDataProvider.init();
 
     currencyAmountFactory = new CurrencyAmountFactory(coinDataProvider);
   }
 
   return currencyAmountFactory;
 }
+*/

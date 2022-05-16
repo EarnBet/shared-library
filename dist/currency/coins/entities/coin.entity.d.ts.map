@@ -1,0 +1,1 @@
+{"version":3,"file":"coin.entity.d.ts","sourceRoot":"","sources":["../../../../src/currency/coins/entities/coin.entity.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,aAAa,EAAE,MAAM,cAAc,CAAC;AAE7C,qBACa,IAAK,YAAW,aAAa;IAExC,EAAE,EAAE,MAAM,CAAC;IAGX,MAAM,EAAE,MAAM,CAAC;IAGf,SAAS,EAAE,MAAM,CAAC;IAGlB,sBAAsB,EAAE,MAAM,CAAC;IAG/B,yBAAyB,EAAE,MAAM,CAAC;CACnC"}

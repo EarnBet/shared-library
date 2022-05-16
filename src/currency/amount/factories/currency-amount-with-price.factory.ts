@@ -1,4 +1,4 @@
-import Big, { BigSource, RoundingMode } from "big.js";
+import Big, { BigSource } from "big.js";
 
 import { CoinId } from "../../coins/coins";
 import { ICurrency } from "../../coins/entities/interfaces";
@@ -188,7 +188,7 @@ export async function getCurrencyAmountWithPriceFactory(
   priceService: ICurrencyPriceService = undefined
 ): Promise<CurrencyAmountWithPriceFactory> {
   if (currencyAmountWithPriceFactory == undefined) {
-    await coinDataProvider.init();
+    //await coinDataProvider.init();
 
     if (priceService == undefined) {
       priceService = await getRealCoinPriceService(coinDataProvider);
