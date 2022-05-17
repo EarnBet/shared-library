@@ -3,6 +3,7 @@ export * from "./config/shared-config.module";
 
 export * from "./database/db-connections.module";
 export * from "./database/constants";
+export * from "./database/typeorm/typeorm-repository.base";
 
 export * from "./currency/coins/entities/interfaces";
 export * from "./currency/coins/coins";
@@ -15,6 +16,9 @@ export * from "./currency/amount/currency-amount.module";
 export * from "./currency/amount/services/currency-amount.service";
 export * from "./currency/amount/factories/interfaces";
 export * from "./currency/amount/outputs/interfaces";
+
+export * from "./currency/transactions/deposit-status/deposit-status.module";
+export * from "./currency/transactions/deposit-status/services/deposit-status.service";
 
 export * from "./math/precise-numbers";
 export * from "./math/precise-math";
