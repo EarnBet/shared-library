@@ -4,6 +4,7 @@ export * from "./config/shared-config.module";
 export * from "./database/db-connections.module";
 export * from "./database/constants";
 export * from "./database/typeorm/typeorm-repository.base";
+export * from "./database/typeorm/typeorm-expressions";
 
 export * from "./currency/coins/entities/interfaces";
 export * from "./currency/coins/coins";

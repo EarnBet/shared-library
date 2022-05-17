@@ -22,8 +22,17 @@ let DepositStatusService = class DepositStatusService {
     markDepositAsConfirmed(depositTransactionId) {
         return this.repository.markDepositAsConfirmed(depositTransactionId);
     }
+    markDepositAsCredited(depositTransactionId) {
+        return this.repository.markDepositAsCredited(depositTransactionId);
+    }
     getSavedDeposit(depositTransactionId) {
         return this.repository.findOneById(depositTransactionId);
+    }
+    getAllPendingDeposits() {
+        return this.repository.getAllPendingDeposits();
+    }
+    getAllConfirmedUncreditedDeposits() {
+        return this.repository.getAllConfirmedUncreditedDeposits();
     }
 };
 DepositStatusService = __decorate([

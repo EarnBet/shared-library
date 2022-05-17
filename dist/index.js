@@ -19,6 +19,7 @@ __exportStar(require("./config/shared-config.module"), exports);
 __exportStar(require("./database/db-connections.module"), exports);
 __exportStar(require("./database/constants"), exports);
 __exportStar(require("./database/typeorm/typeorm-repository.base"), exports);
+__exportStar(require("./database/typeorm/typeorm-expressions"), exports);
 __exportStar(require("./currency/coins/entities/interfaces"), exports);
 __exportStar(require("./currency/coins/coins"), exports);
 __exportStar(require("./currency/coins/services/coin-data-provider"), exports);

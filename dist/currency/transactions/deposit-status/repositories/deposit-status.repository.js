@@ -18,6 +18,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const constants_1 = require("../../../../database/constants");
 const typeorm_repository_base_1 = require("../../../../database/typeorm/typeorm-repository.base");
+const typeorm_expressions_1 = require("../../../../database/typeorm/typeorm-expressions");
 const deposit_status_entity_1 = require("../entities/deposit-status.entity");
 let DepositStatusRepository = class DepositStatusRepository extends typeorm_repository_base_1.TypeOrmRepository {
     constructor(repository) {
@@ -27,6 +28,17 @@ let DepositStatusRepository = class DepositStatusRepository extends typeorm_repo
         return this.repository.update(depositTransactionId, {
             confirmed_at: () => "NOW()",
         });
+    }
+    markDepositAsCredited(depositTransactionId) {
+        return this.repository.update(depositTransactionId, {
+            credited_at: () => "NOW()",
+        });
+    }
+    getAllPendingDeposits() {
+        return this.find({ confirmed_at: (0, typeorm_2.IsNull)() });
+    }
+    getAllConfirmedUncreditedDeposits() {
+        return this.find({ confirmed_at: (0, typeorm_expressions_1.IsNotNull)(), credited_at: (0, typeorm_2.IsNull)() });
     }
 };
 DepositStatusRepository = __decorate([

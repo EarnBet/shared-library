@@ -4,5 +4,8 @@ import { DepositStatus } from "../entities/deposit-status.entity";
 export declare class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
     constructor(repository: Repository<DepositStatus>);
     markDepositAsConfirmed(depositTransactionId: number): Promise<import("typeorm").UpdateResult>;
+    markDepositAsCredited(depositTransactionId: number): Promise<import("typeorm").UpdateResult>;
+    getAllPendingDeposits(): Promise<DepositStatus[]>;
+    getAllConfirmedUncreditedDeposits(): Promise<DepositStatus[]>;
 }
 //# sourceMappingURL=deposit-status.repository.d.ts.map

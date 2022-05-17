@@ -15,10 +15,21 @@ export class DepositStatusService {
   markDepositAsConfirmed(depositTransactionId: number) {
     return this.repository.markDepositAsConfirmed(depositTransactionId);
   }
+  markDepositAsCredited(depositTransactionId: number) {
+    return this.repository.markDepositAsCredited(depositTransactionId);
+  }
 
   getSavedDeposit(
     depositTransactionId: number
   ): Promise<ISavedDepositStatusRow> {
     return this.repository.findOneById(depositTransactionId);
+  }
+
+  getAllPendingDeposits() {
+    return this.repository.getAllPendingDeposits();
+  }
+
+  getAllConfirmedUncreditedDeposits() {
+    return this.repository.getAllConfirmedUncreditedDeposits();
   }
 }
