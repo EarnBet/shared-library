@@ -1,8 +1,7 @@
 import { Injectable } from "@nestjs/common";
-import {
-  INewDepositStatusRow,
-  ISavedDepositStatusRow,
-} from "../entities/interfaces";
+
+import { DepositStatus } from "../entities/deposit-status.entity";
+import { INewDepositStatusRow } from "../entities/interfaces";
 import { DepositStatusRepository } from "../repositories/deposit-status.repository";
 
 @Injectable()
@@ -19,9 +18,7 @@ export class DepositStatusService {
     return this.repository.markDepositAsCredited(depositTransactionId);
   }
 
-  getSavedDeposit(
-    depositTransactionId: number
-  ): Promise<ISavedDepositStatusRow> {
+  getSavedDeposit(depositTransactionId: number): Promise<DepositStatus> {
     return this.repository.findOneById(depositTransactionId);
   }
 

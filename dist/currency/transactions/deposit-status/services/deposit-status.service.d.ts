@@ -1,4 +1,5 @@
-import { INewDepositStatusRow, ISavedDepositStatusRow } from "../entities/interfaces";
+import { DepositStatus } from "../entities/deposit-status.entity";
+import { INewDepositStatusRow } from "../entities/interfaces";
 import { DepositStatusRepository } from "../repositories/deposit-status.repository";
 export declare class DepositStatusService {
     private repository;
@@ -6,8 +7,8 @@ export declare class DepositStatusService {
     addNewDeposit(data: INewDepositStatusRow): Promise<number>;
     markDepositAsConfirmed(depositTransactionId: number): Promise<import("typeorm").UpdateResult>;
     markDepositAsCredited(depositTransactionId: number): Promise<import("typeorm").UpdateResult>;
-    getSavedDeposit(depositTransactionId: number): Promise<ISavedDepositStatusRow>;
-    getAllPendingDeposits(): Promise<import("../entities/deposit-status.entity").DepositStatus[]>;
-    getAllConfirmedUncreditedDeposits(): Promise<import("../entities/deposit-status.entity").DepositStatus[]>;
+    getSavedDeposit(depositTransactionId: number): Promise<DepositStatus>;
+    getAllPendingDeposits(): Promise<DepositStatus[]>;
+    getAllConfirmedUncreditedDeposits(): Promise<DepositStatus[]>;
 }
 //# sourceMappingURL=deposit-status.service.d.ts.map
