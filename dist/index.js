@@ -32,6 +32,7 @@ __exportStar(require("./currency/amount/factories/interfaces"), exports);
 __exportStar(require("./currency/amount/outputs/interfaces"), exports);
 __exportStar(require("./currency/transactions/deposit-status/deposit-status.module"), exports);
 __exportStar(require("./currency/transactions/deposit-status/services/deposit-status.service"), exports);
+__exportStar(require("./currency/transactions/deposit-status/repositories/deposit-status.repository"), exports);
 __exportStar(require("./math/precise-numbers"), exports);
 __exportStar(require("./math/precise-math"), exports);
 __exportStar(require("./math/interfaces"), exports);
