@@ -17,7 +17,7 @@ export class CoinRepository {
     private repository: Repository<Coin>
   ) {}
 
-  private async createCoins() {
+  async createCoins() {
     await this.repository.clear();
 
     // TODO: add the rest of the coins from the list below
