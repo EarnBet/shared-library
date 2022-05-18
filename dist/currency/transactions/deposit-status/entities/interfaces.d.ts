@@ -8,5 +8,6 @@ export interface INewDepositStatusRow {
 }
 export interface ISavedDepositStatusRow extends INewDepositStatusRow {
     confirmed_at: Date;
+    credited_at: Date;
 }
 //# sourceMappingURL=interfaces.d.ts.map

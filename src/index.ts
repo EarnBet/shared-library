@@ -21,6 +21,7 @@ export * from "./currency/amount/outputs/interfaces";
 export * from "./currency/transactions/deposit-status/deposit-status.module";
 export * from "./currency/transactions/deposit-status/services/deposit-status.service";
 export * from "./currency/transactions/deposit-status/repositories/deposit-status.repository";
+export * from "./currency/transactions/deposit-status/entities/interfaces";
 
 export * from "./math/precise-numbers";
 export * from "./math/precise-math";
