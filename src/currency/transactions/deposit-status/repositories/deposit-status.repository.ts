@@ -15,6 +15,12 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
     repository: Repository<DepositStatus>
   ) {
     super(repository);
+
+    this.test();
+  }
+
+  test() {
+    this.getTotalDepositsForUserInUSD(1);
   }
 
   markDepositAsConfirmed(depositTransactionId: number) {
@@ -35,5 +41,20 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
 
   getAllConfirmedUncreditedDeposits() {
     return this.find({ confirmed_at: IsNotNull(), credited_at: IsNull() });
+  }
+
+  async getTotalDepositsForUserInUSD(user_id: number) {
+    const result = await this.repository
+      .createQueryBuilder()
+      .select(`SUM(usd_amount)`, `totalDeposits`)
+      //.addSelect("user_id", "userId")
+      .where({
+        user_id,
+        usd_amount: IsNotNull(),
+      })
+      //.groupBy("game_id")
+      .getRawMany();
+
+    console.log(`get total deposits for user: ${user_id}`, result);
   }
 }
