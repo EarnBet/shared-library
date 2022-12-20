@@ -51,6 +51,8 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
       .where({
         user_id,
         usd_amount: IsNotNull(),
+        // Deposit must be confirmed and credited!
+        credited_at: IsNotNull(),
       })
       //.groupBy("game_id")
       .getRawMany();
