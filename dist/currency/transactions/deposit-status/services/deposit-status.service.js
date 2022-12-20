@@ -34,6 +34,9 @@ let DepositStatusService = class DepositStatusService {
     getAllConfirmedUncreditedDeposits() {
         return this.repository.getAllConfirmedUncreditedDeposits();
     }
+    getTotalDepositsForUserInUSD(user_id) {
+        return this.repository.getTotalDepositsForUserInUSD(user_id);
+    }
 };
 DepositStatusService = __decorate([
     (0, common_1.Injectable)(),

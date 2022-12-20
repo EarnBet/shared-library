@@ -10,5 +10,6 @@ export declare class DepositStatusService {
     getSavedDeposit(depositTransactionId: number): Promise<DepositStatus>;
     getAllPendingDeposits(): Promise<DepositStatus[]>;
     getAllConfirmedUncreditedDeposits(): Promise<DepositStatus[]>;
+    getTotalDepositsForUserInUSD(user_id: number): Promise<string>;
 }
 //# sourceMappingURL=deposit-status.service.d.ts.map

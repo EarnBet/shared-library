@@ -15,12 +15,6 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
     repository: Repository<DepositStatus>
   ) {
     super(repository);
-
-    this.test();
-  }
-
-  test() {
-    this.getTotalDepositsForUserInUSD(1);
   }
 
   markDepositAsConfirmed(depositTransactionId: number) {
@@ -44,7 +38,7 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
   }
 
   async getTotalDepositsForUserInUSD(user_id: number) {
-    const result = await this.repository
+    const rows = await this.repository
       .createQueryBuilder()
       .select(`SUM(usd_amount)`, `totalDeposits`)
       //.addSelect("user_id", "userId")
@@ -55,8 +49,10 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
         credited_at: IsNotNull(),
       })
       //.groupBy("game_id")
-      .getRawMany();
+      .getRawMany<{ totalDeposits: string }>();
 
-    console.log(`get total deposits for user: ${user_id}`, result);
+    const [{ totalDeposits }] = rows;
+
+    return totalDeposits;
   }
 }

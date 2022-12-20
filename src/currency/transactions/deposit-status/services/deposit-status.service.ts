@@ -29,4 +29,8 @@ export class DepositStatusService {
   getAllConfirmedUncreditedDeposits() {
     return this.repository.getAllConfirmedUncreditedDeposits();
   }
+
+  getTotalDepositsForUserInUSD(user_id: number) {
+    return this.repository.getTotalDepositsForUserInUSD(user_id);
+  }
 }

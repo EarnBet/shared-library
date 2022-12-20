@@ -23,10 +23,6 @@ const deposit_status_entity_1 = require("../entities/deposit-status.entity");
 let DepositStatusRepository = class DepositStatusRepository extends typeorm_repository_base_1.TypeOrmRepository {
     constructor(repository) {
         super(repository);
-        this.test();
-    }
-    test() {
-        this.getTotalDepositsForUserInUSD(1);
     }
     markDepositAsConfirmed(depositTransactionId) {
         return this.repository.update(depositTransactionId, {
@@ -45,7 +41,7 @@ let DepositStatusRepository = class DepositStatusRepository extends typeorm_repo
         return this.find({ confirmed_at: (0, typeorm_expressions_1.IsNotNull)(), credited_at: (0, typeorm_2.IsNull)() });
     }
     async getTotalDepositsForUserInUSD(user_id) {
-        const result = await this.repository
+        const rows = await this.repository
             .createQueryBuilder()
             .select(`SUM(usd_amount)`, `totalDeposits`)
             .where({
@@ -54,7 +50,8 @@ let DepositStatusRepository = class DepositStatusRepository extends typeorm_repo
             credited_at: (0, typeorm_expressions_1.IsNotNull)(),
         })
             .getRawMany();
-        console.log(`get total deposits for user: ${user_id}`, result);
+        const [{ totalDeposits }] = rows;
+        return totalDeposits;
     }
 };
 DepositStatusRepository = __decorate([
