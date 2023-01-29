@@ -18,8 +18,15 @@ const config_1 = require("@nestjs/config");
 const shared_config_service_1 = require("./shared-config.service");
 let SharedConfigModule = SharedConfigModule_1 = class SharedConfigModule {
     static forRoot(envFileRelativePath = ".env") {
+        if (envFileRelativePath == ".env" && process.env.NODE_ENV !== undefined) {
+            envFileRelativePath = process.env.NODE_ENV + ".env";
+        }
         const envFilePath = path.resolve(process.cwd(), envFileRelativePath);
-        console.log({ envFileRelativePath, envFilePath });
+        console.log({
+            NODE_ENV: process.env.NODE_ENV,
+            envFileRelativePath,
+            envFilePath,
+        });
         const doesFileExist = fs.existsSync(envFilePath);
         if (!doesFileExist) {
             throw new Error(".env file for config does not exist: " + envFilePath);

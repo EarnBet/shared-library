@@ -15,9 +15,17 @@ export class SharedConfigModule {
    * @returns a dynamic SharedConfigModule
    */
   static forRoot(envFileRelativePath: string = ".env"): DynamicModule {
+    if (envFileRelativePath == ".env" && process.env.NODE_ENV !== undefined) {
+      envFileRelativePath = process.env.NODE_ENV + ".env";
+    }
+
     const envFilePath = path.resolve(process.cwd(), envFileRelativePath);
 
-    console.log({ envFileRelativePath, envFilePath });
+    console.log({
+      NODE_ENV: process.env.NODE_ENV,
+      envFileRelativePath,
+      envFilePath,
+    });
 
     const doesFileExist = fs.existsSync(envFilePath);
 
