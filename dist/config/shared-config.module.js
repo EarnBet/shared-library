@@ -8,7 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var SharedConfigModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SharedConfigModule = void 0;
 const path = require("path");
@@ -32,34 +31,13 @@ function getEnvFilePath(envFileRelativePath = ".env") {
     }
     return envFilePath;
 }
-let SharedConfigModule = SharedConfigModule_1 = class SharedConfigModule {
-    static _forRoot(envFileRelativePath = ".env") {
-        if (envFileRelativePath == ".env" && process.env.NODE_ENV !== undefined) {
-            envFileRelativePath = process.env.NODE_ENV + ".env";
-        }
-        const envFilePath = path.resolve(process.cwd(), envFileRelativePath);
-        console.log({
-            NODE_ENV: process.env.NODE_ENV,
-            envFileRelativePath,
-            envFilePath,
-        });
-        const doesFileExist = fs.existsSync(envFilePath);
-        if (!doesFileExist) {
-            throw new Error(".env file for config does not exist: " + envFilePath);
-        }
-        return {
-            module: SharedConfigModule_1,
-            imports: [config_1.ConfigModule.forRoot({ isGlobal: true, envFilePath })],
-            providers: [shared_config_service_1.SharedConfigService],
-            exports: [shared_config_service_1.SharedConfigService],
-        };
-    }
+let SharedConfigModule = class SharedConfigModule {
     constructor(service) {
         const shouldUseRealCurrencyPriceService = service.shouldUseRealCurrencyPriceService();
         console.log({ shouldUseRealCurrencyPriceService });
     }
 };
-SharedConfigModule = SharedConfigModule_1 = __decorate([
+SharedConfigModule = __decorate([
     (0, common_1.Module)({
         imports: [
             config_1.ConfigModule.forRoot({ isGlobal: true, envFilePath: getEnvFilePath() }),

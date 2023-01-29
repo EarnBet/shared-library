@@ -1,4 +1,4 @@
-import { DynamicModule, Module } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { SharedDatabaseConnectionsModule } from "../../database/db-connections.module";
@@ -21,25 +21,4 @@ import { CoinDataProvider } from "./services/coin-data-provider";
   controllers: [CoinsController],
   exports: [CoinDataProvider, SharedDatabaseConnectionsModule],
 })
-export class SharedCoinsModule {
-  /**
-   * creates currency coins module forRoot
-   *
-   * @param envFileRelativePath - a path to the .env file relative to the working directory of the node.js process, defaults to ".env"
-   * @returns a dynamic CurrencyCoinsModule
-   */
-  static _forRoot(envFileRelativePath: string = ".env"): DynamicModule {
-    return {
-      module: SharedCoinsModule,
-      imports: [
-        // for database connection
-        //SharedDatabaseConnectionsModule.forRoot(envFileRelativePath),
-        // for database entity
-        TypeOrmModule.forFeature([Coin], SharedDatabaseConnectionName.CURRENCY),
-      ],
-      providers: [CoinsService, CoinDataProvider, CoinRepository],
-      controllers: [CoinsController],
-      exports: [CoinDataProvider, SharedDatabaseConnectionsModule],
-    };
-  }
-}
+export class SharedCoinsModule {}

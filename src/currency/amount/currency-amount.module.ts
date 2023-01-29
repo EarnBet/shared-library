@@ -1,4 +1,4 @@
-import { DynamicModule, Module } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 
 import { SharedCoinsModule } from "../coins/coins.module";
 import { CurrencyAmountService } from "./services/currency-amount.service";
@@ -8,19 +8,4 @@ import { CurrencyAmountService } from "./services/currency-amount.service";
   providers: [CurrencyAmountService],
   exports: [CurrencyAmountService, SharedCoinsModule],
 })
-export class CurrencyAmountModule {
-  /**
-   * creates currency amount module forRoot
-   *
-   * @param envFileRelativePath - a path to the .env file relative to the working directory of the node.js process, defaults to ".env"
-   * @returns a dynamic CurrencyAmountModule
-   */
-  static _forRoot(envFileRelativePath: string = ".env"): DynamicModule {
-    return {
-      module: CurrencyAmountModule,
-      //imports: [SharedCoinsModule.forRoot(envFileRelativePath)],
-      providers: [CurrencyAmountService],
-      exports: [CurrencyAmountService, SharedCoinsModule],
-    };
-  }
-}
+export class CurrencyAmountModule {}

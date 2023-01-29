@@ -5,7 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var SharedDatabaseConnectionsModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SharedDatabaseConnectionsModule = void 0;
 const common_1 = require("@nestjs/common");
@@ -13,18 +12,9 @@ const typeorm_1 = require("@nestjs/typeorm");
 const shared_config_module_1 = require("../config/shared-config.module");
 const constants_1 = require("./constants");
 const functions_1 = require("./functions");
-let SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule_1 = class SharedDatabaseConnectionsModule {
-    static _forRoot(envFileRelativePath = ".env") {
-        return {
-            module: SharedDatabaseConnectionsModule_1,
-            imports: [
-                typeorm_1.TypeOrmModule.forRoot((0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.CURRENCY)),
-            ],
-            exports: [shared_config_module_1.SharedConfigModule, typeorm_1.TypeOrmModule],
-        };
-    }
+let SharedDatabaseConnectionsModule = class SharedDatabaseConnectionsModule {
 };
-SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule_1 = __decorate([
+SharedDatabaseConnectionsModule = __decorate([
     (0, common_1.Module)({
         imports: [
             shared_config_module_1.SharedConfigModule,

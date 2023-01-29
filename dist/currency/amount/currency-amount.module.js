@@ -5,22 +5,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var CurrencyAmountModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CurrencyAmountModule = void 0;
 const common_1 = require("@nestjs/common");
 const coins_module_1 = require("../coins/coins.module");
 const currency_amount_service_1 = require("./services/currency-amount.service");
-let CurrencyAmountModule = CurrencyAmountModule_1 = class CurrencyAmountModule {
-    static _forRoot(envFileRelativePath = ".env") {
-        return {
-            module: CurrencyAmountModule_1,
-            providers: [currency_amount_service_1.CurrencyAmountService],
-            exports: [currency_amount_service_1.CurrencyAmountService, coins_module_1.SharedCoinsModule],
-        };
-    }
+let CurrencyAmountModule = class CurrencyAmountModule {
 };
-CurrencyAmountModule = CurrencyAmountModule_1 = __decorate([
+CurrencyAmountModule = __decorate([
     (0, common_1.Module)({
         imports: [coins_module_1.SharedCoinsModule],
         providers: [currency_amount_service_1.CurrencyAmountService],

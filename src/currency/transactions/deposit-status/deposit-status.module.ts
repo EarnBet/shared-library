@@ -1,4 +1,4 @@
-import { DynamicModule, Module } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { SharedDatabaseConnectionsModule } from "../../../database/db-connections.module";
@@ -22,21 +22,4 @@ import { DepositStatusService } from "./services/deposit-status.service";
   providers: [DepositStatusService, DepositStatusRepository],
   exports: [DepositStatusService],
 })
-export class DepositStatusModule {
-  static _forRoot(envFileRelativePath: string = ".env"): DynamicModule {
-    return {
-      module: DepositStatusModule,
-      imports: [
-        // for database connection
-        //SharedDatabaseConnectionsModule.forRoot(envFileRelativePath),
-        // for database entity
-        TypeOrmModule.forFeature(
-          [DepositStatus],
-          SharedDatabaseConnectionName.CURRENCY
-        ),
-      ],
-      providers: [DepositStatusService, DepositStatusRepository],
-      exports: [DepositStatusService],
-    };
-  }
-}
+export class DepositStatusModule {}
