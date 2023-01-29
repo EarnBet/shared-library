@@ -19,9 +19,9 @@ const shared_config_service_1 = require("./shared-config.service");
 let SharedConfigModule = SharedConfigModule_1 = class SharedConfigModule {
     static forRoot(envFileRelativePath = ".env") {
         const envFilePath = path.resolve(process.cwd(), envFileRelativePath);
+        console.log({ envFileRelativePath, envFilePath });
         const doesFileExist = fs.existsSync(envFilePath);
         if (!doesFileExist) {
-            console.log({ envFileRelativePath, envFilePath });
             throw new Error(".env file for config does not exist: " + envFilePath);
         }
         return {

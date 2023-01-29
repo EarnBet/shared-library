@@ -17,10 +17,11 @@ export class SharedConfigModule {
   static forRoot(envFileRelativePath: string = ".env"): DynamicModule {
     const envFilePath = path.resolve(process.cwd(), envFileRelativePath);
 
+    console.log({ envFileRelativePath, envFilePath });
+
     const doesFileExist = fs.existsSync(envFilePath);
 
     if (!doesFileExist) {
-      console.log({ envFileRelativePath, envFilePath });
       throw new Error(".env file for config does not exist: " + envFilePath);
     }
 
