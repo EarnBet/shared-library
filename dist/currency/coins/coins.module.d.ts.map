@@ -1,1 +1,1 @@
-{"version":3,"file":"coins.module.d.ts","sourceRoot":"","sources":["../../../src/currency/coins/coins.module.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAU,MAAM,gBAAgB,CAAC;AAYvD,qBACa,iBAAiB;IAO5B,MAAM,CAAC,OAAO,CAAC,mBAAmB,GAAE,MAAe,GAAG,aAAa;CAcpE"}
+{"version":3,"file":"coins.module.d.ts","sourceRoot":"","sources":["../../../src/currency/coins/coins.module.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAU,MAAM,gBAAgB,CAAC;AAYvD,qBAWa,iBAAiB;IAO5B,MAAM,CAAC,QAAQ,CAAC,mBAAmB,GAAE,MAAe,GAAG,aAAa;CAcrE"}

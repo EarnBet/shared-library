@@ -10,7 +10,17 @@ import { CoinRepository } from "./repositories/coin.repository";
 import { CoinsService } from "./services/coins.service";
 import { CoinDataProvider } from "./services/coin-data-provider";
 
-@Module({})
+@Module({
+  imports: [
+    // for database connection
+    SharedDatabaseConnectionsModule,
+    // for database entity
+    TypeOrmModule.forFeature([Coin], SharedDatabaseConnectionName.CURRENCY),
+  ],
+  providers: [CoinsService, CoinDataProvider, CoinRepository],
+  controllers: [CoinsController],
+  exports: [CoinDataProvider, SharedDatabaseConnectionsModule],
+})
 export class SharedCoinsModule {
   /**
    * creates currency coins module forRoot
@@ -18,12 +28,12 @@ export class SharedCoinsModule {
    * @param envFileRelativePath - a path to the .env file relative to the working directory of the node.js process, defaults to ".env"
    * @returns a dynamic CurrencyCoinsModule
    */
-  static forRoot(envFileRelativePath: string = ".env"): DynamicModule {
+  static _forRoot(envFileRelativePath: string = ".env"): DynamicModule {
     return {
       module: SharedCoinsModule,
       imports: [
         // for database connection
-        SharedDatabaseConnectionsModule.forRoot(envFileRelativePath),
+        //SharedDatabaseConnectionsModule.forRoot(envFileRelativePath),
         // for database entity
         TypeOrmModule.forFeature([Coin], SharedDatabaseConnectionName.CURRENCY),
       ],

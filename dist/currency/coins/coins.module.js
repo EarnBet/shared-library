@@ -18,11 +18,10 @@ const coin_repository_1 = require("./repositories/coin.repository");
 const coins_service_1 = require("./services/coins.service");
 const coin_data_provider_1 = require("./services/coin-data-provider");
 let SharedCoinsModule = SharedCoinsModule_1 = class SharedCoinsModule {
-    static forRoot(envFileRelativePath = ".env") {
+    static _forRoot(envFileRelativePath = ".env") {
         return {
             module: SharedCoinsModule_1,
             imports: [
-                db_connections_module_1.SharedDatabaseConnectionsModule.forRoot(envFileRelativePath),
                 typeorm_1.TypeOrmModule.forFeature([coin_entity_1.Coin], constants_1.SharedDatabaseConnectionName.CURRENCY),
             ],
             providers: [coins_service_1.CoinsService, coin_data_provider_1.CoinDataProvider, coin_repository_1.CoinRepository],
@@ -32,7 +31,15 @@ let SharedCoinsModule = SharedCoinsModule_1 = class SharedCoinsModule {
     }
 };
 SharedCoinsModule = SharedCoinsModule_1 = __decorate([
-    (0, common_1.Module)({})
+    (0, common_1.Module)({
+        imports: [
+            db_connections_module_1.SharedDatabaseConnectionsModule,
+            typeorm_1.TypeOrmModule.forFeature([coin_entity_1.Coin], constants_1.SharedDatabaseConnectionName.CURRENCY),
+        ],
+        providers: [coins_service_1.CoinsService, coin_data_provider_1.CoinDataProvider, coin_repository_1.CoinRepository],
+        controllers: [coins_controller_1.CoinsController],
+        exports: [coin_data_provider_1.CoinDataProvider, db_connections_module_1.SharedDatabaseConnectionsModule],
+    })
 ], SharedCoinsModule);
 exports.SharedCoinsModule = SharedCoinsModule;
 //# sourceMappingURL=coins.module.js.map

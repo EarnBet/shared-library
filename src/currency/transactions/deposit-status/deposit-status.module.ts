@@ -9,14 +9,26 @@ import { DepositStatusRepository } from "./repositories/deposit-status.repositor
 
 import { DepositStatusService } from "./services/deposit-status.service";
 
-@Module({})
+@Module({
+  imports: [
+    // for database connection
+    SharedDatabaseConnectionsModule,
+    // for database entity
+    TypeOrmModule.forFeature(
+      [DepositStatus],
+      SharedDatabaseConnectionName.CURRENCY
+    ),
+  ],
+  providers: [DepositStatusService, DepositStatusRepository],
+  exports: [DepositStatusService],
+})
 export class DepositStatusModule {
-  static forRoot(envFileRelativePath: string = ".env"): DynamicModule {
+  static _forRoot(envFileRelativePath: string = ".env"): DynamicModule {
     return {
       module: DepositStatusModule,
       imports: [
         // for database connection
-        SharedDatabaseConnectionsModule.forRoot(envFileRelativePath),
+        //SharedDatabaseConnectionsModule.forRoot(envFileRelativePath),
         // for database entity
         TypeOrmModule.forFeature(
           [DepositStatus],

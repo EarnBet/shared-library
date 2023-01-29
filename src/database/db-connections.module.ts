@@ -6,7 +6,16 @@ import { SharedConfigModule } from "../config/shared-config.module";
 import { SharedDatabaseConnectionName } from "./constants";
 import { getTypeOrmConnectionConfig } from "./functions";
 
-@Module({})
+@Module({
+  imports: [
+    SharedConfigModule,
+
+    TypeOrmModule.forRoot(
+      getTypeOrmConnectionConfig(SharedDatabaseConnectionName.CURRENCY)
+    ),
+  ],
+  exports: [SharedConfigModule, TypeOrmModule],
+})
 export class SharedDatabaseConnectionsModule {
   /**
    * creates database connections forRoot
@@ -14,11 +23,11 @@ export class SharedDatabaseConnectionsModule {
    * @param envFileRelativePath - a path to the .env file relative to the working directory of the node.js process, defaults to ".env"
    * @returns a dynamic DatabaseConnectionsModule
    */
-  static forRoot(envFileRelativePath: string = ".env"): DynamicModule {
+  static _forRoot(envFileRelativePath: string = ".env"): DynamicModule {
     return {
       module: SharedDatabaseConnectionsModule,
       imports: [
-        SharedConfigModule.forRoot(envFileRelativePath),
+        //SharedConfigModule.forRoot(envFileRelativePath),
 
         TypeOrmModule.forRoot(
           getTypeOrmConnectionConfig(SharedDatabaseConnectionName.CURRENCY)

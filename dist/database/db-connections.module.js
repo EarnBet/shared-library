@@ -14,11 +14,10 @@ const shared_config_module_1 = require("../config/shared-config.module");
 const constants_1 = require("./constants");
 const functions_1 = require("./functions");
 let SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule_1 = class SharedDatabaseConnectionsModule {
-    static forRoot(envFileRelativePath = ".env") {
+    static _forRoot(envFileRelativePath = ".env") {
         return {
             module: SharedDatabaseConnectionsModule_1,
             imports: [
-                shared_config_module_1.SharedConfigModule.forRoot(envFileRelativePath),
                 typeorm_1.TypeOrmModule.forRoot((0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.CURRENCY)),
             ],
             exports: [shared_config_module_1.SharedConfigModule, typeorm_1.TypeOrmModule],
@@ -26,7 +25,13 @@ let SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule_1 = class 
     }
 };
 SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule_1 = __decorate([
-    (0, common_1.Module)({})
+    (0, common_1.Module)({
+        imports: [
+            shared_config_module_1.SharedConfigModule,
+            typeorm_1.TypeOrmModule.forRoot((0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.CURRENCY)),
+        ],
+        exports: [shared_config_module_1.SharedConfigModule, typeorm_1.TypeOrmModule],
+    })
 ], SharedDatabaseConnectionsModule);
 exports.SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule;
 //# sourceMappingURL=db-connections.module.js.map

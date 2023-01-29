@@ -12,17 +12,20 @@ const common_1 = require("@nestjs/common");
 const coins_module_1 = require("../coins/coins.module");
 const currency_amount_service_1 = require("./services/currency-amount.service");
 let CurrencyAmountModule = CurrencyAmountModule_1 = class CurrencyAmountModule {
-    static forRoot(envFileRelativePath = ".env") {
+    static _forRoot(envFileRelativePath = ".env") {
         return {
             module: CurrencyAmountModule_1,
-            imports: [coins_module_1.SharedCoinsModule.forRoot(envFileRelativePath)],
             providers: [currency_amount_service_1.CurrencyAmountService],
             exports: [currency_amount_service_1.CurrencyAmountService, coins_module_1.SharedCoinsModule],
         };
     }
 };
 CurrencyAmountModule = CurrencyAmountModule_1 = __decorate([
-    (0, common_1.Module)({})
+    (0, common_1.Module)({
+        imports: [coins_module_1.SharedCoinsModule],
+        providers: [currency_amount_service_1.CurrencyAmountService],
+        exports: [currency_amount_service_1.CurrencyAmountService, coins_module_1.SharedCoinsModule],
+    })
 ], CurrencyAmountModule);
 exports.CurrencyAmountModule = CurrencyAmountModule;
 //# sourceMappingURL=currency-amount.module.js.map
