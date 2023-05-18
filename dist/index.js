@@ -22,6 +22,7 @@ __exportStar(require("./database/typeorm/typeorm-repository.base"), exports);
 __exportStar(require("./database/typeorm/typeorm-expressions"), exports);
 __exportStar(require("./currency/coins/entities/interfaces"), exports);
 __exportStar(require("./currency/coins/coins"), exports);
+__exportStar(require("./currency/coins/coins.module"), exports);
 __exportStar(require("./currency/coins/services/coin-data-provider"), exports);
 __exportStar(require("./currency/coins/services/coins.service"), exports);
 __exportStar(require("./currency/coins/services/interfaces"), exports);

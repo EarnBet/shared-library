@@ -8,6 +8,7 @@ export * from "./database/typeorm/typeorm-expressions";
 
 export * from "./currency/coins/entities/interfaces";
 export * from "./currency/coins/coins";
+export * from "./currency/coins/coins.module";
 export * from "./currency/coins/services/coin-data-provider";
 export * from "./currency/coins/services/coins.service";
 export * from "./currency/coins/services/interfaces";
