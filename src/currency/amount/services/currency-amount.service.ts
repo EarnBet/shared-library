@@ -45,6 +45,7 @@ export class CurrencyAmountService {
     for (const coin of allCoins) {
       output.push({
         currency_symbol: coin.symbol,
+        currency_precision: coin.precision,
         currency_price_usd: await this.getPriceInUSD(coin.symbol),
       });
     }
