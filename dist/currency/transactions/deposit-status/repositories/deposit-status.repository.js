@@ -40,18 +40,23 @@ let DepositStatusRepository = class DepositStatusRepository extends typeorm_repo
     getAllConfirmedUncreditedDeposits() {
         return this.find({ confirmed_at: (0, typeorm_expressions_1.IsNotNull)(), credited_at: (0, typeorm_2.IsNull)() });
     }
-    async getTotalDepositsForUserInUSD(user_id) {
-        const rows = await this.repository
+    getGrandTotalDepositsForUser(user_id) {
+        return this.getSumOfDepositsForUser({ user_id });
+    }
+    getTotalDepositsForUserInThePastDay(user_id) {
+        return this.getSumOfDepositsForUser({ user_id, timeLimitInHours: 24 });
+    }
+    async getSumOfDepositsForUser({ user_id, timeLimitInHours, }) {
+        const { totalDeposits } = await this.repository
             .createQueryBuilder()
             .select(`SUM(usd_amount)`, `totalDeposits`)
-            .where({
-            user_id,
-            usd_amount: (0, typeorm_expressions_1.IsNotNull)(),
-            credited_at: (0, typeorm_expressions_1.IsNotNull)(),
-        })
-            .getRawMany();
-        const [{ totalDeposits }] = rows;
-        return totalDeposits;
+            .where(Object.assign({ user_id, usd_amount: (0, typeorm_expressions_1.IsNotNull)(), credited_at: (0, typeorm_expressions_1.IsNotNull)() }, (timeLimitInHours !== undefined
+            ? {
+                credited_at: (0, typeorm_2.Raw)((alias) => `TIMESTAMPDIFF(HOUR,${alias},NOW()) <= ${timeLimitInHours}`),
+            }
+            : {})))
+            .getRawOne();
+        return totalDeposits || "0";
     }
 };
 DepositStatusRepository = __decorate([

@@ -1,12 +1,13 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { IsNull, Repository } from "typeorm";
+import { IsNull, Raw, Repository } from "typeorm";
 
 import { SharedDatabaseConnectionName } from "../../../../database/constants";
 import { TypeOrmRepository } from "../../../../database/typeorm/typeorm-repository.base";
 import { IsNotNull } from "../../../../database/typeorm/typeorm-expressions";
 
 import { DepositStatus } from "../entities/deposit-status.entity";
+import { IGetSumOfDepositsForUserInput } from "../inputs/interfaces";
 
 @Injectable()
 export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
@@ -37,22 +38,37 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
     return this.find({ confirmed_at: IsNotNull(), credited_at: IsNull() });
   }
 
-  async getTotalDepositsForUserInUSD(user_id: number) {
-    const rows = await this.repository
+  getGrandTotalDepositsForUser(user_id: number) {
+    return this.getSumOfDepositsForUser({ user_id });
+  }
+
+  getTotalDepositsForUserInThePastDay(user_id: number) {
+    return this.getSumOfDepositsForUser({ user_id, timeLimitInHours: 24 });
+  }
+
+  async getSumOfDepositsForUser({
+    user_id,
+    timeLimitInHours,
+  }: IGetSumOfDepositsForUserInput) {
+    const { totalDeposits } = await this.repository
       .createQueryBuilder()
       .select(`SUM(usd_amount)`, `totalDeposits`)
-      //.addSelect("user_id", "userId")
       .where({
         user_id,
         usd_amount: IsNotNull(),
         // Deposit must be confirmed and credited!
         credited_at: IsNotNull(),
+        ...(timeLimitInHours !== undefined
+          ? {
+              credited_at: Raw(
+                (alias) =>
+                  `TIMESTAMPDIFF(HOUR,${alias},NOW()) <= ${timeLimitInHours}`
+              ),
+            }
+          : {}),
       })
-      //.groupBy("game_id")
-      .getRawMany<{ totalDeposits: string }>();
+      .getRawOne<{ totalDeposits: string }>();
 
-    const [{ totalDeposits }] = rows;
-
-    return totalDeposits;
+    return totalDeposits || "0";
   }
 }

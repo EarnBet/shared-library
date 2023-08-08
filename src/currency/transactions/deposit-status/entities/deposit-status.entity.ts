@@ -26,7 +26,11 @@ export class DepositStatus implements ISavedDepositStatusRow {
   @Column({ type: "varchar", length: 100, nullable: false })
   transaction_hash: string;
 
-  @Column({ type: "timestamp", nullable: true })
+  @Column({
+    type: "timestamp",
+    nullable: false,
+    default: () => "CURRENT_TIMESTAMP()",
+  })
   created_at: Date;
 
   @Column({ type: "datetime", default: null })

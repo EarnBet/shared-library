@@ -3,6 +3,7 @@ import { Injectable } from "@nestjs/common";
 import { DepositStatus } from "../entities/deposit-status.entity";
 import { INewDepositStatusRow } from "../entities/interfaces";
 import { DepositStatusRepository } from "../repositories/deposit-status.repository";
+import { IGetSumOfDepositsForUserInput } from "../inputs/interfaces";
 
 @Injectable()
 export class DepositStatusService {
@@ -30,7 +31,15 @@ export class DepositStatusService {
     return this.repository.getAllConfirmedUncreditedDeposits();
   }
 
-  getTotalDepositsForUserInUSD(user_id: number) {
-    return this.repository.getTotalDepositsForUserInUSD(user_id);
+  getGrandTotalDepositsForUser(user_id: number) {
+    return this.repository.getGrandTotalDepositsForUser(user_id);
+  }
+
+  getTotalDepositsForUserInThePastDay(user_id: number) {
+    return this.repository.getTotalDepositsForUserInThePastDay(user_id);
+  }
+
+  getSumOfDepositsForUser(input: IGetSumOfDepositsForUserInput) {
+    return this.repository.getSumOfDepositsForUser(input);
   }
 }

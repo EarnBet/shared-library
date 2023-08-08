@@ -43,7 +43,11 @@ __decorate([
     __metadata("design:type", String)
 ], DepositStatus.prototype, "transaction_hash", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "timestamp", nullable: true }),
+    (0, typeorm_1.Column)({
+        type: "timestamp",
+        nullable: false,
+        default: () => "CURRENT_TIMESTAMP()",
+    }),
     __metadata("design:type", Date)
 ], DepositStatus.prototype, "created_at", void 0);
 __decorate([
