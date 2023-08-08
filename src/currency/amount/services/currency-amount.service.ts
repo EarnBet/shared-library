@@ -47,6 +47,8 @@ export class CurrencyAmountService {
         currency_symbol: coin.symbol,
         currency_precision: coin.precision,
         currency_price_usd: await this.getPriceInUSD(coin.symbol),
+        supports_memo: coin.data.usesMemoForDeposits,
+        minimum_withdrawal_amount: coin.data.minimumWithdrawalAmount,
       });
     }
 
