@@ -14,5 +14,9 @@ export declare class DepositStatusService {
     getGrandTotalDepositsForUser(user_id: number): Promise<string>;
     getTotalDepositsForUserInThePastDay(user_id: number): Promise<string>;
     getSumOfDepositsForUser(input: IGetSumOfDepositsForUserInput): Promise<string>;
+    getSumOfDepositsForUsers(user_ids: number[], timeLimitInHours?: number): Promise<{
+        user_id: number;
+        totalDeposits: string;
+    }[]>;
 }
 //# sourceMappingURL=deposit-status.service.d.ts.map

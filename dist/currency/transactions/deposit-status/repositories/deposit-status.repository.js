@@ -46,6 +46,19 @@ let DepositStatusRepository = class DepositStatusRepository extends typeorm_repo
     getTotalDepositsForUserInThePastDay(user_id) {
         return this.getSumOfDepositsForUser({ user_id, timeLimitInHours: 24 });
     }
+    getSumOfDepositsForUsers(user_ids, timeLimitInHours) {
+        return this.repository
+            .createQueryBuilder()
+            .select(`SUM(usd_amount)`, `totalDeposits`)
+            .addSelect("user_id")
+            .where(Object.assign({ user_id: (0, typeorm_2.In)(user_ids), usd_amount: (0, typeorm_expressions_1.IsNotNull)(), credited_at: (0, typeorm_expressions_1.IsNotNull)() }, (timeLimitInHours !== undefined
+            ? {
+                credited_at: (0, typeorm_2.Raw)((alias) => `TIMESTAMPDIFF(HOUR,${alias},NOW()) <= ${timeLimitInHours}`),
+            }
+            : {})))
+            .groupBy("user_id")
+            .getRawMany();
+    }
     async getSumOfDepositsForUser({ user_id, timeLimitInHours, }) {
         const { totalDeposits } = await this.repository
             .createQueryBuilder()

@@ -42,4 +42,8 @@ export class DepositStatusService {
   getSumOfDepositsForUser(input: IGetSumOfDepositsForUserInput) {
     return this.repository.getSumOfDepositsForUser(input);
   }
+
+  getSumOfDepositsForUsers(user_ids: number[], timeLimitInHours = 24) {
+    return this.repository.getSumOfDepositsForUsers(user_ids, timeLimitInHours);
+  }
 }

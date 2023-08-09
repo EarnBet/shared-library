@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { IsNull, Raw, Repository } from "typeorm";
+import { In, IsNull, Raw, Repository } from "typeorm";
 
 import { SharedDatabaseConnectionName } from "../../../../database/constants";
 import { TypeOrmRepository } from "../../../../database/typeorm/typeorm-repository.base";
@@ -44,6 +44,29 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
 
   getTotalDepositsForUserInThePastDay(user_id: number) {
     return this.getSumOfDepositsForUser({ user_id, timeLimitInHours: 24 });
+  }
+
+  getSumOfDepositsForUsers(user_ids: number[], timeLimitInHours: number) {
+    return this.repository
+      .createQueryBuilder()
+      .select(`SUM(usd_amount)`, `totalDeposits`)
+      .addSelect("user_id")
+      .where({
+        user_id: In(user_ids),
+        usd_amount: IsNotNull(),
+        // Deposit must be confirmed and credited!
+        credited_at: IsNotNull(),
+        ...(timeLimitInHours !== undefined
+          ? {
+              credited_at: Raw(
+                (alias) =>
+                  `TIMESTAMPDIFF(HOUR,${alias},NOW()) <= ${timeLimitInHours}`
+              ),
+            }
+          : {}),
+      })
+      .groupBy("user_id")
+      .getRawMany<{ user_id: number; totalDeposits: string }>();
   }
 
   async getSumOfDepositsForUser({
