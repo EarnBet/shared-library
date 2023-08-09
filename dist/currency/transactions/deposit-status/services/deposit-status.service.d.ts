@@ -1,7 +1,7 @@
 import { DepositStatus } from "../entities/deposit-status.entity";
 import { INewDepositStatusRow } from "../entities/interfaces";
 import { DepositStatusRepository } from "../repositories/deposit-status.repository";
-import { IGetSumOfDepositsForUserInput } from "../inputs/interfaces";
+import { IGetSumOfDepositsForUserInput, ISelectForUserInput } from "../inputs/interfaces";
 export declare class DepositStatusService {
     private repository;
     constructor(repository: DepositStatusRepository);
@@ -18,5 +18,6 @@ export declare class DepositStatusService {
         user_id: number;
         totalDeposits: string;
     }[]>;
+    getRecentDepositsForUser(input: ISelectForUserInput): Promise<DepositStatus[]>;
 }
 //# sourceMappingURL=deposit-status.service.d.ts.map

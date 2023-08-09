@@ -3,7 +3,10 @@ import { Injectable } from "@nestjs/common";
 import { DepositStatus } from "../entities/deposit-status.entity";
 import { INewDepositStatusRow } from "../entities/interfaces";
 import { DepositStatusRepository } from "../repositories/deposit-status.repository";
-import { IGetSumOfDepositsForUserInput } from "../inputs/interfaces";
+import {
+  IGetSumOfDepositsForUserInput,
+  ISelectForUserInput,
+} from "../inputs/interfaces";
 
 @Injectable()
 export class DepositStatusService {
@@ -45,5 +48,9 @@ export class DepositStatusService {
 
   getSumOfDepositsForUsers(user_ids: number[], timeLimitInHours = 24) {
     return this.repository.getSumOfDepositsForUsers(user_ids, timeLimitInHours);
+  }
+
+  getRecentDepositsForUser(input: ISelectForUserInput) {
+    return this.repository.getRecentDepositsForUser(input);
   }
 }

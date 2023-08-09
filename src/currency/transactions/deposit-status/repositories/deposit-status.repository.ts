@@ -7,7 +7,10 @@ import { TypeOrmRepository } from "../../../../database/typeorm/typeorm-reposito
 import { IsNotNull } from "../../../../database/typeorm/typeorm-expressions";
 
 import { DepositStatus } from "../entities/deposit-status.entity";
-import { IGetSumOfDepositsForUserInput } from "../inputs/interfaces";
+import {
+  IGetSumOfDepositsForUserInput,
+  ISelectForUserInput,
+} from "../inputs/interfaces";
 
 @Injectable()
 export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
@@ -36,6 +39,18 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
 
   getAllConfirmedUncreditedDeposits() {
     return this.find({ confirmed_at: IsNotNull(), credited_at: IsNull() });
+  }
+
+  getRecentDepositsForUser({ user_id, limit }: ISelectForUserInput) {
+    if (limit == undefined) {
+      limit = 100;
+    }
+
+    return this.repository.find({
+      where: { user_id },
+      order: { transaction_id: "DESC" },
+      take: limit,
+    });
   }
 
   getGrandTotalDepositsForUser(user_id: number) {

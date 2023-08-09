@@ -46,6 +46,9 @@ let DepositStatusService = class DepositStatusService {
     getSumOfDepositsForUsers(user_ids, timeLimitInHours = 24) {
         return this.repository.getSumOfDepositsForUsers(user_ids, timeLimitInHours);
     }
+    getRecentDepositsForUser(input) {
+        return this.repository.getRecentDepositsForUser(input);
+    }
 };
 DepositStatusService = __decorate([
     (0, common_1.Injectable)(),

@@ -40,6 +40,16 @@ let DepositStatusRepository = class DepositStatusRepository extends typeorm_repo
     getAllConfirmedUncreditedDeposits() {
         return this.find({ confirmed_at: (0, typeorm_expressions_1.IsNotNull)(), credited_at: (0, typeorm_2.IsNull)() });
     }
+    getRecentDepositsForUser({ user_id, limit }) {
+        if (limit == undefined) {
+            limit = 100;
+        }
+        return this.repository.find({
+            where: { user_id },
+            order: { transaction_id: "DESC" },
+            take: limit,
+        });
+    }
     getGrandTotalDepositsForUser(user_id) {
         return this.getSumOfDepositsForUser({ user_id });
     }
