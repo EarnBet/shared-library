@@ -5,7 +5,7 @@ export abstract class TypeOrmRepository<Entity> {
   constructor(protected readonly repository: Repository<Entity>) {}
 
   async insertOne(entity: QueryDeepPartialEntity<Entity>): Promise<number> {
-    const result: InsertResult = await this.repository.insert([entity]);
+    const result: InsertResult = await this.repository.insert(entity);
 
     return result.raw.insertId;
   }
