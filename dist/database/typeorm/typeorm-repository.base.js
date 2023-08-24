@@ -7,7 +7,8 @@ class TypeOrmRepository {
     }
     async insertOne(entity) {
         const result = await this.repository.insert(entity);
-        return result.raw.insertId;
+        let id = result.raw.insertId || result.identifiers[0].id;
+        return id;
     }
     insert(items) {
         return this.repository.insert(items);

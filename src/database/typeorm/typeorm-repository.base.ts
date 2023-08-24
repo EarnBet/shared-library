@@ -7,7 +7,9 @@ export abstract class TypeOrmRepository<Entity> {
   async insertOne(entity: QueryDeepPartialEntity<Entity>): Promise<number> {
     const result: InsertResult = await this.repository.insert(entity);
 
-    return result.raw.insertId;
+    let id = result.raw.insertId || result.identifiers[0].id;
+
+    return id;
   }
 
   insert(
