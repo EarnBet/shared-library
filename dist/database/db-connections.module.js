@@ -18,7 +18,7 @@ SharedDatabaseConnectionsModule = __decorate([
     (0, common_1.Module)({
         imports: [
             shared_config_module_1.SharedConfigModule,
-            typeorm_1.TypeOrmModule.forRoot((0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.CURRENCY)),
+            typeorm_1.TypeOrmModule.forRoot(Object.assign(Object.assign({}, (0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.CURRENCY)), { poolSize: 2 })),
         ],
         exports: [shared_config_module_1.SharedConfigModule, typeorm_1.TypeOrmModule],
     })

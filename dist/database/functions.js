@@ -5,7 +5,7 @@ const config_1 = require("../config");
 const defaultTypeORMOptions = {
     type: "mariadb",
     autoLoadEntities: true,
-    keepConnectionAlive: true,
+    keepConnectionAlive: false,
     logging: ["error"],
 };
 function getTypeOrmConnectionConfig(connectionName) {

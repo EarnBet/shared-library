@@ -10,9 +10,10 @@ import { getTypeOrmConnectionConfig } from "./functions";
   imports: [
     SharedConfigModule,
 
-    TypeOrmModule.forRoot(
-      getTypeOrmConnectionConfig(SharedDatabaseConnectionName.CURRENCY)
-    ),
+    TypeOrmModule.forRoot({
+      ...getTypeOrmConnectionConfig(SharedDatabaseConnectionName.CURRENCY),
+      poolSize: 2,
+    }),
   ],
   exports: [SharedConfigModule, TypeOrmModule],
 })

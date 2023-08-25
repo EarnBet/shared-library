@@ -6,7 +6,7 @@ import { SharedDatabaseConnectionName } from "./constants";
 const defaultTypeORMOptions: Partial<TypeOrmModuleOptions> = {
   type: "mariadb",
   autoLoadEntities: true,
-  keepConnectionAlive: true,
+  keepConnectionAlive: false,
   logging: ["error"],
 };
 
