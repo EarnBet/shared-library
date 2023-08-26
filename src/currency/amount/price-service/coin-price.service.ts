@@ -72,9 +72,10 @@ interface ICoinPriceData {
 }
 
 async function fetchPriceOfCoin(symbol: string): Promise<number> {
-  const url =
-    // TODO: make this configurable through ENV var
-    "internal.eosbet.io/token_price/" + symbol.toUpperCase();
+  const priceServerHost =
+    process.env.CURRENCY_PRICE_SERVER_HOST || "internal.eosbet.io";
+
+  const url = priceServerHost + "/token_price/" + symbol.toUpperCase();
 
   try {
     const data = await httpGetJson<ICoinPriceData>(url);

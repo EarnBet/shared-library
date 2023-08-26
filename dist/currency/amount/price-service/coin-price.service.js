@@ -48,7 +48,8 @@ async function getRealCoinPriceService(database) {
 }
 exports.getRealCoinPriceService = getRealCoinPriceService;
 async function fetchPriceOfCoin(symbol) {
-    const url = "internal.eosbet.io/token_price/" + symbol.toUpperCase();
+    const priceServerHost = process.env.CURRENCY_PRICE_SERVER_HOST || "internal.eosbet.io";
+    const url = priceServerHost + "/token_price/" + symbol.toUpperCase();
     try {
         const data = await (0, http_util_1.httpGetJson)(url);
         return Number(data.price);
