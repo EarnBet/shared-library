@@ -19,6 +19,7 @@ var CoinId;
     CoinId[CoinId["USDC"] = 13] = "USDC";
     CoinId[CoinId["USDT"] = 14] = "USDT";
     CoinId[CoinId["STACK"] = 15] = "STACK";
+    CoinId[CoinId["EBET"] = 16] = "EBET";
 })(CoinId = exports.CoinId || (exports.CoinId = {}));
 var CoinSymbol;
 (function (CoinSymbol) {
@@ -36,5 +37,6 @@ var CoinSymbol;
     CoinSymbol["DAI"] = "DAI";
     CoinSymbol["USDC"] = "USDC";
     CoinSymbol["USDT"] = "USDT";
+    CoinSymbol["EBET"] = "EBET";
 })(CoinSymbol = exports.CoinSymbol || (exports.CoinSymbol = {}));
 //# sourceMappingURL=coins.js.map

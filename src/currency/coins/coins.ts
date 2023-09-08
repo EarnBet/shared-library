@@ -21,6 +21,8 @@ export enum CoinId {
   USDT,
 
   STACK,
+
+  EBET,
 }
 /***/
 
@@ -41,4 +43,6 @@ export enum CoinSymbol {
   DAI = "DAI",
   USDC = "USDC",
   USDT = "USDT",
+
+  EBET = "EBET",
 }
