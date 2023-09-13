@@ -18,6 +18,7 @@ export declare enum CoinId {
     EBET = 16
 }
 export declare enum CoinSymbol {
+    USD = "USD",
     BTC = "BTC",
     ETH = "ETH",
     EOS = "EOS",

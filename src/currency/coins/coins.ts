@@ -27,6 +27,8 @@ export enum CoinId {
 /***/
 
 export enum CoinSymbol {
+  USD = "USD",
+
   BTC = "BTC",
   ETH = "ETH",
   EOS = "EOS",

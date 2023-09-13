@@ -23,6 +23,7 @@ var CoinId;
 })(CoinId = exports.CoinId || (exports.CoinId = {}));
 var CoinSymbol;
 (function (CoinSymbol) {
+    CoinSymbol["USD"] = "USD";
     CoinSymbol["BTC"] = "BTC";
     CoinSymbol["ETH"] = "ETH";
     CoinSymbol["EOS"] = "EOS";
