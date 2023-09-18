@@ -35,6 +35,7 @@ var CoinSymbol;
     CoinSymbol["WAX"] = "WAX";
     CoinSymbol["TRX"] = "TRX";
     CoinSymbol["LINK"] = "LINK";
+    CoinSymbol["BET_ETH"] = "BET_ETH";
     CoinSymbol["DAI"] = "DAI";
     CoinSymbol["USDC"] = "USDC";
     CoinSymbol["USDT"] = "USDT";

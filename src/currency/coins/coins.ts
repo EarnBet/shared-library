@@ -42,6 +42,8 @@ export enum CoinSymbol {
   TRX = "TRX",
   LINK = "LINK",
 
+  BET_ETH = "BET_ETH",
+
   DAI = "DAI",
   USDC = "USDC",
   USDT = "USDT",
