@@ -54,6 +54,13 @@ let CoinRepository = class CoinRepository {
                 uses_memo_for_deposits: 1,
                 minimum_withdrawal_amount: "100",
             },
+            {
+                id: coins_1.CoinId.EBET,
+                symbol: "EBET",
+                precision: 8,
+                uses_memo_for_deposits: 0,
+                minimum_withdrawal_amount: "100",
+            },
         ]);
     }
     getAllCoins() {
