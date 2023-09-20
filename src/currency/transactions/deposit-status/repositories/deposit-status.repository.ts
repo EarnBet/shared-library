@@ -22,15 +22,21 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
   }
 
   markDepositAsConfirmed(depositTransactionId: number) {
-    return this.repository.update(depositTransactionId, {
-      confirmed_at: () => "NOW()",
-    });
+    return this.repository.update(
+      { transaction_id: depositTransactionId, confirmed_at: IsNull() },
+      {
+        confirmed_at: () => "NOW()",
+      }
+    );
   }
 
   markDepositAsCredited(depositTransactionId: number) {
-    return this.repository.update(depositTransactionId, {
-      credited_at: () => "NOW()",
-    });
+    return this.repository.update(
+      { transaction_id: depositTransactionId, credited_at: IsNull() },
+      {
+        credited_at: () => "NOW()",
+      }
+    );
   }
 
   getAllPendingDeposits() {

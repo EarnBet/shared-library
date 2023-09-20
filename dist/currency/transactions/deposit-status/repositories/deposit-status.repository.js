@@ -25,12 +25,12 @@ let DepositStatusRepository = class DepositStatusRepository extends typeorm_repo
         super(repository);
     }
     markDepositAsConfirmed(depositTransactionId) {
-        return this.repository.update(depositTransactionId, {
+        return this.repository.update({ transaction_id: depositTransactionId, confirmed_at: (0, typeorm_2.IsNull)() }, {
             confirmed_at: () => "NOW()",
         });
     }
     markDepositAsCredited(depositTransactionId) {
-        return this.repository.update(depositTransactionId, {
+        return this.repository.update({ transaction_id: depositTransactionId, credited_at: (0, typeorm_2.IsNull)() }, {
             credited_at: () => "NOW()",
         });
     }
