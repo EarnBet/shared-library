@@ -38,15 +38,6 @@ class CoinPriceService {
         return price;
     }
 }
-let coinPriceService;
-async function getRealCoinPriceService(database) {
-    if (coinPriceService == undefined) {
-        coinPriceService = new CoinPriceService();
-        await coinPriceService.init(database);
-    }
-    return coinPriceService;
-}
-exports.getRealCoinPriceService = getRealCoinPriceService;
 async function fetchPriceOfCoin(symbol) {
     const priceServerHost = process.env.CURRENCY_PRICE_SERVER_HOST || "internal.eosbet.io";
     const url = priceServerHost + "/token_price/" + symbol.toUpperCase();
@@ -59,4 +50,13 @@ async function fetchPriceOfCoin(symbol) {
         return undefined;
     }
 }
+let coinPriceService;
+async function getRealCoinPriceService(database) {
+    if (coinPriceService == undefined) {
+        coinPriceService = new CoinPriceService();
+        await coinPriceService.init(database);
+    }
+    return coinPriceService;
+}
+exports.getRealCoinPriceService = getRealCoinPriceService;
 //# sourceMappingURL=coin-price.service.js.map

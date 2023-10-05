@@ -53,20 +53,6 @@ class CoinPriceService implements ICurrencyPriceService {
   }
 }
 
-let coinPriceService: CoinPriceService;
-
-export async function getRealCoinPriceService(
-  database: ICoinsService
-): Promise<ICurrencyPriceService> {
-  if (coinPriceService == undefined) {
-    coinPriceService = new CoinPriceService();
-
-    await coinPriceService.init(database);
-  }
-
-  return coinPriceService;
-}
-
 interface ICoinPriceData {
   price: number;
 }
@@ -87,4 +73,18 @@ async function fetchPriceOfCoin(symbol: string): Promise<number> {
 
     return undefined;
   }
+}
+
+let coinPriceService: CoinPriceService;
+
+export async function getRealCoinPriceService(
+  database: ICoinsService
+): Promise<ICurrencyPriceService> {
+  if (coinPriceService == undefined) {
+    coinPriceService = new CoinPriceService();
+
+    await coinPriceService.init(database);
+  }
+
+  return coinPriceService;
 }
