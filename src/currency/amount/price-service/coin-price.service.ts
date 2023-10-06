@@ -1,3 +1,4 @@
+import { sleep } from "../../../util/timer-util";
 import { httpGetJson } from "../../../util/http-util";
 import { ICoinsService } from "../../coins/services/interfaces";
 import { ICurrencyPriceService } from "./interfaces";
@@ -6,9 +7,13 @@ class CoinPriceService implements ICurrencyPriceService {
   private symbols: string[] = [];
   private prices: { [coin: string]: number } = {};
 
-  constructor() {}
+  private isInit = false;
 
-  async init(database: ICoinsService) {
+  constructor(database: ICoinsService) {
+    this.init(database);
+  }
+
+  private async init(database: ICoinsService) {
     const coins = await database.getAllCoins();
 
     this.symbols = coins.map((row) => row.symbol);
@@ -16,6 +21,10 @@ class CoinPriceService implements ICurrencyPriceService {
     setInterval(this.updateCoinPrices, 1000 * 60 * 60);
 
     await this.updateCoinPrices();
+
+    console.log("CoinPriceService initialized: ", this.prices);
+
+    this.isInit = true;
   }
 
   private updateCoinPrices = async () => {
@@ -31,6 +40,8 @@ class CoinPriceService implements ICurrencyPriceService {
   };
 
   async getPriceInUSD(symbol: string): Promise<number> {
+    await this.waitForInit();
+
     symbol = symbol.split("_")[0];
 
     if (symbol == "FUN") {
@@ -44,12 +55,18 @@ class CoinPriceService implements ICurrencyPriceService {
     const price = this.prices[symbol.toUpperCase()];
 
     if (price == undefined) {
-      console.log(this.prices);
+      console.log({ prices: this.prices });
 
       throw new Error(symbol + " Price is UNDEFINED!");
     }
 
     return price;
+  }
+
+  private async waitForInit() {
+    while (!this.isInit) {
+      await sleep(10);
+    }
   }
 }
 
@@ -77,13 +94,11 @@ async function fetchPriceOfCoin(symbol: string): Promise<number> {
 
 let coinPriceService: CoinPriceService;
 
-export async function getRealCoinPriceService(
+export function getRealCoinPriceService(
   database: ICoinsService
-): Promise<ICurrencyPriceService> {
+): ICurrencyPriceService {
   if (coinPriceService == undefined) {
-    coinPriceService = new CoinPriceService();
-
-    await coinPriceService.init(database);
+    coinPriceService = new CoinPriceService(database);
   }
 
   return coinPriceService;

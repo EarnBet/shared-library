@@ -13,8 +13,8 @@ export declare class CurrencyAmountService {
     createAmountFromQuantity(quantity: string): Promise<import("../factories/interfaces").ICurrencyAmountWithPrice>;
     getAllCoinPrices(): Promise<ICurrencyPriceOutput[]>;
     getAllCoins(): Promise<import("../../coins/models/saved-coin").SavedCoin[]>;
-    getCoinDataProvider(): Promise<import("../../..").ICoinDataProvider>;
+    getCoinDataProvider(): import("../../..").ICoinDataProvider;
     getPriceInUSD(currencySymbol: string): Promise<number>;
-    getFactory(): Promise<ICurrencyAmountWithPriceFactory>;
+    getFactory(): ICurrencyAmountWithPriceFactory;
 }
 //# sourceMappingURL=currency-amount.service.d.ts.map

@@ -18,23 +18,17 @@ export class CurrencyAmountService {
     private sharedConfigService: SharedConfigService
   ) {}
 
-  async createAmountFromDecimal(decimalAmount: BigSource, tokenSymbol: string) {
-    await this.getFactory();
-
-    return this.factory.newAmountFromDecimal(decimalAmount, tokenSymbol);
+  createAmountFromDecimal(decimalAmount: BigSource, tokenSymbol: string) {
+    return this.getFactory().newAmountFromDecimal(decimalAmount, tokenSymbol);
   }
 
-  async createAmountFromInteger(subunits: BigSource, tokenSymbol: string) {
-    await this.getFactory();
-
-    return this.factory.newAmountFromInteger(subunits, tokenSymbol);
+  createAmountFromInteger(subunits: BigSource, tokenSymbol: string) {
+    return this.getFactory().newAmountFromInteger(subunits, tokenSymbol);
   }
 
   // Quantity String format: 0.1 BTC
-  async createAmountFromQuantity(quantity: string) {
-    await this.getFactory();
-
-    return this.factory.newAmountFromQuantity(quantity);
+  createAmountFromQuantity(quantity: string) {
+    return this.getFactory().newAmountFromQuantity(quantity);
   }
 
   async getAllCoinPrices(): Promise<ICurrencyPriceOutput[]> {
@@ -57,30 +51,24 @@ export class CurrencyAmountService {
 
   // get all the coins that are cached in the amountFactory
   // instead of having to query the database each time
-  async getAllCoins() {
-    const coinDataProvider = await this.getCoinDataProvider();
-
-    return coinDataProvider.getAllCoins();
+  getAllCoins() {
+    return this.getCoinDataProvider().getAllCoins();
   }
 
-  async getCoinDataProvider() {
-    await this.getFactory();
-
-    return this.factory.coinDataProvider;
+  getCoinDataProvider() {
+    return this.getFactory().coinDataProvider;
   }
 
-  async getPriceInUSD(currencySymbol: string) {
-    await this.getFactory();
-
-    return this.factory.priceService.getPriceInUSD(currencySymbol);
+  getPriceInUSD(currencySymbol: string) {
+    return this.getFactory().priceService.getPriceInUSD(currencySymbol);
   }
 
-  async getFactory() {
+  getFactory() {
     if (!this.factory) {
       const shouldUseRealPriceService =
         this.sharedConfigService.shouldUseRealCurrencyPriceService();
 
-      this.factory = await getCurrencyAmountWithPriceFactory(
+      this.factory = getCurrencyAmountWithPriceFactory(
         this.coinDataProvider,
         shouldUseRealPriceService ? undefined : mockCurrencyPriceService
       );

@@ -183,15 +183,13 @@ class CurrencyAmountWithPriceFactory
 
 let currencyAmountWithPriceFactory: CurrencyAmountWithPriceFactory;
 
-export async function getCurrencyAmountWithPriceFactory(
+export function getCurrencyAmountWithPriceFactory(
   coinDataProvider: ICoinDataProvider,
   priceService: ICurrencyPriceService = undefined
-): Promise<CurrencyAmountWithPriceFactory> {
+): CurrencyAmountWithPriceFactory {
   if (currencyAmountWithPriceFactory == undefined) {
-    //await coinDataProvider.init();
-
     if (priceService == undefined) {
-      priceService = await getRealCoinPriceService(coinDataProvider);
+      priceService = getRealCoinPriceService(coinDataProvider);
     }
 
     currencyAmountWithPriceFactory = new CurrencyAmountWithPriceFactory(

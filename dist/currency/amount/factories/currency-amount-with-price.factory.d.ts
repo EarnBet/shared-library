@@ -21,6 +21,6 @@ declare class CurrencyAmountWithPriceFactory implements ICurrencyAmountWithPrice
     newAmountFromDecimalAndCoinId(decimalAmount: BigSource, coinId: CoinId): Promise<CurrencyAmountWithPrice>;
     newAmountFromInteger(integerSubunits: BigSource, tokenSymbol: string): Promise<CurrencyAmountWithPrice>;
 }
-export declare function getCurrencyAmountWithPriceFactory(coinDataProvider: ICoinDataProvider, priceService?: ICurrencyPriceService): Promise<CurrencyAmountWithPriceFactory>;
+export declare function getCurrencyAmountWithPriceFactory(coinDataProvider: ICoinDataProvider, priceService?: ICurrencyPriceService): CurrencyAmountWithPriceFactory;
 export {};
 //# sourceMappingURL=currency-amount-with-price.factory.d.ts.map

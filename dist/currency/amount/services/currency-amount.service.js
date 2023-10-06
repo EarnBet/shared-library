@@ -20,17 +20,14 @@ let CurrencyAmountService = class CurrencyAmountService {
         this.coinDataProvider = coinDataProvider;
         this.sharedConfigService = sharedConfigService;
     }
-    async createAmountFromDecimal(decimalAmount, tokenSymbol) {
-        await this.getFactory();
-        return this.factory.newAmountFromDecimal(decimalAmount, tokenSymbol);
+    createAmountFromDecimal(decimalAmount, tokenSymbol) {
+        return this.getFactory().newAmountFromDecimal(decimalAmount, tokenSymbol);
     }
-    async createAmountFromInteger(subunits, tokenSymbol) {
-        await this.getFactory();
-        return this.factory.newAmountFromInteger(subunits, tokenSymbol);
+    createAmountFromInteger(subunits, tokenSymbol) {
+        return this.getFactory().newAmountFromInteger(subunits, tokenSymbol);
     }
-    async createAmountFromQuantity(quantity) {
-        await this.getFactory();
-        return this.factory.newAmountFromQuantity(quantity);
+    createAmountFromQuantity(quantity) {
+        return this.getFactory().newAmountFromQuantity(quantity);
     }
     async getAllCoinPrices() {
         const allCoins = await this.getAllCoins();
@@ -46,22 +43,19 @@ let CurrencyAmountService = class CurrencyAmountService {
         }
         return output;
     }
-    async getAllCoins() {
-        const coinDataProvider = await this.getCoinDataProvider();
-        return coinDataProvider.getAllCoins();
+    getAllCoins() {
+        return this.getCoinDataProvider().getAllCoins();
     }
-    async getCoinDataProvider() {
-        await this.getFactory();
-        return this.factory.coinDataProvider;
+    getCoinDataProvider() {
+        return this.getFactory().coinDataProvider;
     }
-    async getPriceInUSD(currencySymbol) {
-        await this.getFactory();
-        return this.factory.priceService.getPriceInUSD(currencySymbol);
+    getPriceInUSD(currencySymbol) {
+        return this.getFactory().priceService.getPriceInUSD(currencySymbol);
     }
-    async getFactory() {
+    getFactory() {
         if (!this.factory) {
             const shouldUseRealPriceService = this.sharedConfigService.shouldUseRealCurrencyPriceService();
-            this.factory = await (0, currency_amount_with_price_factory_1.getCurrencyAmountWithPriceFactory)(this.coinDataProvider, shouldUseRealPriceService ? undefined : coin_price_service_mock_1.mockCurrencyPriceService);
+            this.factory = (0, currency_amount_with_price_factory_1.getCurrencyAmountWithPriceFactory)(this.coinDataProvider, shouldUseRealPriceService ? undefined : coin_price_service_mock_1.mockCurrencyPriceService);
         }
         return this.factory;
     }
