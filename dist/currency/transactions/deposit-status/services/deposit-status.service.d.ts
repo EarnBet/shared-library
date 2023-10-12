@@ -3,7 +3,7 @@ import { INewDepositStatusRow } from "../entities/interfaces";
 import { DepositStatusRepository } from "../repositories/deposit-status.repository";
 import { IGetSumOfDepositsForUserInput, ISelectForUserInput } from "../inputs/interfaces";
 export declare class DepositStatusService {
-    private repository;
+    readonly repository: DepositStatusRepository;
     constructor(repository: DepositStatusRepository);
     addNewDeposit(data: INewDepositStatusRow): Promise<number>;
     markDepositAsConfirmed(depositTransactionId: number): Promise<import("typeorm").UpdateResult>;
@@ -18,6 +18,7 @@ export declare class DepositStatusService {
         user_id: number;
         totalDeposits: string;
     }[]>;
+    getRecentDeposits(limit?: number): Promise<DepositStatus[]>;
     getRecentDepositsForUser(input: ISelectForUserInput): Promise<DepositStatus[]>;
 }
 //# sourceMappingURL=deposit-status.service.d.ts.map

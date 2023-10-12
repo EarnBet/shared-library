@@ -8,6 +8,7 @@ export declare class DepositStatusRepository extends TypeOrmRepository<DepositSt
     markDepositAsCredited(depositTransactionId: number): Promise<import("typeorm").UpdateResult>;
     getAllPendingDeposits(): Promise<DepositStatus[]>;
     getAllConfirmedUncreditedDeposits(): Promise<DepositStatus[]>;
+    getRecentDeposits(limit?: number): Promise<DepositStatus[]>;
     getRecentDepositsForUser({ user_id, limit }: ISelectForUserInput): Promise<DepositStatus[]>;
     getGrandTotalDepositsForUser(user_id: number): Promise<string>;
     getTotalDepositsForUserInThePastDay(user_id: number): Promise<string>;

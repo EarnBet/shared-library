@@ -47,6 +47,13 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
     return this.find({ confirmed_at: IsNotNull(), credited_at: IsNull() });
   }
 
+  getRecentDeposits(limit = 100) {
+    return this.repository.find({
+      order: { transaction_id: "DESC" },
+      take: limit,
+    });
+  }
+
   getRecentDepositsForUser({ user_id, limit }: ISelectForUserInput) {
     if (limit == undefined) {
       limit = 100;

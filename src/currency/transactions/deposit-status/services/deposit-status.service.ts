@@ -10,7 +10,7 @@ import {
 
 @Injectable()
 export class DepositStatusService {
-  constructor(private repository: DepositStatusRepository) {}
+  constructor(readonly repository: DepositStatusRepository) {}
 
   addNewDeposit(data: INewDepositStatusRow): Promise<number> {
     return this.repository.insertOne(data);
@@ -48,6 +48,10 @@ export class DepositStatusService {
 
   getSumOfDepositsForUsers(user_ids: number[], timeLimitInHours = 24) {
     return this.repository.getSumOfDepositsForUsers(user_ids, timeLimitInHours);
+  }
+
+  getRecentDeposits(limit = 100) {
+    return this.repository.getRecentDeposits(limit);
   }
 
   getRecentDepositsForUser(input: ISelectForUserInput) {
