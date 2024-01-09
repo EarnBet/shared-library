@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const big_js_1 = require("big.js");
+const big_js_1 = __importDefault(require("big.js"));
 const precise_numbers_1 = require("../../../math/precise-numbers");
 const shared_1 = require("./shared");
 class PreciseCurrencyAmountFactory {
