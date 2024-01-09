@@ -41,3 +41,6 @@ export * from "./users/repositories/inputs";
 export * from "./users/users-shared.module";
 
 export * from "./crypto/bcrypt.functions";
+
+export * from "./auth/util/auth.functions";
+export * from "./auth/util/interfaces";
