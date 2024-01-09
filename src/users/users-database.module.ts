@@ -6,8 +6,8 @@ import { UserRepository } from "./repositories/user.repository";
 import { User } from "./entities/user.entity";
 import { UsernameBannedWord } from "./entities/username-banned-words.entity";
 import { UsernameBannedWordRepository } from "./repositories/username-banned-word.repository";
-import { SharedDatabaseConnectionName } from "src/database/constants";
-import { SharedDatabaseConnectionsModule } from "src/database/db-connections.module";
+import { SharedDatabaseConnectionName } from "../database/constants";
+import { SharedDatabaseConnectionsModule } from "../database/db-connections.module";
 
 @Module({
   imports: [

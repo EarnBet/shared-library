@@ -13,8 +13,8 @@ const user_repository_1 = require("./repositories/user.repository");
 const user_entity_1 = require("./entities/user.entity");
 const username_banned_words_entity_1 = require("./entities/username-banned-words.entity");
 const username_banned_word_repository_1 = require("./repositories/username-banned-word.repository");
-const constants_1 = require("src/database/constants");
-const db_connections_module_1 = require("src/database/db-connections.module");
+const constants_1 = require("../database/constants");
+const db_connections_module_1 = require("../database/db-connections.module");
 let UsersDatabaseModule = class UsersDatabaseModule {
 };
 UsersDatabaseModule = __decorate([
