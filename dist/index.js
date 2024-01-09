@@ -45,4 +45,5 @@ __exportStar(require("./users/entities/user.entity"), exports);
 __exportStar(require("./users/repositories/user.repository"), exports);
 __exportStar(require("./users/repositories/inputs"), exports);
 __exportStar(require("./users/users-shared.module"), exports);
+__exportStar(require("./crypto/bcrypt.functions"), exports);
 //# sourceMappingURL=index.js.map

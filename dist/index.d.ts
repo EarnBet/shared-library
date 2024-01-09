@@ -29,4 +29,5 @@ export * from "./users/entities/user.entity";
 export * from "./users/repositories/user.repository";
 export * from "./users/repositories/inputs";
 export * from "./users/users-shared.module";
+export * from "./crypto/bcrypt.functions";
 //# sourceMappingURL=index.d.ts.map
