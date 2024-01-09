@@ -14,6 +14,11 @@ import { getTypeOrmConnectionConfig } from "./functions";
       ...getTypeOrmConnectionConfig(SharedDatabaseConnectionName.CURRENCY),
       poolSize: 2,
     }),
+
+    TypeOrmModule.forRoot({
+      ...getTypeOrmConnectionConfig(SharedDatabaseConnectionName.EARNBET),
+      poolSize: 2,
+    }),
   ],
   exports: [SharedConfigModule, TypeOrmModule],
 })

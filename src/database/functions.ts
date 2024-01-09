@@ -1,5 +1,7 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 
+import * as SqlString from "sqlstring";
+
 import { parseBooleanFromEnv } from "../config";
 import { SharedDatabaseConnectionName } from "./constants";
 
@@ -28,4 +30,8 @@ export function getTypeOrmConnectionConfig(
     username: process.env[connectionName + "_DB_USER"],
     password: process.env[connectionName + "_DB_PASS"],
   } as any;
+}
+
+export function escapeStringInput(input: string) {
+  return SqlString.escape(input);
 }

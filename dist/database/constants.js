@@ -4,5 +4,6 @@ exports.SharedDatabaseConnectionName = void 0;
 var SharedDatabaseConnectionName;
 (function (SharedDatabaseConnectionName) {
     SharedDatabaseConnectionName["CURRENCY"] = "CURRENCY";
+    SharedDatabaseConnectionName["EARNBET"] = "EARNBET";
 })(SharedDatabaseConnectionName = exports.SharedDatabaseConnectionName || (exports.SharedDatabaseConnectionName = {}));
 //# sourceMappingURL=constants.js.map

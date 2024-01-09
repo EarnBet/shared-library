@@ -29,3 +29,13 @@ export * from "./math/precise-math";
 export * from "./math/interfaces";
 
 export * from "./util/timer-util";
+
+export * from "./users/services/users-shared.service";
+export * from "./users/services/inputs";
+
+export * from "./users/entities/user.entity";
+
+export * from "./users/repositories/user.repository";
+export * from "./users/repositories/inputs";
+
+export * from "./users/users-shared.module";

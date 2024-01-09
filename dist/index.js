@@ -39,4 +39,10 @@ __exportStar(require("./math/precise-numbers"), exports);
 __exportStar(require("./math/precise-math"), exports);
 __exportStar(require("./math/interfaces"), exports);
 __exportStar(require("./util/timer-util"), exports);
+__exportStar(require("./users/services/users-shared.service"), exports);
+__exportStar(require("./users/services/inputs"), exports);
+__exportStar(require("./users/entities/user.entity"), exports);
+__exportStar(require("./users/repositories/user.repository"), exports);
+__exportStar(require("./users/repositories/inputs"), exports);
+__exportStar(require("./users/users-shared.module"), exports);
 //# sourceMappingURL=index.js.map
