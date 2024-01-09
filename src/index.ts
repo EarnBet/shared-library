@@ -3,6 +3,8 @@ export * from "./config/shared-config.module";
 
 export * from "./database/db-connections.module";
 export * from "./database/constants";
+export * from "./database/functions";
+
 export * from "./database/typeorm/typeorm-repository.base";
 export * from "./database/typeorm/typeorm-expressions";
 
@@ -39,6 +41,7 @@ export * from "./users/entities/genders";
 export * from "./users/repositories/user.repository";
 export * from "./users/repositories/username-banned-word.repository";
 export * from "./users/repositories/inputs";
+export * from "./users/repositories/functions";
 
 export * from "./users/users-shared.module";
 
