@@ -34,6 +34,7 @@ export * from "./users/services/users-shared.service";
 export * from "./users/services/inputs";
 
 export * from "./users/entities/user.entity";
+export * from "./users/entities/genders";
 
 export * from "./users/repositories/user.repository";
 export * from "./users/repositories/username-banned-word.repository";

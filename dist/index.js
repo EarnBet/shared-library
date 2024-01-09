@@ -42,6 +42,7 @@ __exportStar(require("./util/timer-util"), exports);
 __exportStar(require("./users/services/users-shared.service"), exports);
 __exportStar(require("./users/services/inputs"), exports);
 __exportStar(require("./users/entities/user.entity"), exports);
+__exportStar(require("./users/entities/genders"), exports);
 __exportStar(require("./users/repositories/user.repository"), exports);
 __exportStar(require("./users/repositories/username-banned-word.repository"), exports);
 __exportStar(require("./users/repositories/inputs"), exports);
