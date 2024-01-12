@@ -57,6 +57,7 @@ __exportStar(require("./auth/util/interfaces"), exports);
 __exportStar(require("./auth/inputs/auth.inputs"), exports);
 __exportStar(require("./auth/guards/auth.guard"), exports);
 __exportStar(require("./auth/decorators/auth.decorators"), exports);
+__exportStar(require("./auth/services/auth.service"), exports);
 __exportStar(require("./auth/auth.module"), exports);
 __exportStar(require("./validation/transform.functions"), exports);
 __exportStar(require("./validation/decorators"), exports);

@@ -41,6 +41,7 @@ export * from "./auth/util/interfaces";
 export * from "./auth/inputs/auth.inputs";
 export * from "./auth/guards/auth.guard";
 export * from "./auth/decorators/auth.decorators";
+export * from "./auth/services/auth.service";
 export * from "./auth/auth.module";
 export * from "./validation/transform.functions";
 export * from "./validation/decorators";
