@@ -43,6 +43,9 @@ export * from "./users/repositories/username-banned-word.repository";
 export * from "./users/repositories/inputs";
 export * from "./users/repositories/functions";
 
+export * from "./users/inputs/login.input";
+export * from "./users/validators/decorators";
+
 export * from "./users/users-shared.module";
 
 export * from "./crypto/bcrypt.functions";
@@ -55,8 +58,10 @@ export * from "./auth/decorators/auth.decorators";
 export * from "./auth/auth.module";
 
 export * from "./validation/transform.functions";
+export * from "./validation/decorators";
 
 export * from "./http/request/functions";
 
+export * from "./admin-users/inputs/user-id-from-admin.input";
 export * from "./admin-users/guards/admin-auth.guards";
 export * from "./admin-users/admin-users.module";
