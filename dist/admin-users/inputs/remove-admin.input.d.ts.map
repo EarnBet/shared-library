@@ -1,0 +1,1 @@
+{"version":3,"file":"remove-admin.input.d.ts","sourceRoot":"","sources":["../../../src/admin-users/inputs/remove-admin.input.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,uBAAuB,EAAE,MAAM,+BAA+B,CAAC;AAGxE,qBAAa,oBAAqB,SAAQ,uBAAuB;IAG/D,aAAa,EAAE,MAAM,CAAC;IAEtB,YAAY,EAAE,MAAM,CAAC;CACtB"}

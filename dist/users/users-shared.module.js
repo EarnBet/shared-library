@@ -10,12 +10,13 @@ exports.SharedUsersModule = void 0;
 const common_1 = require("@nestjs/common");
 const users_database_module_1 = require("./users-database.module");
 const users_shared_service_1 = require("./services/users-shared.service");
+const login_password_validator_1 = require("./validators/login-password.validator");
 let SharedUsersModule = class SharedUsersModule {
 };
 SharedUsersModule = __decorate([
     (0, common_1.Module)({
         imports: [users_database_module_1.UsersDatabaseModule],
-        providers: [users_shared_service_1.SharedUsersService],
+        providers: [users_shared_service_1.SharedUsersService, login_password_validator_1.LoginPasswordValidator],
         exports: [users_shared_service_1.SharedUsersService, users_database_module_1.UsersDatabaseModule],
     })
 ], SharedUsersModule);
