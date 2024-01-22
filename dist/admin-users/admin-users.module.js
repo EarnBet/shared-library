@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const users_shared_module_1 = require("../users/users-shared.module");
 const constants_1 = require("../database/constants");
+const auth_module_1 = require("../auth/auth.module");
 const admin_users_controller_1 = require("./controllers/admin-users.controller");
 const admin_user_entity_1 = require("./entities/admin-user.entity");
 const admin_user_repository_1 = require("./repositories/admin-user.repository");
@@ -23,6 +24,7 @@ let AdminUsersModule = class AdminUsersModule {
 AdminUsersModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            auth_module_1.AuthModule,
             users_shared_module_1.SharedUsersModule,
             typeorm_1.TypeOrmModule.forFeature([admin_user_entity_1.AdminUser], constants_1.SharedDatabaseConnectionName.EARNBET),
         ],
@@ -34,7 +36,7 @@ AdminUsersModule = __decorate([
             admin_login_validator_1.AdminLoginValidator,
         ],
         controllers: [admin_users_controller_1.AdminUsersController],
-        exports: [admin_users_service_1.AdminUsersService, users_shared_module_1.SharedUsersModule],
+        exports: [admin_users_service_1.AdminUsersService, users_shared_module_1.SharedUsersModule, auth_module_1.AuthModule],
     })
 ], AdminUsersModule);
 exports.AdminUsersModule = AdminUsersModule;

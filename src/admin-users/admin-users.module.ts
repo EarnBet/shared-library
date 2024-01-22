@@ -3,6 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { SharedUsersModule } from "../users/users-shared.module";
 import { SharedDatabaseConnectionName } from "../database/constants";
+import { AuthModule } from "../auth/auth.module";
 
 import { AdminUsersController } from "./controllers/admin-users.controller";
 import { AdminUser } from "./entities/admin-user.entity";
@@ -14,6 +15,8 @@ import { AdminLoginValidator } from "./validators/admin-login.validator";
 
 @Module({
   imports: [
+    AuthModule,
+
     SharedUsersModule,
 
     TypeOrmModule.forFeature([AdminUser], SharedDatabaseConnectionName.EARNBET),
@@ -28,6 +31,6 @@ import { AdminLoginValidator } from "./validators/admin-login.validator";
     AdminLoginValidator,
   ],
   controllers: [AdminUsersController],
-  exports: [AdminUsersService, SharedUsersModule],
+  exports: [AdminUsersService, SharedUsersModule, AuthModule],
 })
 export class AdminUsersModule {}
