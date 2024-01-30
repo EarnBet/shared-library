@@ -11,9 +11,11 @@ export class AuthService {
     let payload: IUserTokenData = null;
 
     try {
+      console.log({ JWT_SECRET: process.env.JWT_SECRET, token });
+
       payload = <IUserTokenData>jwt.verify(token, process.env.JWT_SECRET);
     } catch (error) {
-      //console.error(error);
+      console.error(error);
     }
 
     return payload;

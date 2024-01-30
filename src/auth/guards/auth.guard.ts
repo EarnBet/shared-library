@@ -36,13 +36,6 @@ export class AuthGuard implements CanActivate {
 }
 
 function getAuthTokenFromRequestHeaders(headers: IncomingHttpHeaders): string {
-  console.log({ headers });
-
-  //  authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IkVhcm5CZXREZXYiLCJpYXQiOjE3MDY2MjgzODB9.TUIW_aRElBquYh0C8f1s_HTwdJTKjD36OBODllOB4fM',
-
-  console.log("authorization", headers.authorization);
-  console.log("Authorization", headers.Authorization);
-
   if (headers.authorization || headers.Authorization) {
     let auth: string;
 
@@ -53,19 +46,10 @@ function getAuthTokenFromRequestHeaders(headers: IncomingHttpHeaders): string {
       auth = <string>headers.Authorization;
     }
 
-    console.log({ auth });
-
-    const authSplit = auth.split(" ");
     const [_, token] = auth.split(" ");
 
-    console.log({ authSplit, token });
-    console.log("0", authSplit[0]);
-    console.log("0", authSplit[1]);
-
-    return authSplit[1];
+    return token;
   }
-
-  console.log("no authorization or Authorization header found");
 
   return null;
 }

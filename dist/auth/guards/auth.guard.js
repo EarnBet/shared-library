@@ -39,9 +39,6 @@ AuthGuard = __decorate([
 ], AuthGuard);
 exports.AuthGuard = AuthGuard;
 function getAuthTokenFromRequestHeaders(headers) {
-    console.log({ headers });
-    console.log("authorization", headers.authorization);
-    console.log("Authorization", headers.Authorization);
     if (headers.authorization || headers.Authorization) {
         let auth;
         if (headers.authorization) {
@@ -50,15 +47,9 @@ function getAuthTokenFromRequestHeaders(headers) {
         if (headers.Authorization) {
             auth = headers.Authorization;
         }
-        console.log({ auth });
-        const authSplit = auth.split(" ");
         const [_, token] = auth.split(" ");
-        console.log({ authSplit, token });
-        console.log("0", authSplit[0]);
-        console.log("0", authSplit[1]);
-        return authSplit[1];
+        return token;
     }
-    console.log("no authorization or Authorization header found");
     return null;
 }
 //# sourceMappingURL=auth.guard.js.map

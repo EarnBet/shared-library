@@ -30,9 +30,11 @@ class AuthService {
     getUserDataFromToken(token) {
         let payload = null;
         try {
+            console.log({ JWT_SECRET: process.env.JWT_SECRET, token });
             payload = jwt.verify(token, process.env.JWT_SECRET);
         }
         catch (error) {
+            console.error(error);
         }
         return payload;
     }
