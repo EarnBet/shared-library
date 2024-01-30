@@ -19,7 +19,6 @@ let AuthGuard = class AuthGuard {
     }
     async canActivate(context) {
         const request = context.switchToHttp().getRequest();
-        console.log(request);
         const userData = this.getAuthorizedUserData(request.headers);
         console.log({ userData });
         if (!userData || !userData.user_id) {
