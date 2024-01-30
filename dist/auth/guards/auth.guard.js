@@ -40,14 +40,20 @@ AuthGuard = __decorate([
 exports.AuthGuard = AuthGuard;
 function getAuthTokenFromRequestHeaders(headers) {
     console.log({ headers });
-    if ((headers === null || headers === void 0 ? void 0 : headers.authorization) || (headers === null || headers === void 0 ? void 0 : headers.Authorization)) {
+    console.log("authorization", headers.authorization);
+    console.log("Authorization", headers.Authorization);
+    if (headers.authorization || headers.Authorization) {
         let auth;
-        if (headers.authorization)
+        if (headers.authorization) {
             auth = headers.authorization;
-        if (headers.Authorization)
+        }
+        if (headers.Authorization) {
             auth = headers.Authorization;
+        }
+        console.log({ auth });
         return auth.split(" ")[1];
     }
+    console.log("no authorization or Authorization header found");
     return null;
 }
 //# sourceMappingURL=auth.guard.js.map
