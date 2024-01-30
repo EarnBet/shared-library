@@ -13,6 +13,8 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest<RequestContext>();
 
+    console.log(request);
+
     const userData = this.getAuthorizedUserData(request.headers);
 
     console.log({ userData });
@@ -34,6 +36,8 @@ export class AuthGuard implements CanActivate {
 }
 
 function getAuthTokenFromRequestHeaders(headers: IncomingHttpHeaders): string {
+  console.log({ headers });
+
   if (headers?.authorization || headers?.Authorization) {
     let auth: string;
     if (headers.authorization) auth = headers.authorization;

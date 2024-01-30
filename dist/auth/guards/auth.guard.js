@@ -19,6 +19,7 @@ let AuthGuard = class AuthGuard {
     }
     async canActivate(context) {
         const request = context.switchToHttp().getRequest();
+        console.log(request);
         const userData = this.getAuthorizedUserData(request.headers);
         console.log({ userData });
         if (!userData || !userData.user_id) {
@@ -38,6 +39,7 @@ AuthGuard = __decorate([
 ], AuthGuard);
 exports.AuthGuard = AuthGuard;
 function getAuthTokenFromRequestHeaders(headers) {
+    console.log({ headers });
     if ((headers === null || headers === void 0 ? void 0 : headers.authorization) || (headers === null || headers === void 0 ? void 0 : headers.Authorization)) {
         let auth;
         if (headers.authorization)
