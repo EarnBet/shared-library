@@ -55,7 +55,14 @@ function getAuthTokenFromRequestHeaders(headers: IncomingHttpHeaders): string {
 
     console.log({ auth });
 
-    return auth.split(" ")[1];
+    const authSplit = auth.split(" ");
+    const [_, token] = auth.split(" ");
+
+    console.log({ authSplit, token });
+    console.log("0", authSplit[0]);
+    console.log("0", authSplit[1]);
+
+    return authSplit[1];
   }
 
   console.log("no authorization or Authorization header found");
