@@ -15,6 +15,8 @@ export class AuthGuard implements CanActivate {
 
     const userData = this.getAuthorizedUserData(request.headers);
 
+    console.log({ userData });
+
     if (!userData || !userData.user_id) {
       throw new UnauthorizedError();
     }

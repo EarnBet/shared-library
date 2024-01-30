@@ -20,6 +20,7 @@ let AuthGuard = class AuthGuard {
     async canActivate(context) {
         const request = context.switchToHttp().getRequest();
         const userData = this.getAuthorizedUserData(request.headers);
+        console.log({ userData });
         if (!userData || !userData.user_id) {
             throw new application_errors_1.UnauthorizedError();
         }
