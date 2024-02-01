@@ -18,6 +18,7 @@ import { getTypeOrmConnectionConfig } from "./functions";
     TypeOrmModule.forRoot({
       ...getTypeOrmConnectionConfig(SharedDatabaseConnectionName.EARNBET),
       poolSize: 2,
+      charset: "utf8mb4_bin",
     }),
   ],
   exports: [SharedConfigModule, TypeOrmModule],

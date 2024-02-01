@@ -1,6 +1,7 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 
 import * as SqlString from "sqlstring";
+import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 
 import { parseBooleanFromEnv } from "../config";
 import { SharedDatabaseConnectionName } from "./constants";
@@ -29,6 +30,8 @@ export function getTypeOrmConnectionConfig(
     database: process.env[connectionName + "_DB_NAME"],
     username: process.env[connectionName + "_DB_USER"],
     password: process.env[connectionName + "_DB_PASS"],
+
+    namingStrategy: new SnakeNamingStrategy(),
   } as any;
 }
 
