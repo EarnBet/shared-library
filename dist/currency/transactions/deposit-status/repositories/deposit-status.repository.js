@@ -87,6 +87,23 @@ let DepositStatusRepository = class DepositStatusRepository extends typeorm_repo
             .getRawOne();
         return totalDeposits || "0";
     }
+    async getDepositSummaryForUser(user_id) {
+        const rows = await this.repository.manager.query(`SELECT
+
+        currency_symbol,
+        sum(usd_amount) AS total_usd_amount
+        
+        FROM deposit_status
+        
+        WHERE
+        
+        user_id = ${user_id} AND
+        credited_at IS NOT NULL
+        
+        GROUP BY currency_symbol
+        ;`);
+        return rows;
+    }
 };
 DepositStatusRepository = __decorate([
     (0, common_1.Injectable)(),

@@ -17,5 +17,9 @@ export declare class DepositStatusRepository extends TypeOrmRepository<DepositSt
         totalDeposits: string;
     }[]>;
     getSumOfDepositsForUser({ user_id, timeLimitInHours, }: IGetSumOfDepositsForUserInput): Promise<string>;
+    getDepositSummaryForUser(user_id: number): Promise<{
+        currency_symbol: string;
+        total_usd_amount: string;
+    }[]>;
 }
 //# sourceMappingURL=deposit-status.repository.d.ts.map
