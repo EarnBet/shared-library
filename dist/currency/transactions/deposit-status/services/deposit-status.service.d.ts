@@ -20,5 +20,9 @@ export declare class DepositStatusService {
     }[]>;
     getRecentDeposits(limit?: number): Promise<DepositStatus[]>;
     getRecentDepositsForUser(input: ISelectForUserInput): Promise<DepositStatus[]>;
+    getDepositSummaryForUser(user_id: number): Promise<{
+        currency_symbol: string;
+        total_usd_amount: string;
+    }[]>;
 }
 //# sourceMappingURL=deposit-status.service.d.ts.map

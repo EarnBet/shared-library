@@ -57,4 +57,8 @@ export class DepositStatusService {
   getRecentDepositsForUser(input: ISelectForUserInput) {
     return this.repository.getRecentDepositsForUser(input);
   }
+
+  getDepositSummaryForUser(user_id: number) {
+    return this.repository.getDepositSummaryForUser(user_id);
+  }
 }
