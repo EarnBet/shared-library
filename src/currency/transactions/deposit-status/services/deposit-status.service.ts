@@ -61,4 +61,11 @@ export class DepositStatusService {
   getDepositSummaryForUser(user_id: number) {
     return this.repository.getDepositSummaryForUser(user_id);
   }
+
+  getRecentDepositsSummaryForUser(input: {
+    user_id: number;
+    timeLimitInDays: number;
+  }) {
+    return this.repository.getRecentDepositsSummaryForUser(input);
+  }
 }

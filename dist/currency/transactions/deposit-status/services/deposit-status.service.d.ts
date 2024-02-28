@@ -24,5 +24,12 @@ export declare class DepositStatusService {
         currency_symbol: string;
         total_usd_amount: string;
     }[]>;
+    getRecentDepositsSummaryForUser(input: {
+        user_id: number;
+        timeLimitInDays: number;
+    }): Promise<{
+        currency_symbol: string;
+        total_usd_amount: string;
+    }[]>;
 }
 //# sourceMappingURL=deposit-status.service.d.ts.map

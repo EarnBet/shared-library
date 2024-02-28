@@ -21,5 +21,12 @@ export declare class DepositStatusRepository extends TypeOrmRepository<DepositSt
         currency_symbol: string;
         total_usd_amount: string;
     }[]>;
+    getRecentDepositsSummaryForUser({ user_id, timeLimitInDays, }: {
+        user_id: number;
+        timeLimitInDays: number;
+    }): Promise<{
+        currency_symbol: string;
+        total_usd_amount: string;
+    }[]>;
 }
 //# sourceMappingURL=deposit-status.repository.d.ts.map

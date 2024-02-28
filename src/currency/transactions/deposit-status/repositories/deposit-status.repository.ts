@@ -144,4 +144,32 @@ export class DepositStatusRepository extends TypeOrmRepository<DepositStatus> {
 
     return rows;
   }
+
+  async getRecentDepositsSummaryForUser({
+    user_id,
+    timeLimitInDays,
+  }: {
+    user_id: number;
+    timeLimitInDays: number;
+  }) {
+    const rows: { currency_symbol: string; total_usd_amount: string }[] =
+      await this.repository.manager.query(
+        `SELECT
+
+        currency_symbol,
+        sum(usd_amount) AS total_usd_amount
+        
+        FROM deposit_status
+        
+        WHERE
+        
+        user_id = ${user_id} AND
+        TIMESTAMPDIFF(DAY,credited_at,NOW()) <= ${timeLimitInDays}
+        
+        GROUP BY currency_symbol
+        ;`
+      );
+
+    return rows;
+  }
 }

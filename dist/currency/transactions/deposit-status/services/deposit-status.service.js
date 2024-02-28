@@ -55,6 +55,9 @@ let DepositStatusService = class DepositStatusService {
     getDepositSummaryForUser(user_id) {
         return this.repository.getDepositSummaryForUser(user_id);
     }
+    getRecentDepositsSummaryForUser(input) {
+        return this.repository.getRecentDepositsSummaryForUser(input);
+    }
 };
 DepositStatusService = __decorate([
     (0, common_1.Injectable)(),
