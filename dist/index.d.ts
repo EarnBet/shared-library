@@ -46,7 +46,7 @@ export * from "./auth/auth.module";
 export * from "./validation/transform.functions";
 export * from "./validation/decorators";
 export * from "./http/request/functions";
-export * from "./admin-users/inputs/user-id-from-admin.input";
 export * from "./admin-users/guards/admin-auth.guards";
-export * from "./admin-users/admin-users.module";
+export * from "./admin-users/services/admin-users.shared.service";
+export * from "./admin-users/admin-users.shared.module";
 //# sourceMappingURL=index.d.ts.map

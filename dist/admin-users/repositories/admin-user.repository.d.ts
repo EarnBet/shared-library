@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 import { TypeOrmRepository } from "../../database/typeorm/typeorm-repository.base";
 import { AdminUser } from "../entities/admin-user.entity";
-import { IAddAdminUserInput } from "../inputs/interfaces";
+import { IAddAdminUserInput } from "./inputs";
 export declare class AdminUserRepository extends TypeOrmRepository<AdminUser> {
     constructor(repository: Repository<AdminUser>);
     updateRoleForUser({ user_id, role, added_by_user_id }: IAddAdminUserInput): Promise<import("typeorm").UpdateResult>;

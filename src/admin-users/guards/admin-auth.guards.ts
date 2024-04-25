@@ -8,14 +8,14 @@ import {
 import { RequestContext } from "../../http/request/interfaces";
 import { AuthService } from "../../auth/services/auth.service";
 import { AuthGuard } from "../../auth/guards/auth.guard";
-import { AdminUsersService } from "../services/admin-users.service";
+import { SharedAdminUsersService } from "../services/admin-users.shared.service";
 import { UnauthorizedError } from "../../http/exception/application-errors";
 import { AdminUserRole } from "../entities/admin-roles";
 
 class AdminAuthGuard extends AuthGuard implements CanActivate {
   constructor(
     authService: AuthService,
-    private service: AdminUsersService,
+    private service: SharedAdminUsersService,
     private role: AdminUserRole
   ) {
     super(authService);
@@ -50,28 +50,28 @@ class AdminAuthGuard extends AuthGuard implements CanActivate {
 
 @Injectable()
 class RootAdminAuthGuard extends AdminAuthGuard {
-  constructor(authService: AuthService, service: AdminUsersService) {
+  constructor(authService: AuthService, service: SharedAdminUsersService) {
     super(authService, service, AdminUserRole.ROOT_ADMIN);
   }
 }
 
 @Injectable()
 class SuperAdminAuthGuard extends AdminAuthGuard {
-  constructor(authService: AuthService, service: AdminUsersService) {
+  constructor(authService: AuthService, service: SharedAdminUsersService) {
     super(authService, service, AdminUserRole.SUPER_ADMIN);
   }
 }
 
 @Injectable()
 class RegularAdminAuthGuard extends AdminAuthGuard {
-  constructor(authService: AuthService, service: AdminUsersService) {
+  constructor(authService: AuthService, service: SharedAdminUsersService) {
     super(authService, service, AdminUserRole.REGULAR_ADMIN);
   }
 }
 
 @Injectable()
 class SupportAdminAuthGuard extends AdminAuthGuard {
-  constructor(authService: AuthService, service: AdminUsersService) {
+  constructor(authService: AuthService, service: SharedAdminUsersService) {
     super(authService, service, AdminUserRole.SUPPORT_ADMIN);
   }
 }

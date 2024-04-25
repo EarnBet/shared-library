@@ -13,7 +13,7 @@ exports.UseSupportAdminGuard = exports.UseRegularAdminGuard = exports.UseSuperAd
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("../../auth/services/auth.service");
 const auth_guard_1 = require("../../auth/guards/auth.guard");
-const admin_users_service_1 = require("../services/admin-users.service");
+const admin_users_shared_service_1 = require("../services/admin-users.shared.service");
 const application_errors_1 = require("../../http/exception/application-errors");
 const admin_roles_1 = require("../entities/admin-roles");
 class AdminAuthGuard extends auth_guard_1.AuthGuard {
@@ -48,7 +48,7 @@ let RootAdminAuthGuard = class RootAdminAuthGuard extends AdminAuthGuard {
 };
 RootAdminAuthGuard = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_service_1.AdminUsersService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
 ], RootAdminAuthGuard);
 let SuperAdminAuthGuard = class SuperAdminAuthGuard extends AdminAuthGuard {
     constructor(authService, service) {
@@ -57,7 +57,7 @@ let SuperAdminAuthGuard = class SuperAdminAuthGuard extends AdminAuthGuard {
 };
 SuperAdminAuthGuard = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_service_1.AdminUsersService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
 ], SuperAdminAuthGuard);
 let RegularAdminAuthGuard = class RegularAdminAuthGuard extends AdminAuthGuard {
     constructor(authService, service) {
@@ -66,7 +66,7 @@ let RegularAdminAuthGuard = class RegularAdminAuthGuard extends AdminAuthGuard {
 };
 RegularAdminAuthGuard = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_service_1.AdminUsersService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
 ], RegularAdminAuthGuard);
 let SupportAdminAuthGuard = class SupportAdminAuthGuard extends AdminAuthGuard {
     constructor(authService, service) {
@@ -75,7 +75,7 @@ let SupportAdminAuthGuard = class SupportAdminAuthGuard extends AdminAuthGuard {
 };
 SupportAdminAuthGuard = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_service_1.AdminUsersService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
 ], SupportAdminAuthGuard);
 function UseRootAdminGuard() {
     return (0, common_1.UseGuards)(RootAdminAuthGuard);

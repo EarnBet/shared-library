@@ -6,7 +6,7 @@ import { TypeOrmRepository } from "../../database/typeorm/typeorm-repository.bas
 import { SharedDatabaseConnectionName } from "../../database/constants";
 
 import { AdminUser } from "../entities/admin-user.entity";
-import { IAddAdminUserInput } from "../inputs/interfaces";
+import { IAddAdminUserInput } from "./inputs";
 
 @Injectable()
 export class AdminUserRepository extends TypeOrmRepository<AdminUser> {

@@ -6,4 +6,4 @@ export interface IAddAdminInput {
 export interface IAddAdminUserInput extends IAddAdminInput {
     role: AdminUserRole;
 }
-//# sourceMappingURL=interfaces.d.ts.map
+//# sourceMappingURL=inputs.d.ts.map
