@@ -1,7 +1,7 @@
 import { Repository, InsertResult, DeepPartial, FindConditions } from "typeorm";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
 export declare abstract class TypeOrmRepository<Entity> {
-    protected readonly repository: Repository<Entity>;
+    readonly repository: Repository<Entity>;
     constructor(repository: Repository<Entity>);
     insertOne(entity: QueryDeepPartialEntity<Entity>): Promise<number>;
     insert(items: QueryDeepPartialEntity<Entity> | QueryDeepPartialEntity<Entity>[]): Promise<InsertResult>;

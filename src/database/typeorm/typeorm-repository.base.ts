@@ -2,7 +2,7 @@ import { Repository, InsertResult, DeepPartial, FindConditions } from "typeorm";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
 
 export abstract class TypeOrmRepository<Entity> {
-  constructor(protected readonly repository: Repository<Entity>) {}
+  constructor(readonly repository: Repository<Entity>) {}
 
   async insertOne(entity: QueryDeepPartialEntity<Entity>): Promise<number> {
     const result: InsertResult = await this.repository.insert(entity);
