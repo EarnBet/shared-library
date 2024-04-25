@@ -12,6 +12,6 @@ export declare class SharedAdminUsersService {
         user_id: number;
         role: AdminUserRole;
     }): Promise<boolean>;
-    getAdminUser(userId: number): Promise<import("../entities/admin-user.entity").AdminUser>;
+    getAdminUser(userId: number): Promise<import("../..").AdminUser>;
 }
 //# sourceMappingURL=admin-users.shared.service.d.ts.map

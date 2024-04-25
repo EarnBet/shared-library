@@ -62,6 +62,8 @@ __exportStar(require("./auth/auth.module"), exports);
 __exportStar(require("./validation/transform.functions"), exports);
 __exportStar(require("./validation/decorators"), exports);
 __exportStar(require("./http/request/functions"), exports);
+__exportStar(require("./admin-users/entities/admin-roles"), exports);
+__exportStar(require("./admin-users/entities/admin-user.entity"), exports);
 __exportStar(require("./admin-users/guards/admin-auth.guards"), exports);
 __exportStar(require("./admin-users/services/admin-users.shared.service"), exports);
 __exportStar(require("./admin-users/admin-users.shared.module"), exports);
