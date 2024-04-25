@@ -50,6 +50,7 @@ __exportStar(require("./users/repositories/inputs"), exports);
 __exportStar(require("./users/repositories/functions"), exports);
 __exportStar(require("./users/inputs/login.input"), exports);
 __exportStar(require("./users/validators/decorators"), exports);
+__exportStar(require("./users/validators/login-password.validator"), exports);
 __exportStar(require("./users/users-shared.module"), exports);
 __exportStar(require("./crypto/bcrypt.functions"), exports);
 __exportStar(require("./auth/util/auth.functions"), exports);

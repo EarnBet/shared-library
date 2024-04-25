@@ -45,6 +45,7 @@ export * from "./users/repositories/functions";
 
 export * from "./users/inputs/login.input";
 export * from "./users/validators/decorators";
+export * from "./users/validators/login-password.validator";
 
 export * from "./users/users-shared.module";
 
