@@ -1,0 +1,1 @@
+Auth module is responsible for user authentication
