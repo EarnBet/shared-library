@@ -1,10 +1,10 @@
 import { SharedUsersService } from "../../users/services/users-shared.service";
 import { AdminUserRole } from "../entities/admin-roles";
-import { AdminUserRepository } from "../repositories/admin-user.repository";
+import { SharedAdminUserRepository } from "../repositories/admin-user.shared.repository";
 export declare class SharedAdminUsersService {
-    readonly repository: AdminUserRepository;
+    readonly repository: SharedAdminUserRepository;
     readonly users: SharedUsersService;
-    constructor(repository: AdminUserRepository, users: SharedUsersService);
+    constructor(repository: SharedAdminUserRepository, users: SharedUsersService);
     isRootAdmin(userId: number): Promise<boolean>;
     isSuperAdmin(userId: number): Promise<boolean>;
     isRegularAdmin(userId: number): Promise<boolean>;

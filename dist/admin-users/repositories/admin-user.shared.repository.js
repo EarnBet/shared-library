@@ -12,14 +12,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AdminUserRepository = void 0;
+exports.SharedAdminUserRepository = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const typeorm_repository_base_1 = require("../../database/typeorm/typeorm-repository.base");
 const constants_1 = require("../../database/constants");
 const admin_user_entity_1 = require("../entities/admin-user.entity");
-let AdminUserRepository = class AdminUserRepository extends typeorm_repository_base_1.TypeOrmRepository {
+let SharedAdminUserRepository = class SharedAdminUserRepository extends typeorm_repository_base_1.TypeOrmRepository {
     constructor(repository) {
         super(repository);
     }
@@ -30,10 +30,10 @@ let AdminUserRepository = class AdminUserRepository extends typeorm_repository_b
         return this.repository.delete(user_id);
     }
 };
-AdminUserRepository = __decorate([
+SharedAdminUserRepository = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(admin_user_entity_1.AdminUser, constants_1.SharedDatabaseConnectionName.EARNBET)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
-], AdminUserRepository);
-exports.AdminUserRepository = AdminUserRepository;
-//# sourceMappingURL=admin-user.repository.js.map
+], SharedAdminUserRepository);
+exports.SharedAdminUserRepository = SharedAdminUserRepository;
+//# sourceMappingURL=admin-user.shared.repository.js.map

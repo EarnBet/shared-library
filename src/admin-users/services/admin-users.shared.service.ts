@@ -3,12 +3,12 @@ import { Injectable } from "@nestjs/common";
 import { SharedUsersService } from "../../users/services/users-shared.service";
 
 import { AdminUserRole } from "../entities/admin-roles";
-import { AdminUserRepository } from "../repositories/admin-user.repository";
+import { SharedAdminUserRepository } from "../repositories/admin-user.shared.repository";
 
 @Injectable()
 export class SharedAdminUsersService {
   constructor(
-    readonly repository: AdminUserRepository,
+    readonly repository: SharedAdminUserRepository,
     readonly users: SharedUsersService
   ) {}
 

@@ -6,7 +6,7 @@ import { SharedDatabaseConnectionName } from "../database/constants";
 import { AuthModule } from "../auth/auth.module";
 
 import { AdminUser } from "./entities/admin-user.entity";
-import { AdminUserRepository } from "./repositories/admin-user.repository";
+import { SharedAdminUserRepository } from "./repositories/admin-user.shared.repository";
 import { SharedAdminUsersService } from "./services/admin-users.shared.service";
 
 @Module({
@@ -17,8 +17,14 @@ import { SharedAdminUsersService } from "./services/admin-users.shared.service";
 
     TypeOrmModule.forFeature([AdminUser], SharedDatabaseConnectionName.EARNBET),
   ],
-  providers: [AdminUserRepository, SharedAdminUsersService],
+  providers: [SharedAdminUserRepository, SharedAdminUsersService],
   controllers: [],
-  exports: [SharedAdminUsersService, SharedUsersModule, AuthModule],
+  exports: [
+    SharedAdminUsersService,
+    SharedAdminUserRepository,
+
+    SharedUsersModule,
+    AuthModule,
+  ],
 })
 export class SharedAdminUsersModule {}

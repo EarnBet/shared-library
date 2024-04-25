@@ -13,7 +13,7 @@ exports.SharedAdminUsersService = void 0;
 const common_1 = require("@nestjs/common");
 const users_shared_service_1 = require("../../users/services/users-shared.service");
 const admin_roles_1 = require("../entities/admin-roles");
-const admin_user_repository_1 = require("../repositories/admin-user.repository");
+const admin_user_shared_repository_1 = require("../repositories/admin-user.shared.repository");
 let SharedAdminUsersService = class SharedAdminUsersService {
     constructor(repository, users) {
         this.repository = repository;
@@ -47,7 +47,7 @@ let SharedAdminUsersService = class SharedAdminUsersService {
 };
 SharedAdminUsersService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [admin_user_repository_1.AdminUserRepository,
+    __metadata("design:paramtypes", [admin_user_shared_repository_1.SharedAdminUserRepository,
         users_shared_service_1.SharedUsersService])
 ], SharedAdminUsersService);
 exports.SharedAdminUsersService = SharedAdminUsersService;

@@ -9,7 +9,7 @@ import { AdminUser } from "../entities/admin-user.entity";
 import { IAddAdminUserInput } from "./inputs";
 
 @Injectable()
-export class AdminUserRepository extends TypeOrmRepository<AdminUser> {
+export class SharedAdminUserRepository extends TypeOrmRepository<AdminUser> {
   constructor(
     @InjectRepository(AdminUser, SharedDatabaseConnectionName.EARNBET)
     repository: Repository<AdminUser>

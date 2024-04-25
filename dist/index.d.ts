@@ -51,5 +51,6 @@ export * from "./admin-users/entities/admin-roles";
 export * from "./admin-users/entities/admin-user.entity";
 export * from "./admin-users/guards/admin-auth.guards";
 export * from "./admin-users/services/admin-users.shared.service";
+export * from "./admin-users/repositories/admin-user.shared.repository";
 export * from "./admin-users/admin-users.shared.module";
 //# sourceMappingURL=index.d.ts.map

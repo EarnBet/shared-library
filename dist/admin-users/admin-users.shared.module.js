@@ -13,7 +13,7 @@ const users_shared_module_1 = require("../users/users-shared.module");
 const constants_1 = require("../database/constants");
 const auth_module_1 = require("../auth/auth.module");
 const admin_user_entity_1 = require("./entities/admin-user.entity");
-const admin_user_repository_1 = require("./repositories/admin-user.repository");
+const admin_user_shared_repository_1 = require("./repositories/admin-user.shared.repository");
 const admin_users_shared_service_1 = require("./services/admin-users.shared.service");
 let SharedAdminUsersModule = class SharedAdminUsersModule {
 };
@@ -24,9 +24,14 @@ SharedAdminUsersModule = __decorate([
             users_shared_module_1.SharedUsersModule,
             typeorm_1.TypeOrmModule.forFeature([admin_user_entity_1.AdminUser], constants_1.SharedDatabaseConnectionName.EARNBET),
         ],
-        providers: [admin_user_repository_1.AdminUserRepository, admin_users_shared_service_1.SharedAdminUsersService],
+        providers: [admin_user_shared_repository_1.SharedAdminUserRepository, admin_users_shared_service_1.SharedAdminUsersService],
         controllers: [],
-        exports: [admin_users_shared_service_1.SharedAdminUsersService, users_shared_module_1.SharedUsersModule, auth_module_1.AuthModule],
+        exports: [
+            admin_users_shared_service_1.SharedAdminUsersService,
+            admin_user_shared_repository_1.SharedAdminUserRepository,
+            users_shared_module_1.SharedUsersModule,
+            auth_module_1.AuthModule,
+        ],
     })
 ], SharedAdminUsersModule);
 exports.SharedAdminUsersModule = SharedAdminUsersModule;
