@@ -39,6 +39,14 @@ export class CoinRepository {
         */
     return this.repository.insert([
       {
+        id: -1,
+        symbol: "USD",
+        precision: 2,
+        uses_memo_for_deposits: 0,
+        minimum_withdrawal_amount: "0",
+      },
+
+      {
         id: CoinId.BTC,
         symbol: "BTC",
         precision: 8,
