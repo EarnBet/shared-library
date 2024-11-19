@@ -35,6 +35,7 @@ export declare enum CoinSymbol {
     DAI = "DAI",
     USDC = "USDC",
     USDT = "USDT",
-    EBET = "EBET"
+    EBET = "EBET",
+    SOL = "SOL"
 }
 //# sourceMappingURL=coins.d.ts.map

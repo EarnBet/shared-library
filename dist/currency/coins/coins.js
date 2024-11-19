@@ -41,5 +41,6 @@ var CoinSymbol;
     CoinSymbol["USDC"] = "USDC";
     CoinSymbol["USDT"] = "USDT";
     CoinSymbol["EBET"] = "EBET";
+    CoinSymbol["SOL"] = "SOL";
 })(CoinSymbol || (exports.CoinSymbol = CoinSymbol = {}));
 //# sourceMappingURL=coins.js.map

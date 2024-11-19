@@ -51,4 +51,6 @@ export enum CoinSymbol {
   USDT = "USDT",
 
   EBET = "EBET",
+
+  SOL = "SOL",
 }
