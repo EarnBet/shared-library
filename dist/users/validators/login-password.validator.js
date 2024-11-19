@@ -35,10 +35,10 @@ let LoginPasswordValidator = class LoginPasswordValidator {
             : "incorrect username or password";
     }
 };
-LoginPasswordValidator = __decorate([
+exports.LoginPasswordValidator = LoginPasswordValidator;
+exports.LoginPasswordValidator = LoginPasswordValidator = __decorate([
     (0, common_1.Injectable)(),
     (0, class_validator_1.ValidatorConstraint)({ name: "LoginPassword", async: true }),
     __metadata("design:paramtypes", [users_shared_service_1.SharedUsersService])
 ], LoginPasswordValidator);
-exports.LoginPasswordValidator = LoginPasswordValidator;
 //# sourceMappingURL=login-password.validator.js.map

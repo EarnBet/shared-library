@@ -20,9 +20,9 @@ let CoinsService = class CoinsService {
         return this.repository.getAllCoins();
     }
 };
-CoinsService = __decorate([
+exports.CoinsService = CoinsService;
+exports.CoinsService = CoinsService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [coin_repository_1.CoinRepository])
 ], CoinsService);
-exports.CoinsService = CoinsService;
 //# sourceMappingURL=coins.service.js.map

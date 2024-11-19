@@ -14,8 +14,8 @@ let SharedConfigService = class SharedConfigService {
         return (0, _1.parseBooleanFromEnv)("USE_REAL_CURRENCY_PRICE_SERVICE");
     }
 };
-SharedConfigService = __decorate([
+exports.SharedConfigService = SharedConfigService;
+exports.SharedConfigService = SharedConfigService = __decorate([
     (0, common_1.Injectable)()
 ], SharedConfigService);
-exports.SharedConfigService = SharedConfigService;
 //# sourceMappingURL=shared-config.service.js.map

@@ -32,11 +32,11 @@ let AuthGuard = class AuthGuard {
         return token ? this.authService.getUserDataFromToken(token) : null;
     }
 };
-AuthGuard = __decorate([
+exports.AuthGuard = AuthGuard;
+exports.AuthGuard = AuthGuard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthGuard);
-exports.AuthGuard = AuthGuard;
 function getAuthTokenFromRequestHeaders(headers) {
     if (headers.authorization || headers.Authorization) {
         let auth;

@@ -13,6 +13,7 @@ exports.InputFromAuthorizedUser = void 0;
 const class_validator_1 = require("class-validator");
 class InputFromAuthorizedUser {
 }
+exports.InputFromAuthorizedUser = InputFromAuthorizedUser;
 __decorate([
     (0, class_validator_1.Allow)(),
     __metadata("design:type", Number)
@@ -29,5 +30,4 @@ __decorate([
     (0, class_validator_1.Allow)(),
     __metadata("design:type", String)
 ], InputFromAuthorizedUser.prototype, "ip", void 0);
-exports.InputFromAuthorizedUser = InputFromAuthorizedUser;
 //# sourceMappingURL=auth.inputs.js.map

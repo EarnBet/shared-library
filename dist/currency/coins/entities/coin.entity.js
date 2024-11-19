@@ -13,6 +13,7 @@ exports.Coin = void 0;
 const typeorm_1 = require("typeorm");
 let Coin = class Coin {
 };
+exports.Coin = Coin;
 __decorate([
     (0, typeorm_1.PrimaryColumn)({ type: "int" }),
     __metadata("design:type", Number)
@@ -33,8 +34,7 @@ __decorate([
     (0, typeorm_1.Column)({ type: "decimal", nullable: false, precision: 40, scale: 20 }),
     __metadata("design:type", String)
 ], Coin.prototype, "minimum_withdrawal_amount", void 0);
-Coin = __decorate([
+exports.Coin = Coin = __decorate([
     (0, typeorm_1.Entity)({ name: "coin" })
 ], Coin);
-exports.Coin = Coin;
 //# sourceMappingURL=coin.entity.js.map

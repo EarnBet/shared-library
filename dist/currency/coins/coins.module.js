@@ -18,7 +18,8 @@ const coins_service_1 = require("./services/coins.service");
 const coin_data_provider_1 = require("./services/coin-data-provider");
 let SharedCoinsModule = class SharedCoinsModule {
 };
-SharedCoinsModule = __decorate([
+exports.SharedCoinsModule = SharedCoinsModule;
+exports.SharedCoinsModule = SharedCoinsModule = __decorate([
     (0, common_1.Module)({
         imports: [
             db_connections_module_1.SharedDatabaseConnectionsModule,
@@ -29,5 +30,4 @@ SharedCoinsModule = __decorate([
         exports: [coin_data_provider_1.CoinDataProvider, db_connections_module_1.SharedDatabaseConnectionsModule],
     })
 ], SharedCoinsModule);
-exports.SharedCoinsModule = SharedCoinsModule;
 //# sourceMappingURL=coins.module.js.map

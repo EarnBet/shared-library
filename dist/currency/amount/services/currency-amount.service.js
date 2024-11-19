@@ -60,10 +60,10 @@ let CurrencyAmountService = class CurrencyAmountService {
         return this.factory;
     }
 };
-CurrencyAmountService = __decorate([
+exports.CurrencyAmountService = CurrencyAmountService;
+exports.CurrencyAmountService = CurrencyAmountService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [coin_data_provider_1.CoinDataProvider,
         shared_config_service_1.SharedConfigService])
 ], CurrencyAmountService);
-exports.CurrencyAmountService = CurrencyAmountService;
 //# sourceMappingURL=currency-amount.service.js.map

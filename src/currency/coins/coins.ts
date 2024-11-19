@@ -23,6 +23,8 @@ export enum CoinId {
   STACK,
 
   EBET,
+
+  SOL,
 }
 /***/
 

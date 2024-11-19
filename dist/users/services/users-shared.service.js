@@ -86,10 +86,10 @@ let SharedUsersService = class SharedUsersService {
         });
     }
 };
-SharedUsersService = __decorate([
+exports.SharedUsersService = SharedUsersService;
+exports.SharedUsersService = SharedUsersService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [user_repository_1.UserRepository,
         username_banned_word_repository_1.UsernameBannedWordRepository])
 ], SharedUsersService);
-exports.SharedUsersService = SharedUsersService;
 //# sourceMappingURL=users-shared.service.js.map

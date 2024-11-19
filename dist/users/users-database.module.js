@@ -17,7 +17,8 @@ const constants_1 = require("../database/constants");
 const db_connections_module_1 = require("../database/db-connections.module");
 let UsersDatabaseModule = class UsersDatabaseModule {
 };
-UsersDatabaseModule = __decorate([
+exports.UsersDatabaseModule = UsersDatabaseModule;
+exports.UsersDatabaseModule = UsersDatabaseModule = __decorate([
     (0, common_1.Module)({
         imports: [
             db_connections_module_1.SharedDatabaseConnectionsModule,
@@ -27,5 +28,4 @@ UsersDatabaseModule = __decorate([
         exports: [user_repository_1.UserRepository, username_banned_word_repository_1.UsernameBannedWordRepository],
     })
 ], UsersDatabaseModule);
-exports.UsersDatabaseModule = UsersDatabaseModule;
 //# sourceMappingURL=users-database.module.js.map

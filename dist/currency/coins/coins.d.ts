@@ -15,7 +15,8 @@ export declare enum CoinId {
     USDC = 13,
     USDT = 14,
     STACK = 15,
-    EBET = 16
+    EBET = 16,
+    SOL = 17
 }
 export declare enum CoinSymbol {
     USD = "USD",

@@ -15,6 +15,7 @@ const login_password_validator_1 = require("../validators/login-password.validat
 const decorators_1 = require("../validators/decorators");
 class LoginUserInput {
 }
+exports.LoginUserInput = LoginUserInput;
 __decorate([
     (0, decorators_1.IsValidUsernameFormat)(),
     __metadata("design:type", String)
@@ -25,5 +26,4 @@ __decorate([
     (0, class_validator_1.Validate)(login_password_validator_1.LoginPasswordValidator),
     __metadata("design:type", String)
 ], LoginUserInput.prototype, "password", void 0);
-exports.LoginUserInput = LoginUserInput;
 //# sourceMappingURL=login.input.js.map

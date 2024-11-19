@@ -21,16 +21,16 @@ let CoinsController = class CoinsController {
         return await this.coinsService.getAllCoins();
     }
 };
+exports.CoinsController = CoinsController;
 __decorate([
     (0, common_1.Get)("all"),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], CoinsController.prototype, "getAllCoins", null);
-CoinsController = __decorate([
+exports.CoinsController = CoinsController = __decorate([
     (0, swagger_1.ApiTags)("coins"),
     (0, common_1.Controller)("coins"),
     __metadata("design:paramtypes", [coins_service_1.CoinsService])
 ], CoinsController);
-exports.CoinsController = CoinsController;
 //# sourceMappingURL=coins.controller.js.map

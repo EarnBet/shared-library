@@ -45,10 +45,10 @@ let SharedAdminUsersService = class SharedAdminUsersService {
         return this.repository.findOneById(userId);
     }
 };
-SharedAdminUsersService = __decorate([
+exports.SharedAdminUsersService = SharedAdminUsersService;
+exports.SharedAdminUsersService = SharedAdminUsersService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [admin_user_shared_repository_1.SharedAdminUserRepository,
         users_shared_service_1.SharedUsersService])
 ], SharedAdminUsersService);
-exports.SharedAdminUsersService = SharedAdminUsersService;
 //# sourceMappingURL=admin-users.shared.service.js.map

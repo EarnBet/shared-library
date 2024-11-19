@@ -30,10 +30,10 @@ let SharedAdminUserRepository = class SharedAdminUserRepository extends typeorm_
         return this.repository.delete(user_id);
     }
 };
-SharedAdminUserRepository = __decorate([
+exports.SharedAdminUserRepository = SharedAdminUserRepository;
+exports.SharedAdminUserRepository = SharedAdminUserRepository = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(admin_user_entity_1.AdminUser, constants_1.SharedDatabaseConnectionName.EARNBET)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], SharedAdminUserRepository);
-exports.SharedAdminUserRepository = SharedAdminUserRepository;
 //# sourceMappingURL=admin-user.shared.repository.js.map

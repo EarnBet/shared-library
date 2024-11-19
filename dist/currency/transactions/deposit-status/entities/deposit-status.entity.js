@@ -13,6 +13,7 @@ exports.DepositStatus = void 0;
 const typeorm_1 = require("typeorm");
 let DepositStatus = class DepositStatus {
 };
+exports.DepositStatus = DepositStatus;
 __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: false, primary: true }),
     __metadata("design:type", Number)
@@ -62,8 +63,7 @@ __decorate([
     (0, typeorm_1.Column)({ type: "datetime", default: null }),
     __metadata("design:type", Date)
 ], DepositStatus.prototype, "credited_at", void 0);
-DepositStatus = __decorate([
+exports.DepositStatus = DepositStatus = __decorate([
     (0, typeorm_1.Entity)({ name: "deposit_status" })
 ], DepositStatus);
-exports.DepositStatus = DepositStatus;
 //# sourceMappingURL=deposit-status.entity.js.map

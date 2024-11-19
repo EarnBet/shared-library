@@ -13,6 +13,7 @@ exports.UsernameBannedWord = void 0;
 const typeorm_1 = require("typeorm");
 let UsernameBannedWord = class UsernameBannedWord {
 };
+exports.UsernameBannedWord = UsernameBannedWord;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ type: "int" }),
     __metadata("design:type", Number)
@@ -23,8 +24,7 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], UsernameBannedWord.prototype, "word", void 0);
-UsernameBannedWord = __decorate([
+exports.UsernameBannedWord = UsernameBannedWord = __decorate([
     (0, typeorm_1.Entity)({ name: "username_banned_word" })
 ], UsernameBannedWord);
-exports.UsernameBannedWord = UsernameBannedWord;
 //# sourceMappingURL=username-banned-words.entity.js.map

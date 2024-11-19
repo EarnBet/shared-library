@@ -59,9 +59,9 @@ let DepositStatusService = class DepositStatusService {
         return this.repository.getRecentDepositsSummaryForUser(input);
     }
 };
-DepositStatusService = __decorate([
+exports.DepositStatusService = DepositStatusService;
+exports.DepositStatusService = DepositStatusService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [deposit_status_repository_1.DepositStatusRepository])
 ], DepositStatusService);
-exports.DepositStatusService = DepositStatusService;
 //# sourceMappingURL=deposit-status.service.js.map

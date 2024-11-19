@@ -15,6 +15,7 @@ const user_entity_1 = require("../../users/entities/user.entity");
 const admin_roles_1 = require("./admin-roles");
 let AdminUser = class AdminUser {
 };
+exports.AdminUser = AdminUser;
 __decorate([
     (0, typeorm_1.PrimaryColumn)({ type: "int" }),
     __metadata("design:type", Number)
@@ -44,8 +45,7 @@ __decorate([
     (0, typeorm_1.JoinColumn)({ name: "user_id" }),
     __metadata("design:type", user_entity_1.User)
 ], AdminUser.prototype, "user", void 0);
-AdminUser = __decorate([
+exports.AdminUser = AdminUser = __decorate([
     (0, typeorm_1.Entity)({ name: "admin_user" })
 ], AdminUser);
-exports.AdminUser = AdminUser;
 //# sourceMappingURL=admin-user.entity.js.map

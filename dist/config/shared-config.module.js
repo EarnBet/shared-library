@@ -60,7 +60,8 @@ let SharedConfigModule = class SharedConfigModule {
         console.log({ shouldUseRealCurrencyPriceService });
     }
 };
-SharedConfigModule = __decorate([
+exports.SharedConfigModule = SharedConfigModule;
+exports.SharedConfigModule = SharedConfigModule = __decorate([
     (0, common_1.Module)({
         imports: [
             config_1.ConfigModule.forRoot({ isGlobal: true, envFilePath: getEnvFilePath() }),
@@ -70,5 +71,4 @@ SharedConfigModule = __decorate([
     }),
     __metadata("design:paramtypes", [shared_config_service_1.SharedConfigService])
 ], SharedConfigModule);
-exports.SharedConfigModule = SharedConfigModule;
 //# sourceMappingURL=shared-config.module.js.map

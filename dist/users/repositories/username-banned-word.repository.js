@@ -38,10 +38,10 @@ let UsernameBannedWordRepository = class UsernameBannedWordRepository extends ty
         return found ? true : false;
     }
 };
-UsernameBannedWordRepository = __decorate([
+exports.UsernameBannedWordRepository = UsernameBannedWordRepository;
+exports.UsernameBannedWordRepository = UsernameBannedWordRepository = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(username_banned_words_entity_1.UsernameBannedWord, constants_1.SharedDatabaseConnectionName.EARNBET)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], UsernameBannedWordRepository);
-exports.UsernameBannedWordRepository = UsernameBannedWordRepository;
 //# sourceMappingURL=username-banned-word.repository.js.map

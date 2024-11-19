@@ -122,10 +122,10 @@ let DepositStatusRepository = class DepositStatusRepository extends typeorm_repo
         return rows;
     }
 };
-DepositStatusRepository = __decorate([
+exports.DepositStatusRepository = DepositStatusRepository;
+exports.DepositStatusRepository = DepositStatusRepository = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(deposit_status_entity_1.DepositStatus, constants_1.SharedDatabaseConnectionName.CURRENCY)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], DepositStatusRepository);
-exports.DepositStatusRepository = DepositStatusRepository;
 //# sourceMappingURL=deposit-status.repository.js.map

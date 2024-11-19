@@ -12,5 +12,5 @@ var ApplicationErrorCode;
     ApplicationErrorCode[ApplicationErrorCode["EMAIL_ALREADY_EXISTS"] = 606] = "EMAIL_ALREADY_EXISTS";
     ApplicationErrorCode[ApplicationErrorCode["INSUFFICIENT_FUNDS"] = 607] = "INSUFFICIENT_FUNDS";
     ApplicationErrorCode[ApplicationErrorCode["UNABLE_TO_PERFORM_UNSTAKING_REQUEST"] = 608] = "UNABLE_TO_PERFORM_UNSTAKING_REQUEST";
-})(ApplicationErrorCode = exports.ApplicationErrorCode || (exports.ApplicationErrorCode = {}));
+})(ApplicationErrorCode || (exports.ApplicationErrorCode = ApplicationErrorCode = {}));
 //# sourceMappingURL=error-codes.js.map

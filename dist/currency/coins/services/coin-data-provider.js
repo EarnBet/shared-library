@@ -68,9 +68,9 @@ let CoinDataProvider = class CoinDataProvider {
         }
     }
 };
-CoinDataProvider = __decorate([
+exports.CoinDataProvider = CoinDataProvider;
+exports.CoinDataProvider = CoinDataProvider = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [coins_service_1.CoinsService])
 ], CoinDataProvider);
-exports.CoinDataProvider = CoinDataProvider;
 //# sourceMappingURL=coin-data-provider.js.map

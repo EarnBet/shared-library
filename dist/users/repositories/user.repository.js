@@ -89,10 +89,10 @@ let UserRepository = class UserRepository extends typeorm_repository_base_1.Type
         return this.repository.update({ id }, { ip });
     }
 };
-UserRepository = __decorate([
+exports.UserRepository = UserRepository;
+exports.UserRepository = UserRepository = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(user_entity_1.User, constants_1.SharedDatabaseConnectionName.EARNBET)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], UserRepository);
-exports.UserRepository = UserRepository;
 //# sourceMappingURL=user.repository.js.map

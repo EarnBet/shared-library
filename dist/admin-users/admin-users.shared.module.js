@@ -17,7 +17,8 @@ const admin_user_shared_repository_1 = require("./repositories/admin-user.shared
 const admin_users_shared_service_1 = require("./services/admin-users.shared.service");
 let SharedAdminUsersModule = class SharedAdminUsersModule {
 };
-SharedAdminUsersModule = __decorate([
+exports.SharedAdminUsersModule = SharedAdminUsersModule;
+exports.SharedAdminUsersModule = SharedAdminUsersModule = __decorate([
     (0, common_1.Module)({
         imports: [
             auth_module_1.AuthModule,
@@ -34,5 +35,4 @@ SharedAdminUsersModule = __decorate([
         ],
     })
 ], SharedAdminUsersModule);
-exports.SharedAdminUsersModule = SharedAdminUsersModule;
 //# sourceMappingURL=admin-users.shared.module.js.map

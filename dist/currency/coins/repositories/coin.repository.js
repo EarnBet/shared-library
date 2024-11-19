@@ -74,10 +74,10 @@ let CoinRepository = class CoinRepository {
         return this.repository.find();
     }
 };
-CoinRepository = __decorate([
+exports.CoinRepository = CoinRepository;
+exports.CoinRepository = CoinRepository = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(coin_entity_1.Coin, constants_1.SharedDatabaseConnectionName.CURRENCY)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], CoinRepository);
-exports.CoinRepository = CoinRepository;
 //# sourceMappingURL=coin.repository.js.map

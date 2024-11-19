@@ -7,7 +7,7 @@ var AdminUserRole;
     AdminUserRole[AdminUserRole["SUPER_ADMIN"] = 1] = "SUPER_ADMIN";
     AdminUserRole[AdminUserRole["REGULAR_ADMIN"] = 2] = "REGULAR_ADMIN";
     AdminUserRole[AdminUserRole["SUPPORT_ADMIN"] = 3] = "SUPPORT_ADMIN";
-})(AdminUserRole = exports.AdminUserRole || (exports.AdminUserRole = {}));
+})(AdminUserRole || (exports.AdminUserRole = AdminUserRole = {}));
 exports.ALL_ADMIN_USER_ROLES = [
     AdminUserRole.ROOT_ADMIN,
     AdminUserRole.SUPER_ADMIN,

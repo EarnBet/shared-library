@@ -13,6 +13,7 @@ exports.User = void 0;
 const typeorm_1 = require("typeorm");
 let User = class User {
 };
+exports.User = User;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ type: "int" }),
     __metadata("design:type", Number)
@@ -85,8 +86,7 @@ __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], User.prototype, "updated_at", void 0);
-User = __decorate([
+exports.User = User = __decorate([
     (0, typeorm_1.Entity)({ name: "user" })
 ], User);
-exports.User = User;
 //# sourceMappingURL=user.entity.js.map

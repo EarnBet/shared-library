@@ -14,7 +14,8 @@ const constants_1 = require("./constants");
 const functions_1 = require("./functions");
 let SharedDatabaseConnectionsModule = class SharedDatabaseConnectionsModule {
 };
-SharedDatabaseConnectionsModule = __decorate([
+exports.SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule;
+exports.SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule = __decorate([
     (0, common_1.Module)({
         imports: [
             shared_config_module_1.SharedConfigModule,
@@ -24,5 +25,4 @@ SharedDatabaseConnectionsModule = __decorate([
         exports: [shared_config_module_1.SharedConfigModule, typeorm_1.TypeOrmModule],
     })
 ], SharedDatabaseConnectionsModule);
-exports.SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule;
 //# sourceMappingURL=db-connections.module.js.map

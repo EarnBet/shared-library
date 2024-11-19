@@ -16,7 +16,8 @@ const deposit_status_repository_1 = require("./repositories/deposit-status.repos
 const deposit_status_service_1 = require("./services/deposit-status.service");
 let DepositStatusModule = class DepositStatusModule {
 };
-DepositStatusModule = __decorate([
+exports.DepositStatusModule = DepositStatusModule;
+exports.DepositStatusModule = DepositStatusModule = __decorate([
     (0, common_1.Module)({
         imports: [
             db_connections_module_1.SharedDatabaseConnectionsModule,
@@ -26,5 +27,4 @@ DepositStatusModule = __decorate([
         exports: [deposit_status_service_1.DepositStatusService],
     })
 ], DepositStatusModule);
-exports.DepositStatusModule = DepositStatusModule;
 //# sourceMappingURL=deposit-status.module.js.map

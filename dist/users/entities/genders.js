@@ -5,5 +5,5 @@ var Gender;
 (function (Gender) {
     Gender["MALE"] = "m";
     Gender["FEMALE"] = "f";
-})(Gender = exports.Gender || (exports.Gender = {}));
+})(Gender || (exports.Gender = Gender = {}));
 //# sourceMappingURL=genders.js.map
