@@ -31,6 +31,7 @@ __exportStar(require("./currency/coins/repositories/coin.repository"), exports);
 __exportStar(require("./currency/amount/currency-amount.module"), exports);
 __exportStar(require("./currency/amount/services/currency-amount.service"), exports);
 __exportStar(require("./currency/amount/factories/interfaces"), exports);
+__exportStar(require("./currency/amount/factories/currency-amount-with-price.factory"), exports);
 __exportStar(require("./currency/amount/outputs/interfaces"), exports);
 __exportStar(require("./currency/transactions/deposit-status/deposit-status.module"), exports);
 __exportStar(require("./currency/transactions/deposit-status/services/deposit-status.service"), exports);

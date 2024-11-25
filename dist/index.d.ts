@@ -15,6 +15,7 @@ export * from "./currency/coins/repositories/coin.repository";
 export * from "./currency/amount/currency-amount.module";
 export * from "./currency/amount/services/currency-amount.service";
 export * from "./currency/amount/factories/interfaces";
+export * from "./currency/amount/factories/currency-amount-with-price.factory";
 export * from "./currency/amount/outputs/interfaces";
 export * from "./currency/transactions/deposit-status/deposit-status.module";
 export * from "./currency/transactions/deposit-status/services/deposit-status.service";
