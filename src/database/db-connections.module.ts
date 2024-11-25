@@ -13,13 +13,13 @@ import { getTypeOrmConnectionConfig } from "./functions";
     TypeOrmModule.forRoot({
       ...getTypeOrmConnectionConfig(SharedDatabaseConnectionName.CURRENCY),
       poolSize: 2,
-    }),
+    } as any),
 
     TypeOrmModule.forRoot({
       ...getTypeOrmConnectionConfig(SharedDatabaseConnectionName.EARNBET),
       poolSize: 2,
       charset: "utf8mb4_bin",
-    }),
+    } as any),
   ],
   exports: [SharedConfigModule, TypeOrmModule],
 })

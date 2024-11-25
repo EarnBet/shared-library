@@ -23,7 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.escapeStringInput = exports.getTypeOrmConnectionConfig = void 0;
+exports.getTypeOrmConnectionConfig = getTypeOrmConnectionConfig;
+exports.escapeStringInput = escapeStringInput;
 const SqlString = __importStar(require("sqlstring"));
 const typeorm_naming_strategies_1 = require("typeorm-naming-strategies");
 const config_1 = require("../config");
@@ -36,9 +37,7 @@ const defaultTypeORMOptions = {
 function getTypeOrmConnectionConfig(connectionName) {
     return Object.assign(Object.assign({}, defaultTypeORMOptions), { name: connectionName, synchronize: (0, config_1.parseBooleanFromEnv)("TYPE_ORM_SYNCHRONIZE"), host: process.env[connectionName + "_DB_HOST"], port: Number(process.env[connectionName + "_DB_PORT"]), database: process.env[connectionName + "_DB_NAME"], username: process.env[connectionName + "_DB_USER"], password: process.env[connectionName + "_DB_PASS"], namingStrategy: new typeorm_naming_strategies_1.SnakeNamingStrategy() });
 }
-exports.getTypeOrmConnectionConfig = getTypeOrmConnectionConfig;
 function escapeStringInput(input) {
     return SqlString.escape(input);
 }
-exports.escapeStringInput = escapeStringInput;
 //# sourceMappingURL=functions.js.map

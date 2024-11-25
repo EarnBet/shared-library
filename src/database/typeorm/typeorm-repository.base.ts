@@ -34,7 +34,7 @@ export abstract class TypeOrmRepository<Entity> {
   }
 
   findOneById(id: string | number): Promise<Entity | undefined> {
-    return this.repository.findOne(id);
+    return this.repository.findOneById(id);
   }
 
   find(item: FindConditions<Entity>): Promise<Entity[]> {
