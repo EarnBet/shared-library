@@ -12,7 +12,7 @@ export declare class CurrencyAmountService {
     createAmountFromInteger(subunits: BigSource, tokenSymbol: string): Promise<import("../factories/interfaces").ICurrencyAmountWithPrice>;
     createAmountFromQuantity(quantity: string): Promise<import("../factories/interfaces").ICurrencyAmountWithPrice>;
     getAllCoinPrices(): Promise<ICurrencyPriceOutput[]>;
-    getAllCoins(): Promise<import("../../coins/models/saved-coin").SavedCoin[]>;
+    getAllCoins(): Promise<import("../../..").SavedCoin[]>;
     getCoinDataProvider(): import("../../..").ICoinDataProvider;
     getPriceInUSD(currencySymbol: string): Promise<number>;
     getFactory(): ICurrencyAmountWithPriceFactory;

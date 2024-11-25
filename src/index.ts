@@ -10,6 +10,7 @@ export * from "./database/typeorm/typeorm-expressions";
 
 export * from "./currency/coins/entities/interfaces";
 export * from "./currency/coins/coins";
+export * from "./currency/coins/models/saved-coin";
 export * from "./currency/coins/coins.module";
 export * from "./currency/coins/services/coin-data-provider";
 export * from "./currency/coins/services/coins.service";
@@ -21,6 +22,7 @@ export * from "./currency/amount/services/currency-amount.service";
 export * from "./currency/amount/factories/interfaces";
 export * from "./currency/amount/factories/currency-amount-with-price.factory";
 export * from "./currency/amount/outputs/interfaces";
+export * from "./currency/amount/price-service/coin-price.service.mock";
 
 export * from "./currency/transactions/deposit-status/deposit-status.module";
 export * from "./currency/transactions/deposit-status/services/deposit-status.service";
