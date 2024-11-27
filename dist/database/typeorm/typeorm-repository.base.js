@@ -26,7 +26,7 @@ class TypeOrmRepository {
         return this.repository.findOne({ where: Object.assign({}, item) });
     }
     findOneById(id) {
-        return this.repository.findOne(id);
+        return this.repository.findOneById(id);
     }
     find(item) {
         return this.repository.find({ where: Object.assign({}, item) });

@@ -6,7 +6,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.whereClauseForSimilarUsername = whereClauseForSimilarUsername;
 const emoji_regex_1 = __importDefault(require("emoji-regex"));
 const functions_1 = require("../../database/functions");
-function whereClauseForSimilarUsername({ columnName, username, }) {
+const typeorm_1 = require("typeorm");
+function _whereClauseForSimilarUsername({ columnName, username, }) {
     return `REGEXP_REPLACE( CONVERT( LOWER(${columnName}) USING utf8), '\\\\?', '')  = ${(0, functions_1.escapeStringInput)(username.replace((0, emoji_regex_1.default)(), "").toLowerCase())}`;
+}
+function whereClauseForSimilarUsername({ columnName, username, }) {
+    return {
+        [columnName]: (0, typeorm_1.Raw)(() => `REGEXP_REPLACE( CONVERT( LOWER(${columnName}) USING utf8), '\\\\?', '')  = ${(0, functions_1.escapeStringInput)(username.replace((0, emoji_regex_1.default)(), "").toLowerCase())}`),
+    };
 }
 //# sourceMappingURL=functions.js.map

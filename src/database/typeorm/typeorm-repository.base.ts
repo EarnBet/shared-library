@@ -1,4 +1,9 @@
-import { Repository, InsertResult, DeepPartial, FindConditions } from "typeorm";
+import {
+  Repository,
+  InsertResult,
+  DeepPartial,
+  FindOptionsWhere,
+} from "typeorm";
 import { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity";
 
 export abstract class TypeOrmRepository<Entity> {
@@ -29,7 +34,7 @@ export abstract class TypeOrmRepository<Entity> {
     return this.repository.clear();
   }
 
-  findOne(item: FindConditions<Entity>): Promise<Entity | undefined> {
+  findOne(item: FindOptionsWhere<Entity>): Promise<Entity | undefined> {
     return this.repository.findOne({ where: { ...item } });
   }
 
@@ -37,7 +42,7 @@ export abstract class TypeOrmRepository<Entity> {
     return this.repository.findOneById(id);
   }
 
-  find(item: FindConditions<Entity>): Promise<Entity[]> {
+  find(item: FindOptionsWhere<Entity>): Promise<Entity[]> {
     return this.repository.find({ where: { ...item } });
   }
 
