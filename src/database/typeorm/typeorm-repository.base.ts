@@ -46,6 +46,10 @@ export abstract class TypeOrmRepository<Entity> {
     return this.repository.find({ where: { ...item } });
   }
 
+  findFirstOne() {
+    return this.repository.find({ take: 1 });
+  }
+
   findAll(): Promise<Entity[]> {
     return this.repository.find();
   }
