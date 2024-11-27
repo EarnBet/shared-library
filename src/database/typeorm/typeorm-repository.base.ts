@@ -46,8 +46,10 @@ export abstract class TypeOrmRepository<Entity> {
     return this.repository.find({ where: { ...item } });
   }
 
-  findFirstOne() {
-    return this.repository.find({ take: 1 });
+  async findFirstOne() {
+    const [first] = await this.repository.find({ take: 1 });
+
+    return first;
   }
 
   findAll(): Promise<Entity[]> {

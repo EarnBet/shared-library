@@ -31,8 +31,9 @@ class TypeOrmRepository {
     find(item) {
         return this.repository.find({ where: Object.assign({}, item) });
     }
-    findFirstOne() {
-        return this.repository.find({ take: 1 });
+    async findFirstOne() {
+        const [first] = await this.repository.find({ take: 1 });
+        return first;
     }
     findAll() {
         return this.repository.find();

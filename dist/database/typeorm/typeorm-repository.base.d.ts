@@ -11,7 +11,7 @@ export declare abstract class TypeOrmRepository<Entity> {
     findOne(item: FindOptionsWhere<Entity>): Promise<Entity | undefined>;
     findOneById(id: string | number): Promise<Entity | undefined>;
     find(item: FindOptionsWhere<Entity>): Promise<Entity[]>;
-    findFirstOne(): Promise<Entity[]>;
+    findFirstOne(): Promise<Entity>;
     findAll(): Promise<Entity[]>;
 }
 //# sourceMappingURL=typeorm-repository.base.d.ts.map
