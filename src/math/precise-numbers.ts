@@ -18,8 +18,9 @@ export class PreciseNumber implements IPreciseNumber {
 
     this.bigInteger = new Big(integerValue);
 
-    Big.RM = Big.roundDown;
-    this.decimal = this.bigInteger.div(this.factor).toFixed(precision);
+    this.decimal = this.bigInteger
+      .div(this.factor)
+      .toFixed(precision, Big.roundDown);
   }
 
   isLessThan(other: IPreciseNumber) {
