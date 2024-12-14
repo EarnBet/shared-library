@@ -34,7 +34,7 @@ export class CoinRepository {
         (11,'BET_ETH',4,0,100.0000000000),
         (12,'DAI',8,0,10.0000000000),
         (13,'USDC',6,0,10.0000000000),
-        (14,'USDT',6,0,10.0000000000),
+
         (15,'STACK',18,0,1.0000000000)
         */
     return this.repository.insert([
@@ -73,6 +73,14 @@ export class CoinRepository {
         precision: 4,
         uses_memo_for_deposits: 1,
         minimum_withdrawal_amount: "100",
+      },
+
+      {
+        id: CoinId.USDT,
+        symbol: "USDT",
+        precision: 6,
+        uses_memo_for_deposits: 0,
+        minimum_withdrawal_amount: "10",
       },
 
       {

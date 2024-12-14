@@ -62,6 +62,13 @@ let CoinRepository = class CoinRepository {
                 minimum_withdrawal_amount: "100",
             },
             {
+                id: coins_1.CoinId.USDT,
+                symbol: "USDT",
+                precision: 6,
+                uses_memo_for_deposits: 0,
+                minimum_withdrawal_amount: "10",
+            },
+            {
                 id: coins_1.CoinId.EBET,
                 symbol: "EBET",
                 precision: 8,
