@@ -5,7 +5,7 @@ import { VipUser } from "../entities/vip-users.entity";
 @Injectable()
 export class VipUserSharedRepository extends TypeOrmRepository<VipUser> {
   getAll(): Promise<VipUser[]> {
-    return this.findAll();
+    return this.repository.find();
   }
 
   async remove(user_id: number): Promise<VipUser> {
