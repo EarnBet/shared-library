@@ -4,6 +4,7 @@ import { CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class VipUser {
   @PrimaryGeneratedColumn({ type: "int" })
   user_id: number;
+
   @CreateDateColumn()
   created_at: Date;
 }

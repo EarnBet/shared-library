@@ -74,3 +74,4 @@ export * from "./admin-users/services/admin-users.shared.service";
 export * from "./admin-users/repositories/admin-user.shared.repository";
 
 export * from "./admin-users/admin-users.shared.module";
+export * from "./vip-users/vip-users-shared.module";
