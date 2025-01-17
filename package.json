@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepare": "install-peers"
+    "prepare": "install-peers",
+    "build": "tsc -p tsconfig.json"
   },
   "author": "",
   "license": "ISC",

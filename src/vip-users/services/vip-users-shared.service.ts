@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { VipUserRepository } from "../repositories/vip-users.repository";
+import { VipUserSharedRepository } from "../repositories/vip-users.repository";
 
 @Injectable()
 export class VipUsersSharedService {
-  constructor(private vipUsersRep: VipUserRepository) {}
+  constructor(private vipUsersRep: VipUserSharedRepository) {}
 
   async addUser(user_id: number) {
     return await this.vipUsersRep.insertOne({
