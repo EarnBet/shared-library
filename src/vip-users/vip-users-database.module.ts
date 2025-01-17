@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
-import { SharedDatabaseConnectionsModule } from "src/database/db-connections.module";
+import { SharedDatabaseConnectionsModule } from "../database/db-connections.module";
 import { VipUser } from "./entities/vip-users.entity";
-import { SharedDatabaseConnectionName } from "src/database/constants";
+import { SharedDatabaseConnectionName } from "../database/constants";
 import { VipUserSharedRepository } from "./repositories/vip-users.repository";
 import { TypeOrmModule } from "@nestjs/typeorm";
 

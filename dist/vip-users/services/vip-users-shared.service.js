@@ -24,7 +24,7 @@ let VipUsersSharedService = class VipUsersSharedService {
     async removeUser(user_id) {
         return this.vipUsersRep.remove(user_id);
     }
-    async isExist(user_id) {
+    async isVip(user_id) {
         const result = await this.vipUsersRep.findOne({
             user_id,
         });

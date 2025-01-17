@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VipUsersDatabaseModule = void 0;
 const common_1 = require("@nestjs/common");
-const db_connections_module_1 = require("src/database/db-connections.module");
+const db_connections_module_1 = require("../database/db-connections.module");
 const vip_users_entity_1 = require("./entities/vip-users.entity");
-const constants_1 = require("src/database/constants");
+const constants_1 = require("../database/constants");
 const vip_users_repository_1 = require("./repositories/vip-users.repository");
 const typeorm_1 = require("@nestjs/typeorm");
 let VipUsersDatabaseModule = class VipUsersDatabaseModule {
