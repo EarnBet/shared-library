@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VipUserSharedRepository = void 0;
 const common_1 = require("@nestjs/common");
-const typeorm_repository_base_1 = require("src/database/typeorm/typeorm-repository.base");
+const typeorm_repository_base_1 = require("../../database/typeorm/typeorm-repository.base");
 let VipUserSharedRepository = class VipUserSharedRepository extends typeorm_repository_base_1.TypeOrmRepository {
     getAll() {
         return this.findAll();
