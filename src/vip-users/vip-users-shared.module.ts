@@ -5,6 +5,6 @@ import { VipUsersSharedService } from "./services/vip-users-shared.service";
 @Module({
   imports: [VipUsersDatabaseModule],
   providers: [VipUsersSharedService],
-  exports: [VipUsersSharedService, VipUsersDatabaseModule],
+  exports: [VipUsersDatabaseModule, VipUsersSharedService],
 })
 export class SharedVipUsersModule {}

@@ -17,7 +17,7 @@ exports.SharedVipUsersModule = SharedVipUsersModule = __decorate([
     (0, common_1.Module)({
         imports: [vip_users_database_module_1.VipUsersDatabaseModule],
         providers: [vip_users_shared_service_1.VipUsersSharedService],
-        exports: [vip_users_shared_service_1.VipUsersSharedService, vip_users_database_module_1.VipUsersDatabaseModule],
+        exports: [vip_users_database_module_1.VipUsersDatabaseModule, vip_users_shared_service_1.VipUsersSharedService],
     })
 ], SharedVipUsersModule);
 //# sourceMappingURL=vip-users-shared.module.js.map
