@@ -10,6 +10,9 @@ exports.VipUserSharedRepository = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_repository_base_1 = require("src/database/typeorm/typeorm-repository.base");
 let VipUserSharedRepository = class VipUserSharedRepository extends typeorm_repository_base_1.TypeOrmRepository {
+    getAll() {
+        return this.findAll();
+    }
     async remove(user_id) {
         const vip_user = await this.findOne({ user_id });
         return this.repository.remove(vip_user);
