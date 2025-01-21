@@ -1,1 +1,1 @@
-{"version":3,"file":"vip-users.entity.d.ts","sourceRoot":"","sources":["../../../src/vip-users/entities/vip-users.entity.ts"],"names":[],"mappings":"AAEA,qBACa,OAAO;IAElB,OAAO,EAAE,MAAM,CAAC;IAGhB,UAAU,EAAE,IAAI,CAAC;CAClB"}
+{"version":3,"file":"vip-users.entity.d.ts","sourceRoot":"","sources":["../../../src/vip-users/entities/vip-users.entity.ts"],"names":[],"mappings":"AAOA,oBAAY,OAAO;IACjB,EAAE,IAAI;IACN,GAAG,IAAI;CACR;AAED,qBACa,OAAO;IAElB,OAAO,EAAE,MAAM,CAAC;IAGhB,MAAM,EAAE,OAAO,CAAC;IAGhB,UAAU,EAAE,IAAI,CAAC;CAClB"}

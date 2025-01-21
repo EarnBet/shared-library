@@ -25,4 +25,10 @@ export class VipUsersSharedService {
       return false;
     }
   }
+
+  getVip(user_id: number) {
+    return this.vipUsersRep.findOne({
+      user_id,
+    });
+  }
 }

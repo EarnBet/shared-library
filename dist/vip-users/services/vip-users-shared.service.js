@@ -35,6 +35,11 @@ let VipUsersSharedService = class VipUsersSharedService {
             return false;
         }
     }
+    getVip(user_id) {
+        return this.vipUsersRep.findOne({
+            user_id,
+        });
+    }
 };
 exports.VipUsersSharedService = VipUsersSharedService;
 exports.VipUsersSharedService = VipUsersSharedService = __decorate([
