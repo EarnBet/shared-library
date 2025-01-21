@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { TypeOrmRepository } from "../../database/typeorm/typeorm-repository.base";
-import { VipUser } from "../entities/vip-users.entity";
+import { VipMode, VipUser } from "../entities/vip-users.entity";
 import { Not, Equal, Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { SharedDatabaseConnectionName } from "../../database/constants";
@@ -22,5 +22,11 @@ export class VipUserSharedRepository extends TypeOrmRepository<VipUser> {
     const vip_user = await this.findOne({ user_id });
 
     return this.repository.remove(vip_user);
+  }
+
+  async changeMode(user_id: number, mode: VipMode): Promise<VipUser> {
+    const vip_user = await this.findOne({ user_id });
+    vip_user.status = mode;
+    return this.repository.save(vip_user);
   }
 }

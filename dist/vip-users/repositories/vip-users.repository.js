@@ -30,6 +30,11 @@ let VipUserSharedRepository = class VipUserSharedRepository extends typeorm_repo
         const vip_user = await this.findOne({ user_id });
         return this.repository.remove(vip_user);
     }
+    async changeMode(user_id, mode) {
+        const vip_user = await this.findOne({ user_id });
+        vip_user.status = mode;
+        return this.repository.save(vip_user);
+    }
 };
 exports.VipUserSharedRepository = VipUserSharedRepository;
 exports.VipUserSharedRepository = VipUserSharedRepository = __decorate([

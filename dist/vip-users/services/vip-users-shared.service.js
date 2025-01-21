@@ -17,12 +17,21 @@ let VipUsersSharedService = class VipUsersSharedService {
         this.vipUsersRep = vipUsersRep;
     }
     async addUser(user_id) {
-        return await this.vipUsersRep.insertOne({
-            user_id,
-        });
+        if (!(await this.isVip(user_id))) {
+            return await this.vipUsersRep.insertOne({
+                user_id,
+            });
+        }
     }
     async removeUser(user_id) {
-        return this.vipUsersRep.remove(user_id);
+        if (await this.isVip(user_id)) {
+            return this.vipUsersRep.remove(user_id);
+        }
+    }
+    async changeMode(user_id, mode) {
+        if (await this.isVip(user_id)) {
+            return this.vipUsersRep.changeMode(user_id, mode);
+        }
     }
     async isVip(user_id) {
         const result = await this.vipUsersRep.findOne({
