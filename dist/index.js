@@ -72,6 +72,7 @@ __exportStar(require("./admin-users/guards/admin-auth.guards"), exports);
 __exportStar(require("./admin-users/services/admin-users.shared.service"), exports);
 __exportStar(require("./admin-users/repositories/admin-user.shared.repository"), exports);
 __exportStar(require("./admin-users/admin-users.shared.module"), exports);
+__exportStar(require("./vip-users/vip-settings"), exports);
 __exportStar(require("./vip-users/entities/vip-users.entity"), exports);
 __exportStar(require("./vip-users/services/vip-users-shared.service"), exports);
 __exportStar(require("./vip-users/repositories/vip-users.repository"), exports);

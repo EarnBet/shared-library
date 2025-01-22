@@ -1,0 +1,1 @@
+{"version":3,"file":"vip-settings.d.ts","sourceRoot":"","sources":["../../src/vip-users/vip-settings.ts"],"names":[],"mappings":"AAAA,qBAAa,WAAW;IACtB,MAAM,CAAC,sBAAsB,EAAE,MAAM,CAAM;IAC3C,MAAM,CAAC,QAAQ,EAAE,MAAM,CAAQ;IAC/B,MAAM,CAAC,6BAA6B,EAAE,MAAM,CAAW;IACvD,MAAM,CAAC,mBAAmB,EAAE,MAAM,CAAS;CAC5C"}
