@@ -28,7 +28,7 @@ exports.escapeStringInput = escapeStringInput;
 const SqlString = __importStar(require("sqlstring"));
 const typeorm_naming_strategies_1 = require("typeorm-naming-strategies");
 const config_1 = require("../config");
-function getTypeOrmConnectionConfig(connectionName, charset, connectionLimit = 2) {
+function getTypeOrmConnectionConfig(connectionName, charset, connectionLimit = 10) {
     const moduleOptions = {
         autoLoadEntities: true,
         keepConnectionAlive: false,

@@ -10,7 +10,7 @@ import { SharedDatabaseConnectionName } from "./constants";
 export function getTypeOrmConnectionConfig(
   connectionName: SharedDatabaseConnectionName,
   charset?: string,
-  connectionLimit = 2
+  connectionLimit = 10
 ): TypeOrmModuleOptions {
   const moduleOptions: TypeOrmModuleOptions = {
     autoLoadEntities: true,
