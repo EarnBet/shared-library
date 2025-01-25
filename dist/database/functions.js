@@ -44,7 +44,7 @@ function getTypeOrmConnectionConfig(connectionName, charset, connectionLimit = 1
         charset,
         extra: {
             connectionLimit,
-            maxIdle: 1,
+            maxIdle: Math.min(5, connectionLimit),
             idleTimeout: 60000,
             waitForConnections: true,
             queueLimit: 0,
