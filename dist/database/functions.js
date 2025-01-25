@@ -28,14 +28,29 @@ exports.escapeStringInput = escapeStringInput;
 const SqlString = __importStar(require("sqlstring"));
 const typeorm_naming_strategies_1 = require("typeorm-naming-strategies");
 const config_1 = require("../config");
-const defaultTypeORMOptions = {
-    type: "mariadb",
-    autoLoadEntities: true,
-    keepConnectionAlive: false,
-    logging: ["error"],
-};
-function getTypeOrmConnectionConfig(connectionName) {
-    return Object.assign(Object.assign({}, defaultTypeORMOptions), { name: connectionName, synchronize: (0, config_1.parseBooleanFromEnv)("TYPE_ORM_SYNCHRONIZE"), host: process.env[connectionName + "_DB_HOST"], port: Number(process.env[connectionName + "_DB_PORT"]), database: process.env[connectionName + "_DB_NAME"], username: process.env[connectionName + "_DB_USER"], password: process.env[connectionName + "_DB_PASS"], namingStrategy: new typeorm_naming_strategies_1.SnakeNamingStrategy() });
+function getTypeOrmConnectionConfig(connectionName, charset) {
+    const moduleOptions = {
+        autoLoadEntities: true,
+        keepConnectionAlive: false,
+        logging: ["error"],
+    };
+    const connectionOptions = {
+        type: "mariadb",
+        host: process.env[connectionName + "_DB_HOST"],
+        port: Number(process.env[connectionName + "_DB_PORT"]),
+        database: process.env[connectionName + "_DB_NAME"],
+        username: process.env[connectionName + "_DB_USER"],
+        password: process.env[connectionName + "_DB_PASS"],
+        charset,
+        extra: {
+            connectionLimit: 10,
+            maxIdle: 2,
+            idleTimeout: 60000,
+            waitForConnections: true,
+            queueLimit: 0,
+        },
+    };
+    return Object.assign(Object.assign(Object.assign(Object.assign({}, moduleOptions), { name: connectionName, synchronize: (0, config_1.parseBooleanFromEnv)("TYPE_ORM_SYNCHRONIZE") }), connectionOptions), { namingStrategy: new typeorm_naming_strategies_1.SnakeNamingStrategy() });
 }
 function escapeStringInput(input) {
     return SqlString.escape(input);
