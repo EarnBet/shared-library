@@ -9,7 +9,8 @@ import { SharedDatabaseConnectionName } from "./constants";
 
 export function getTypeOrmConnectionConfig(
   connectionName: SharedDatabaseConnectionName,
-  charset?: string
+  charset?: string,
+  connectionLimit = 2
 ): TypeOrmModuleOptions {
   const moduleOptions: TypeOrmModuleOptions = {
     autoLoadEntities: true,
@@ -29,8 +30,8 @@ export function getTypeOrmConnectionConfig(
     charset,
 
     extra: {
-      connectionLimit: 10, // Increase the pool size
-      maxIdle: 2, // max idle connections, the default value is the same as `connectionLimit`
+      connectionLimit, // Increase the pool size
+      maxIdle: 1, // max idle connections, the default value is the same as `connectionLimit`
       idleTimeout: 60000, // idle connections timeout, in milliseconds, the default value 60000
       waitForConnections: true, // Wait for a connection if the pool is exhausted
       queueLimit: 0, // No limit to queued connection requests

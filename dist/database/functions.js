@@ -28,7 +28,7 @@ exports.escapeStringInput = escapeStringInput;
 const SqlString = __importStar(require("sqlstring"));
 const typeorm_naming_strategies_1 = require("typeorm-naming-strategies");
 const config_1 = require("../config");
-function getTypeOrmConnectionConfig(connectionName, charset) {
+function getTypeOrmConnectionConfig(connectionName, charset, connectionLimit = 2) {
     const moduleOptions = {
         autoLoadEntities: true,
         keepConnectionAlive: false,
@@ -43,8 +43,8 @@ function getTypeOrmConnectionConfig(connectionName, charset) {
         password: process.env[connectionName + "_DB_PASS"],
         charset,
         extra: {
-            connectionLimit: 10,
-            maxIdle: 2,
+            connectionLimit,
+            maxIdle: 1,
             idleTimeout: 60000,
             waitForConnections: true,
             queueLimit: 0,
