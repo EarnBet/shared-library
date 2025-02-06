@@ -4,7 +4,7 @@ import { ICoinsService } from "../../coins/services/interfaces";
 import { ICurrencyPriceService, IPriceMap } from "./interfaces";
 
 import { EventEmitter } from "events"; //we'll use built-in EventEmitter instead of the one from NestJS
-import { SharedLibraryEvent } from "../../../events";
+import { CurrencyAmountEvent } from "../outputs/events.enum";
 
 class CoinPriceService implements ICurrencyPriceService {
   //this class should be used in factory pattern
@@ -21,7 +21,7 @@ class CoinPriceService implements ICurrencyPriceService {
   }
 
   subscribe(subscriber: (prices: IPriceMap) => void) {
-    this.eventEmitter.on(SharedLibraryEvent.COIN_PRICE_UPDATED, subscriber);
+    this.eventEmitter.on(CurrencyAmountEvent.COIN_PRICE_UPDATED, subscriber);
   }
 
   private async init(database: ICoinsService) {
@@ -49,7 +49,7 @@ class CoinPriceService implements ICurrencyPriceService {
       }
     }
 
-    this.eventEmitter.emit(SharedLibraryEvent.COIN_PRICE_UPDATED, this.prices);
+    this.eventEmitter.emit(CurrencyAmountEvent.COIN_PRICE_UPDATED, this.prices);
   };
 
   async getPriceInUSD(symbol: string): Promise<number> {
