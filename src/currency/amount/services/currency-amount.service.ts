@@ -8,6 +8,7 @@ import { getCurrencyAmountWithPriceFactory } from "../factories/currency-amount-
 import { ICurrencyAmountWithPriceFactory } from "../factories/interfaces";
 import { ICurrencyPriceOutput } from "../outputs/interfaces";
 import { mockCurrencyPriceService } from "../price-service/coin-price.service.mock";
+import { IPriceMap } from "../price-service/interfaces";
 
 @Injectable()
 export class CurrencyAmountService {
@@ -63,7 +64,7 @@ export class CurrencyAmountService {
     return this.getFactory().priceService.getPriceInUSD(currencySymbol);
   }
 
-  subscribeToPriceUpdates(callback: (price: number) => void) {
+  subscribeToPriceUpdates(callback: (price: IPriceMap) => void) {
     return this.getFactory().priceService.subscribe(callback);
   }
 

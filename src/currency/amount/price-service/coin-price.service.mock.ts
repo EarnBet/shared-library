@@ -1,4 +1,4 @@
-import { ICurrencyPriceService } from "./interfaces";
+import { ICurrencyPriceService, IPriceMap } from "./interfaces";
 
 const PRICES = {
   BTC: 41897.46,
@@ -29,7 +29,7 @@ class MockCurrencyPriceService implements ICurrencyPriceService {
     return PRICES[currencySymbol];
   }
 
-  subscribe(callback: (price: number) => void): void {
+  subscribe(callback: (price: IPriceMap) => void): void {
     // fake subscriber
   }
 }
