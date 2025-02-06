@@ -4,7 +4,7 @@ exports.getRealCoinPriceService = void 0;
 const timer_util_1 = require("../../../util/timer-util");
 const http_util_1 = require("../../../util/http-util");
 const events_1 = require("events");
-const events_2 = require("src/events");
+const events_2 = require("../../../events");
 class CoinPriceService {
     constructor(database) {
         this.symbols = [];

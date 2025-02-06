@@ -4,7 +4,7 @@ import { ICoinsService } from "../../coins/services/interfaces";
 import { ICurrencyPriceService } from "./interfaces";
 
 import { EventEmitter } from "events"; //we'll use built-in EventEmitter instead of the one from NestJS
-import { SharedLibraryEvent } from "src/events";
+import { SharedLibraryEvent } from "../../../events";
 
 class CoinPriceService implements ICurrencyPriceService {
   //this class should be used in factory pattern
