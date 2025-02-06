@@ -15,7 +15,7 @@ class CoinPriceService implements ICurrencyPriceService {
 
   private eventEmitter: EventEmitter;
 
-  constructor(database: ICoinsService) {
+  constructor(database: ICoinsService, private updateInterval: number) {
     this.eventEmitter = new EventEmitter();
     this.init(database);
   }
@@ -29,7 +29,7 @@ class CoinPriceService implements ICurrencyPriceService {
 
     this.symbols = coins.map((row) => row.symbol);
 
-    setInterval(this.updateCoinPrices, 1000 * 60 * 60);
+    setInterval(this.updateCoinPrices, this.updateInterval);
 
     await this.updateCoinPrices();
 
@@ -108,10 +108,11 @@ async function fetchPriceOfCoin(symbol: string): Promise<number> {
 let coinPriceService: CoinPriceService;
 
 export function getRealCoinPriceService(
-  database: ICoinsService
+  database: ICoinsService,
+  updateInterval: number
 ): ICurrencyPriceService {
   if (coinPriceService == undefined) {
-    coinPriceService = new CoinPriceService(database);
+    coinPriceService = new CoinPriceService(database, updateInterval);
   }
 
   return coinPriceService;

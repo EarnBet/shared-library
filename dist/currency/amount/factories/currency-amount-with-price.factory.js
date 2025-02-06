@@ -84,10 +84,10 @@ class CurrencyAmountWithPriceFactory {
     }
 }
 let currencyAmountWithPriceFactory;
-function getCurrencyAmountWithPriceFactory(coinDataProvider, priceService = undefined) {
+function getCurrencyAmountWithPriceFactory(coinDataProvider, updateInterval, priceService = undefined) {
     if (currencyAmountWithPriceFactory == undefined) {
         if (priceService == undefined) {
-            priceService = (0, coin_price_service_1.getRealCoinPriceService)(coinDataProvider);
+            priceService = (0, coin_price_service_1.getRealCoinPriceService)(coinDataProvider, updateInterval);
         }
         currencyAmountWithPriceFactory = new CurrencyAmountWithPriceFactory(coinDataProvider, priceService);
     }

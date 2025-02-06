@@ -73,8 +73,11 @@ export class CurrencyAmountService {
       const shouldUseRealPriceService =
         this.sharedConfigService.shouldUseRealCurrencyPriceService();
 
+      const updateInterval = this.sharedConfigService.coinPriceUpdateInterval();
+
       this.factory = getCurrencyAmountWithPriceFactory(
         this.coinDataProvider,
+        updateInterval,
         shouldUseRealPriceService ? undefined : mockCurrencyPriceService
       );
     }

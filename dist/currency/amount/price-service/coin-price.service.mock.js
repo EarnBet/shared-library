@@ -23,11 +23,17 @@ const PRICES = {
     FUN: 0,
 };
 class MockCurrencyPriceService {
+    constructor(updateInterval) {
+        this.updateInterval = updateInterval;
+    }
     async getPriceInUSD(currencySymbol) {
         return PRICES[currencySymbol];
     }
     subscribe(callback) {
+        setInterval(() => {
+            callback(PRICES);
+        }, this.updateInterval);
     }
 }
-exports.mockCurrencyPriceService = new MockCurrencyPriceService();
+exports.mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 30);
 //# sourceMappingURL=coin-price.service.mock.js.map
