@@ -31,9 +31,10 @@ class MockCurrencyPriceService {
     }
     subscribe(callback) {
         setInterval(() => {
+            console.log("MockCurrencyPriceService: calling subscriber");
             callback(PRICES);
         }, this.updateInterval);
     }
 }
-exports.mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 30);
+exports.mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 5);
 //# sourceMappingURL=coin-price.service.mock.js.map

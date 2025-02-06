@@ -34,9 +34,10 @@ class MockCurrencyPriceService implements ICurrencyPriceService {
   subscribe(callback: (price: IPriceMap) => void): void {
     // call fake subscriber on specified intervals with the same prices
     setInterval(() => {
+      console.log("MockCurrencyPriceService: calling subscriber");
       callback(PRICES);
     }, this.updateInterval);
   }
 }
 
-export const mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 30);
+export const mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 5);
