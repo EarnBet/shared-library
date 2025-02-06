@@ -26,6 +26,8 @@ class MockCurrencyPriceService {
     async getPriceInUSD(currencySymbol) {
         return PRICES[currencySymbol];
     }
+    subscribe(callback) {
+    }
 }
 exports.mockCurrencyPriceService = new MockCurrencyPriceService();
 //# sourceMappingURL=coin-price.service.mock.js.map

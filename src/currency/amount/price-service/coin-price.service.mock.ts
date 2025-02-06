@@ -28,6 +28,10 @@ class MockCurrencyPriceService implements ICurrencyPriceService {
   async getPriceInUSD(currencySymbol: string): Promise<number> {
     return PRICES[currencySymbol];
   }
+
+  subscribe(callback: (price: number) => void): void {
+    // fake subscriber
+  }
 }
 
 export const mockCurrencyPriceService = new MockCurrencyPriceService();

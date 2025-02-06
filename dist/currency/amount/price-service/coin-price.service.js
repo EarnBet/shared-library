@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRealCoinPriceService = getRealCoinPriceService;
+exports.getRealCoinPriceService = void 0;
 const timer_util_1 = require("../../../util/timer-util");
 const http_util_1 = require("../../../util/http-util");
+const events_1 = require("events");
+const events_2 = require("src/events");
 class CoinPriceService {
     constructor(database) {
         this.symbols = [];
@@ -16,8 +18,13 @@ class CoinPriceService {
                     this.prices[symbol] = price;
                 }
             }
+            this.eventEmitter.emit(events_2.SharedLibraryEvent.COIN_PRICE_UPDATED, this.prices);
         };
+        this.eventEmitter = new events_1.EventEmitter();
         this.init(database);
+    }
+    subscribe(subscriber) {
+        this.eventEmitter.on(events_2.SharedLibraryEvent.COIN_PRICE_UPDATED, subscriber);
     }
     async init(database) {
         const coins = await database.getAllCoins();
@@ -68,4 +75,5 @@ function getRealCoinPriceService(database) {
     }
     return coinPriceService;
 }
+exports.getRealCoinPriceService = getRealCoinPriceService;
 //# sourceMappingURL=coin-price.service.js.map

@@ -63,6 +63,10 @@ export class CurrencyAmountService {
     return this.getFactory().priceService.getPriceInUSD(currencySymbol);
   }
 
+  subscribeToPriceUpdates(callback: (price: number) => void) {
+    return this.getFactory().priceService.subscribe(callback);
+  }
+
   getFactory() {
     if (!this.factory) {
       const shouldUseRealPriceService =

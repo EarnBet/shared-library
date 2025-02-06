@@ -52,6 +52,9 @@ let CurrencyAmountService = class CurrencyAmountService {
     getPriceInUSD(currencySymbol) {
         return this.getFactory().priceService.getPriceInUSD(currencySymbol);
     }
+    subscribeToPriceUpdates(callback) {
+        return this.getFactory().priceService.subscribe(callback);
+    }
     getFactory() {
         if (!this.factory) {
             const shouldUseRealPriceService = this.sharedConfigService.shouldUseRealCurrencyPriceService();

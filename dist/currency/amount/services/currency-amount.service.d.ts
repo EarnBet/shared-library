@@ -15,6 +15,7 @@ export declare class CurrencyAmountService {
     getAllCoins(): Promise<import("../../..").SavedCoin[]>;
     getCoinDataProvider(): import("../../..").ICoinDataProvider;
     getPriceInUSD(currencySymbol: string): Promise<number>;
+    subscribeToPriceUpdates(callback: (price: number) => void): void;
     getFactory(): ICurrencyAmountWithPriceFactory;
 }
 //# sourceMappingURL=currency-amount.service.d.ts.map

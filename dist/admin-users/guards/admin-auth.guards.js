@@ -9,10 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UseRootAdminGuard = UseRootAdminGuard;
-exports.UseSuperAdminGuard = UseSuperAdminGuard;
-exports.UseRegularAdminGuard = UseRegularAdminGuard;
-exports.UseSupportAdminGuard = UseSupportAdminGuard;
+exports.UseSupportAdminGuard = exports.UseRegularAdminGuard = exports.UseSuperAdminGuard = exports.UseRootAdminGuard = void 0;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("../../auth/services/auth.service");
 const auth_guard_1 = require("../../auth/guards/auth.guard");
@@ -83,13 +80,17 @@ SupportAdminAuthGuard = __decorate([
 function UseRootAdminGuard() {
     return (0, common_1.UseGuards)(RootAdminAuthGuard);
 }
+exports.UseRootAdminGuard = UseRootAdminGuard;
 function UseSuperAdminGuard() {
     return (0, common_1.UseGuards)(SuperAdminAuthGuard);
 }
+exports.UseSuperAdminGuard = UseSuperAdminGuard;
 function UseRegularAdminGuard() {
     return (0, common_1.UseGuards)(RegularAdminAuthGuard);
 }
+exports.UseRegularAdminGuard = UseRegularAdminGuard;
 function UseSupportAdminGuard() {
     return (0, common_1.UseGuards)(SupportAdminAuthGuard);
 }
+exports.UseSupportAdminGuard = UseSupportAdminGuard;
 //# sourceMappingURL=admin-auth.guards.js.map
