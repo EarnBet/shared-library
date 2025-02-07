@@ -32,8 +32,18 @@ class MockCurrencyPriceService {
     subscribe(callback) {
         setInterval(() => {
             console.log("MockCurrencyPriceService: calling subscriber");
+            this.changePrices();
             callback(PRICES);
         }, this.updateInterval);
+    }
+    changePrices() {
+        for (const symbol in PRICES) {
+            if (symbol === "USD" || symbol === "FUN") {
+                continue;
+            }
+            const minus = Math.random() > 0.5 ? -1 : 1;
+            PRICES[symbol] += Math.random() * minus;
+        }
     }
 }
 exports.mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 5);

@@ -1,5 +1,6 @@
 import { ICurrencyPriceService, IPriceMap } from "./interfaces";
 
+//initial prices
 const PRICES = {
   BTC: 41897.46,
   ETH: 3155.55,
@@ -35,8 +36,20 @@ class MockCurrencyPriceService implements ICurrencyPriceService {
     // call fake subscriber on specified intervals with the same prices
     setInterval(() => {
       console.log("MockCurrencyPriceService: calling subscriber");
+      this.changePrices();
       callback(PRICES);
     }, this.updateInterval);
+  }
+
+  changePrices() {
+    // change prices slightly for testing purposes
+    for (const symbol in PRICES) {
+      if (symbol === "USD" || symbol === "FUN") {
+        continue;
+      }
+      const minus = Math.random() > 0.5 ? -1 : 1;
+      PRICES[symbol] += Math.random() * minus;
+    }
   }
 }
 
