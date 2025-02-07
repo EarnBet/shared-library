@@ -42,7 +42,11 @@ class MockCurrencyPriceService {
                 continue;
             }
             const minus = Math.random() > 0.5 ? -1 : 1;
-            PRICES[symbol] += Math.random() * minus;
+            const rnd = Math.random();
+            const limiter = PRICES[symbol] * 0.01;
+            const change = Math.min(limiter, rnd);
+            const proposed_price = PRICES[symbol] + change * minus;
+            PRICES[symbol] = Math.max(0.0001, proposed_price);
         }
     }
 }
