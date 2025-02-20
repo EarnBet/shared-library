@@ -6,7 +6,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "prepare": "install-peers",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --forceExit --logHeapUsage --verbose --watchAll=false --runInBand --detectOpenHandles"
   },
   "author": "",
   "license": "ISC",

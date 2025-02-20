@@ -16,7 +16,8 @@ export declare enum CoinId {
     USDT = 14,
     STACK = 15,
     EBET = 16,
-    SOL = 17
+    SOL = 17,
+    USDT_TRON = 18
 }
 export declare enum CoinSymbol {
     USD = "USD",
@@ -36,6 +37,7 @@ export declare enum CoinSymbol {
     USDC = "USDC",
     USDT = "USDT",
     EBET = "EBET",
-    SOL = "SOL"
+    SOL = "SOL",
+    USDT_TRON = "USDT_TRON"
 }
 //# sourceMappingURL=coins.d.ts.map

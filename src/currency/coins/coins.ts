@@ -25,6 +25,8 @@ export enum CoinId {
   EBET,
 
   SOL,
+
+  USDT_TRON,
 }
 /***/
 
@@ -53,4 +55,6 @@ export enum CoinSymbol {
   EBET = "EBET",
 
   SOL = "SOL",
+
+  USDT_TRON = "USDT_TRON",
 }
