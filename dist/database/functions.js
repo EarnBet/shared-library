@@ -23,7 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.escapeStringInput = exports.getTypeOrmConnectionConfig = void 0;
+exports.getTypeOrmConnectionConfig = getTypeOrmConnectionConfig;
+exports.escapeStringInput = escapeStringInput;
 const SqlString = __importStar(require("sqlstring"));
 const typeorm_naming_strategies_1 = require("typeorm-naming-strategies");
 const config_1 = require("../config");
@@ -51,9 +52,7 @@ function getTypeOrmConnectionConfig(connectionName, charset, connectionLimit = 1
     };
     return Object.assign(Object.assign(Object.assign(Object.assign({}, moduleOptions), { name: connectionName, synchronize: (0, config_1.parseBooleanFromEnv)("TYPE_ORM_SYNCHRONIZE") }), connectionOptions), { namingStrategy: new typeorm_naming_strategies_1.SnakeNamingStrategy() });
 }
-exports.getTypeOrmConnectionConfig = getTypeOrmConnectionConfig;
 function escapeStringInput(input) {
     return SqlString.escape(input);
 }
-exports.escapeStringInput = escapeStringInput;
 //# sourceMappingURL=functions.js.map

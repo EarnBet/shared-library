@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRealCoinPriceService = void 0;
+exports.getRealCoinPriceService = getRealCoinPriceService;
 const timer_util_1 = require("../../../util/timer-util");
 const http_util_1 = require("../../../util/http-util");
 const events_1 = require("events");
@@ -76,5 +76,4 @@ function getRealCoinPriceService(database, updateInterval) {
     }
     return coinPriceService;
 }
-exports.getRealCoinPriceService = getRealCoinPriceService;
 //# sourceMappingURL=coin-price.service.js.map
