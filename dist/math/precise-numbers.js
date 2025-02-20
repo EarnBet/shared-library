@@ -8,8 +8,9 @@ class PreciseNumber {
         this.precision = precision;
         this.factor = new big_js_1.Big(Math.pow(10, precision));
         this.bigInteger = new big_js_1.Big(integerValue);
-        big_js_1.Big.RM = big_js_1.Big.roundDown;
-        this.decimal = this.bigInteger.div(this.factor).toFixed(precision);
+        this.decimal = this.bigInteger
+            .div(this.factor)
+            .toFixed(precision, big_js_1.Big.roundDown);
     }
     isLessThan(other) {
         this.validateMatchingCurrency(other);
