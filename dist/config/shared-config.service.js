@@ -9,9 +9,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SharedConfigService = void 0;
 const common_1 = require("@nestjs/common");
 const _1 = require(".");
+const DEFAULT_COIN_PRICE_UPDATE_INTERVAL = 1000 * 60 * 60;
 let SharedConfigService = class SharedConfigService {
     shouldUseRealCurrencyPriceService() {
         return (0, _1.parseBooleanFromEnv)("USE_REAL_CURRENCY_PRICE_SERVICE");
+    }
+    coinPriceUpdateInterval() {
+        return (parseInt(process.env["COIN_PRICE_UPDATE_INTERVAL"], 0) ||
+            DEFAULT_COIN_PRICE_UPDATE_INTERVAL);
     }
 };
 exports.SharedConfigService = SharedConfigService;

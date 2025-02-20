@@ -1,6 +1,10 @@
-import { ICurrencyPriceService } from "./interfaces";
+import { ICurrencyPriceService, IPriceMap } from "./interfaces";
 declare class MockCurrencyPriceService implements ICurrencyPriceService {
+    private updateInterval;
+    constructor(updateInterval: number);
     getPriceInUSD(currencySymbol: string): Promise<number>;
+    subscribe(callback: (price: IPriceMap) => void): void;
+    changePrices(): void;
 }
 export declare const mockCurrencyPriceService: MockCurrencyPriceService;
 export {};

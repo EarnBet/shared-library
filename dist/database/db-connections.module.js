@@ -19,8 +19,8 @@ exports.SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule = __de
     (0, common_1.Module)({
         imports: [
             shared_config_module_1.SharedConfigModule,
-            typeorm_1.TypeOrmModule.forRoot(Object.assign(Object.assign({}, (0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.CURRENCY)), { poolSize: 2 })),
-            typeorm_1.TypeOrmModule.forRoot(Object.assign(Object.assign({}, (0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.EARNBET)), { poolSize: 2, charset: "utf8mb4_bin" })),
+            typeorm_1.TypeOrmModule.forRoot(Object.assign({}, (0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.CURRENCY))),
+            typeorm_1.TypeOrmModule.forRoot(Object.assign({}, (0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.EARNBET, "utf8mb4_bin"))),
         ],
         exports: [shared_config_module_1.SharedConfigModule, typeorm_1.TypeOrmModule],
     })

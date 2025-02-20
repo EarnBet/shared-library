@@ -23,9 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.httpsGetJson = httpsGetJson;
-exports.httpGetJson = httpGetJson;
-exports.httpGet = httpGet;
+exports.httpGet = exports.httpGetJson = exports.httpsGetJson = void 0;
 const https = __importStar(require("https"));
 const http = __importStar(require("http"));
 function httpsGetJson(url) {
@@ -52,6 +50,7 @@ function httpsGetJson(url) {
         });
     });
 }
+exports.httpsGetJson = httpsGetJson;
 function httpGetJson(url) {
     return new Promise((resolve, reject) => {
         http
@@ -76,6 +75,7 @@ function httpGetJson(url) {
         });
     });
 }
+exports.httpGetJson = httpGetJson;
 function httpGet(url) {
     return new Promise((resolve, reject) => {
         http
@@ -93,4 +93,5 @@ function httpGet(url) {
         });
     });
 }
+exports.httpGet = httpGet;
 //# sourceMappingURL=http-util.js.map

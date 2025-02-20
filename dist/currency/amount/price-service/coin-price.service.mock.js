@@ -23,9 +23,32 @@ const PRICES = {
     FUN: 0,
 };
 class MockCurrencyPriceService {
+    constructor(updateInterval) {
+        this.updateInterval = updateInterval;
+    }
     async getPriceInUSD(currencySymbol) {
         return PRICES[currencySymbol];
     }
+    subscribe(callback) {
+        setInterval(() => {
+            console.log("MockCurrencyPriceService: calling subscriber");
+            this.changePrices();
+            callback(PRICES);
+        }, this.updateInterval);
+    }
+    changePrices() {
+        for (const symbol in PRICES) {
+            if (symbol === "USD" || symbol === "FUN") {
+                continue;
+            }
+            const minus = Math.random() > 0.5 ? -1 : 1;
+            const rnd = Math.random();
+            const limiter = PRICES[symbol] * 0.01;
+            const change = Math.min(limiter, rnd);
+            const proposed_price = PRICES[symbol] + change * minus;
+            PRICES[symbol] = Math.max(0.0001, proposed_price);
+        }
+    }
 }
-exports.mockCurrencyPriceService = new MockCurrencyPriceService();
+exports.mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 5);
 //# sourceMappingURL=coin-price.service.mock.js.map

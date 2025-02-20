@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCurrencyAmountWithPriceFactory = getCurrencyAmountWithPriceFactory;
+exports.getCurrencyAmountWithPriceFactory = void 0;
 const big_js_1 = __importDefault(require("big.js"));
 const precise_numbers_1 = require("../../../math/precise-numbers");
 const shared_1 = require("./shared");
@@ -84,13 +84,14 @@ class CurrencyAmountWithPriceFactory {
     }
 }
 let currencyAmountWithPriceFactory;
-function getCurrencyAmountWithPriceFactory(coinDataProvider, priceService = undefined) {
+function getCurrencyAmountWithPriceFactory(coinDataProvider, updateInterval, priceService = undefined) {
     if (currencyAmountWithPriceFactory == undefined) {
         if (priceService == undefined) {
-            priceService = (0, coin_price_service_1.getRealCoinPriceService)(coinDataProvider);
+            priceService = (0, coin_price_service_1.getRealCoinPriceService)(coinDataProvider, updateInterval);
         }
         currencyAmountWithPriceFactory = new CurrencyAmountWithPriceFactory(coinDataProvider, priceService);
     }
     return currencyAmountWithPriceFactory;
 }
+exports.getCurrencyAmountWithPriceFactory = getCurrencyAmountWithPriceFactory;
 //# sourceMappingURL=currency-amount-with-price.factory.js.map

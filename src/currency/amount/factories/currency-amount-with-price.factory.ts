@@ -185,11 +185,12 @@ let currencyAmountWithPriceFactory: CurrencyAmountWithPriceFactory;
 
 export function getCurrencyAmountWithPriceFactory(
   coinDataProvider: ICoinDataProvider,
+  updateInterval: number,
   priceService: ICurrencyPriceService = undefined
 ): CurrencyAmountWithPriceFactory {
   if (currencyAmountWithPriceFactory == undefined) {
     if (priceService == undefined) {
-      priceService = getRealCoinPriceService(coinDataProvider);
+      priceService = getRealCoinPriceService(coinDataProvider, updateInterval);
     }
 
     currencyAmountWithPriceFactory = new CurrencyAmountWithPriceFactory(

@@ -1,10 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRealCoinPriceService = getRealCoinPriceService;
+exports.getRealCoinPriceService = void 0;
 const timer_util_1 = require("../../../util/timer-util");
 const http_util_1 = require("../../../util/http-util");
+const events_1 = require("events");
+const events_enum_1 = require("../outputs/events.enum");
 class CoinPriceService {
-    constructor(database) {
+    constructor(database, updateInterval) {
+        this.updateInterval = updateInterval;
         this.symbols = [];
         this.prices = {};
         this.isInit = false;
@@ -16,13 +19,18 @@ class CoinPriceService {
                     this.prices[symbol] = price;
                 }
             }
+            this.eventEmitter.emit(events_enum_1.CurrencyAmountEvent.COIN_PRICE_UPDATED, this.prices);
         };
+        this.eventEmitter = new events_1.EventEmitter();
         this.init(database);
+    }
+    subscribe(subscriber) {
+        this.eventEmitter.on(events_enum_1.CurrencyAmountEvent.COIN_PRICE_UPDATED, subscriber);
     }
     async init(database) {
         const coins = await database.getAllCoins();
         this.symbols = coins.map((row) => row.symbol);
-        setInterval(this.updateCoinPrices, 1000 * 60 * 60);
+        setInterval(this.updateCoinPrices, this.updateInterval);
         await this.updateCoinPrices();
         console.log("CoinPriceService initialized: ", this.prices);
         this.isInit = true;
@@ -62,10 +70,11 @@ async function fetchPriceOfCoin(symbol) {
     }
 }
 let coinPriceService;
-function getRealCoinPriceService(database) {
+function getRealCoinPriceService(database, updateInterval) {
     if (coinPriceService == undefined) {
-        coinPriceService = new CoinPriceService(database);
+        coinPriceService = new CoinPriceService(database, updateInterval);
     }
     return coinPriceService;
 }
+exports.getRealCoinPriceService = getRealCoinPriceService;
 //# sourceMappingURL=coin-price.service.js.map

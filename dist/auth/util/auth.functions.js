@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateAuthToken = void 0;
-exports.getAuthorizedUserIdForValidator = getAuthorizedUserIdForValidator;
+exports.getAuthorizedUserIdForValidator = exports.generateAuthToken = void 0;
 const jsonwebtoken_1 = require("jsonwebtoken");
 const generateAuthToken = (user) => {
     const newData = {
@@ -16,4 +15,5 @@ function getAuthorizedUserIdForValidator(validationArguments) {
         ._authorizedUserData;
     return userData.user_id;
 }
+exports.getAuthorizedUserIdForValidator = getAuthorizedUserIdForValidator;
 //# sourceMappingURL=auth.functions.js.map
