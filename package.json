@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepare": "install-peers"
+    "prepare": "install-peers",
+    "test": "jest --forceExit --logHeapUsage --verbose --watchAll=false --runInBand --detectOpenHandles"
   },
   "author": "",
   "license": "ISC",
