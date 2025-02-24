@@ -14,9 +14,12 @@ const PRICES = {
   TRX: 0.066462,
   LINK: 28.01,
   BET_ETH: 0.054894,
+
   DAI: 1,
   USDC: 1,
   USDT: 1,
+  USDT_TRON: 1,
+
   STACK: 3.11,
 
   EBET: 0.00001,
