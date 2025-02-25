@@ -18,6 +18,7 @@ const PRICES = {
     USDC: 1,
     USDT: 1,
     STACK: 3.11,
+    TRON_USDT: 1,
     EBET: 0.00001,
     USD: 1,
     FUN: 0,
@@ -50,5 +51,5 @@ class MockCurrencyPriceService {
         }
     }
 }
-exports.mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 5);
+exports.mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 30);
 //# sourceMappingURL=coin-price.service.mock.js.map
