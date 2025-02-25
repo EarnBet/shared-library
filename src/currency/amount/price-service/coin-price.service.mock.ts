@@ -60,4 +60,4 @@ class MockCurrencyPriceService implements ICurrencyPriceService {
   }
 }
 
-export const mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 5);
+export const mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 30); // 30 seconds
