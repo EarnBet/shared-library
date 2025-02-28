@@ -24,6 +24,8 @@ const PRICES = {
 
   EBET: 0.00001,
 
+  SOL: 100,
+
   USD: 1,
   FUN: 0,
 };

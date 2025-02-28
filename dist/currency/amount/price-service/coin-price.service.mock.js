@@ -20,6 +20,7 @@ const PRICES = {
     USDT_TRON: 1,
     STACK: 3.11,
     EBET: 0.00001,
+    SOL: 100,
     USD: 1,
     FUN: 0,
 };
