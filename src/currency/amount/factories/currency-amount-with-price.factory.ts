@@ -43,7 +43,9 @@ class PreciseCurrencyAmountWithPrice
 
   private checkPrice() {
     if (this.priceInUSD == undefined) {
-      throw new Error("Price for Currency IS NOT DEFINED!");
+      throw new Error(
+        `Price for Currency ${this.currency.symbol} IS NOT DEFINED!`
+      );
     }
   }
 }
