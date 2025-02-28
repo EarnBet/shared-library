@@ -58,8 +58,11 @@ let CurrencyAmountService = class CurrencyAmountService {
     getFactory() {
         if (!this.factory) {
             const shouldUseRealPriceService = this.sharedConfigService.shouldUseRealCurrencyPriceService();
-            const updateInterval = this.sharedConfigService.coinPriceUpdateInterval();
-            this.factory = (0, currency_amount_with_price_factory_1.getCurrencyAmountWithPriceFactory)(this.coinDataProvider, updateInterval, shouldUseRealPriceService ? undefined : coin_price_service_mock_1.mockCurrencyPriceService);
+            const updateIntervalForCurrencyPriceService = this.sharedConfigService.coinPriceUpdateInterval();
+            console.log({ updateIntervalForCurrencyPriceService });
+            this.factory = (0, currency_amount_with_price_factory_1.getCurrencyAmountWithPriceFactory)(this.coinDataProvider, updateIntervalForCurrencyPriceService, shouldUseRealPriceService
+                ? undefined
+                : new coin_price_service_mock_1.MockCurrencyPriceService(updateIntervalForCurrencyPriceService));
         }
         return this.factory;
     }

@@ -28,7 +28,7 @@ const PRICES = {
   FUN: 0,
 };
 
-class MockCurrencyPriceService implements ICurrencyPriceService {
+export class MockCurrencyPriceService implements ICurrencyPriceService {
   constructor(private updateInterval: number) {}
 
   async getPriceInUSD(currencySymbol: string): Promise<number> {
@@ -38,7 +38,6 @@ class MockCurrencyPriceService implements ICurrencyPriceService {
   subscribe(callback: (price: IPriceMap) => void): void {
     // call fake subscriber on specified intervals with the same prices
     setInterval(() => {
-      console.log("MockCurrencyPriceService: calling subscriber");
       this.changePrices();
       callback(PRICES);
     }, this.updateInterval);
@@ -61,5 +60,3 @@ class MockCurrencyPriceService implements ICurrencyPriceService {
     }
   }
 }
-
-export const mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 5);

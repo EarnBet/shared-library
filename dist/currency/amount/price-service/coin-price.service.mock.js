@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mockCurrencyPriceService = void 0;
+exports.MockCurrencyPriceService = void 0;
 const PRICES = {
     BTC: 41897.46,
     ETH: 3155.55,
@@ -32,7 +32,6 @@ class MockCurrencyPriceService {
     }
     subscribe(callback) {
         setInterval(() => {
-            console.log("MockCurrencyPriceService: calling subscriber");
             this.changePrices();
             callback(PRICES);
         }, this.updateInterval);
@@ -51,5 +50,5 @@ class MockCurrencyPriceService {
         }
     }
 }
-exports.mockCurrencyPriceService = new MockCurrencyPriceService(1000 * 5);
+exports.MockCurrencyPriceService = MockCurrencyPriceService;
 //# sourceMappingURL=coin-price.service.mock.js.map
