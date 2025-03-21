@@ -15,8 +15,11 @@ export class SharedUsersService {
     private bannedWords: UsernameBannedWordRepository
   ) {}
 
-  async login(input: { username: string; ip: string }) {
-    // correct password validation should already be done at input layer!
+  /** correct password validation should already be done at input layer!  */
+  async createTokenForAuthenticatedUser(input: {
+    username: string;
+    ip: string;
+  }) {
     const user = await this.findByExactUsername(input.username);
 
     await this.users.updateUserIp(user.id, input.ip);

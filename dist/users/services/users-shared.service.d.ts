@@ -6,7 +6,7 @@ export declare class SharedUsersService {
     private users;
     private bannedWords;
     constructor(users: UserRepository, bannedWords: UsernameBannedWordRepository);
-    login(input: {
+    createTokenForAuthenticatedUser(input: {
         username: string;
         ip: string;
     }): Promise<{
