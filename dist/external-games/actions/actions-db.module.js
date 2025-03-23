@@ -8,14 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExternalGameActionsDatabaseModule = void 0;
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
 const action_repository_1 = require("./repositories/action.repository");
 const softswiss_connection_module_1 = require("../../database/softswiss-connection.module");
+const action_group_entity_1 = require("./entities/action-group.entity");
+const action_entity_1 = require("./entities/action.entity");
 let ExternalGameActionsDatabaseModule = class ExternalGameActionsDatabaseModule {
 };
 exports.ExternalGameActionsDatabaseModule = ExternalGameActionsDatabaseModule;
 exports.ExternalGameActionsDatabaseModule = ExternalGameActionsDatabaseModule = __decorate([
     (0, common_1.Module)({
-        imports: [softswiss_connection_module_1.SoftswissDatabaseConnectionModule],
+        imports: [
+            softswiss_connection_module_1.SoftswissDatabaseConnectionModule,
+            typeorm_1.TypeOrmModule.forFeature([action_entity_1.ExternalGameAction, action_group_entity_1.ExternalGameActionGroup]),
+        ],
         providers: [action_repository_1.ExternalGameActionRepository],
         exports: [action_repository_1.ExternalGameActionRepository],
     })
