@@ -16,7 +16,9 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./config"), exports);
 __exportStar(require("./config/shared-config.module"), exports);
-__exportStar(require("./database/db-connections.module"), exports);
+__exportStar(require("./database/earnbet-connection.module"), exports);
+__exportStar(require("./database/currency-connection.module"), exports);
+__exportStar(require("./database/softswiss-connection.module"), exports);
 __exportStar(require("./database/constants"), exports);
 __exportStar(require("./database/functions"), exports);
 __exportStar(require("./database/typeorm/typeorm-repository.base"), exports);

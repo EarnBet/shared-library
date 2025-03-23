@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { SharedDatabaseConnectionsModule } from "../../../database/db-connections.module";
+import { CurrencyDatabaseConnectionModule } from "../../../database/currency-connection.module";
 import { SharedDatabaseConnectionName } from "../../../database/constants";
 
 import { DepositStatus } from "./entities/deposit-status.entity";
@@ -12,7 +12,7 @@ import { DepositStatusService } from "./services/deposit-status.service";
 @Module({
   imports: [
     // for database connection
-    SharedDatabaseConnectionsModule,
+    CurrencyDatabaseConnectionModule,
     // for database entity
     TypeOrmModule.forFeature(
       [DepositStatus],

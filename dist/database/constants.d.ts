@@ -1,5 +1,6 @@
 export declare enum SharedDatabaseConnectionName {
     CURRENCY = "CURRENCY",
-    EARNBET = "EARNBET"
+    EARNBET = "EARNBET",
+    SOFTSWISS = "SOFTSWISS"
 }
 //# sourceMappingURL=constants.d.ts.map

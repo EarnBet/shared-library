@@ -1,7 +1,10 @@
 export * from "./config";
 export * from "./config/shared-config.module";
 
-export * from "./database/db-connections.module";
+export * from "./database/earnbet-connection.module";
+export * from "./database/currency-connection.module";
+export * from "./database/softswiss-connection.module";
+
 export * from "./database/constants";
 export * from "./database/functions";
 

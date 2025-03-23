@@ -6,23 +6,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SharedDatabaseConnectionsModule = void 0;
+exports.EarnbetDatabaseConnectionModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const shared_config_module_1 = require("../config/shared-config.module");
 const constants_1 = require("./constants");
 const functions_1 = require("./functions");
-let SharedDatabaseConnectionsModule = class SharedDatabaseConnectionsModule {
+let EarnbetDatabaseConnectionModule = class EarnbetDatabaseConnectionModule {
 };
-exports.SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule;
-exports.SharedDatabaseConnectionsModule = SharedDatabaseConnectionsModule = __decorate([
+exports.EarnbetDatabaseConnectionModule = EarnbetDatabaseConnectionModule;
+exports.EarnbetDatabaseConnectionModule = EarnbetDatabaseConnectionModule = __decorate([
     (0, common_1.Module)({
         imports: [
             shared_config_module_1.SharedConfigModule,
-            typeorm_1.TypeOrmModule.forRoot(Object.assign({}, (0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.CURRENCY))),
             typeorm_1.TypeOrmModule.forRoot(Object.assign({}, (0, functions_1.getTypeOrmConnectionConfig)(constants_1.SharedDatabaseConnectionName.EARNBET, "utf8mb4_bin"))),
         ],
         exports: [shared_config_module_1.SharedConfigModule, typeorm_1.TypeOrmModule],
     })
-], SharedDatabaseConnectionsModule);
-//# sourceMappingURL=db-connections.module.js.map
+], EarnbetDatabaseConnectionModule);
+//# sourceMappingURL=earnbet-connection.module.js.map
