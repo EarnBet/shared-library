@@ -19,6 +19,7 @@ const typeorm_2 = require("typeorm");
 const typeorm_repository_base_1 = require("../../../database/typeorm/typeorm-repository.base");
 const action_entity_1 = require("../entities/action.entity");
 const constants_1 = require("../entities/constants");
+const constants_2 = require("../../../database/constants");
 let ExternalGameActionRepository = class ExternalGameActionRepository extends typeorm_repository_base_1.TypeOrmRepository {
     constructor(repository) {
         super(repository);
@@ -59,7 +60,7 @@ let ExternalGameActionRepository = class ExternalGameActionRepository extends ty
 exports.ExternalGameActionRepository = ExternalGameActionRepository;
 exports.ExternalGameActionRepository = ExternalGameActionRepository = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(action_entity_1.ExternalGameAction)),
+    __param(0, (0, typeorm_1.InjectRepository)(action_entity_1.ExternalGameAction, constants_2.SharedDatabaseConnectionName.SOFTSWISS)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], ExternalGameActionRepository);
 //# sourceMappingURL=action.repository.js.map

@@ -5,11 +5,15 @@ import { Equal, In, Not, Repository } from "typeorm";
 import { TypeOrmRepository } from "../../../database/typeorm/typeorm-repository.base";
 import { ExternalGameAction } from "../entities/action.entity";
 import { PlayRequestActionType } from "../entities/constants";
+import { SharedDatabaseConnectionName } from "../../../database/constants";
 
 @Injectable()
 export class ExternalGameActionRepository extends TypeOrmRepository<ExternalGameAction> {
   constructor(
-    @InjectRepository(ExternalGameAction)
+    @InjectRepository(
+      ExternalGameAction,
+      SharedDatabaseConnectionName.SOFTSWISS
+    )
     repository: Repository<ExternalGameAction>
   ) {
     super(repository);

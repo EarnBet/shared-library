@@ -13,6 +13,7 @@ const action_repository_1 = require("./repositories/action.repository");
 const softswiss_connection_module_1 = require("../../database/softswiss-connection.module");
 const action_group_entity_1 = require("./entities/action-group.entity");
 const action_entity_1 = require("./entities/action.entity");
+const constants_1 = require("../../database/constants");
 let ExternalGameActionsDatabaseModule = class ExternalGameActionsDatabaseModule {
 };
 exports.ExternalGameActionsDatabaseModule = ExternalGameActionsDatabaseModule;
@@ -20,7 +21,7 @@ exports.ExternalGameActionsDatabaseModule = ExternalGameActionsDatabaseModule = 
     (0, common_1.Module)({
         imports: [
             softswiss_connection_module_1.SoftswissDatabaseConnectionModule,
-            typeorm_1.TypeOrmModule.forFeature([action_entity_1.ExternalGameAction, action_group_entity_1.ExternalGameActionGroup]),
+            typeorm_1.TypeOrmModule.forFeature([action_entity_1.ExternalGameAction, action_group_entity_1.ExternalGameActionGroup], constants_1.SharedDatabaseConnectionName.SOFTSWISS),
         ],
         providers: [action_repository_1.ExternalGameActionRepository],
         exports: [action_repository_1.ExternalGameActionRepository],
