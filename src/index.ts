@@ -77,3 +77,9 @@ export * from "./admin-users/services/admin-users.shared.service";
 export * from "./admin-users/repositories/admin-user.shared.repository";
 
 export * from "./admin-users/admin-users.shared.module";
+
+export * from "./external-games/actions/entities/action.entity";
+export * from "./external-games/actions/entities/action-group.entity";
+export * from "./external-games/actions/entities/constants";
+export * from "./external-games/actions/repositories/action.repository";
+export * from "./external-games/actions/actions-db.module";
