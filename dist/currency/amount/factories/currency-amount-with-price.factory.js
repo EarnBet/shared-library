@@ -61,6 +61,12 @@ class CurrencyAmountWithPrice extends precise_numbers_1.NumberForPreciseMathBase
     get quantity() {
         return this.number.quantity;
     }
+    get integerForBlockChain() {
+        return this.number.integerForBlockChain;
+    }
+    get quantityForBlockChain() {
+        return this.number.quantityForBlockChain;
+    }
 }
 class CurrencyAmountWithPriceFactory {
     constructor(coinDataProvider, priceService) {

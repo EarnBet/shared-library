@@ -20,7 +20,7 @@ export declare class PreciseMath<T extends IPreciseNumber> implements IPreciseMa
     isEqualTo(other: T): boolean;
     isEqualToDecimal(other: BigSource): boolean;
     get decimal(): string;
-    get integer(): string;
+    get integerForMath(): string;
     get isZero(): boolean;
     get isPositive(): boolean;
     get isNegative(): boolean;
