@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const big_js_1 = __importDefault(require("big.js"));
 const precise_numbers_1 = require("../../../math/precise-numbers");
 const shared_1 = require("./shared");
+const constants_1 = require("./constants");
 class PreciseCurrencyAmountFactory {
     constructor(currency) {
         this.currency = currency;
@@ -24,8 +25,9 @@ class PreciseCurrencyAmountFactory {
 }
 class CurrencyAmount extends precise_numbers_1.NumberForPreciseMathBase {
     constructor(decimalValue, currency) {
-        super(currency.precision, new big_js_1.default(decimalValue)
-            .times(Math.pow(10, currency.precision))
+        const precision = constants_1.maxPrecisionForCurrencyAmounts;
+        super(precision, new big_js_1.default(decimalValue)
+            .times(Math.pow(10, precision))
             .round(0, big_js_1.default.roundDown), new PreciseCurrencyAmountFactory(currency));
         this.currency = currency;
     }
@@ -51,7 +53,7 @@ class CurrencyAmountFactory {
     }
     async newAmountFromInteger(integerSubunits, tokenSymbol) {
         const data = await this.coinDataProvider.getCoinDataBySymbol(tokenSymbol);
-        const decimalAmount = new big_js_1.default(integerSubunits).div(Math.pow(10, data.precision));
+        const decimalAmount = new big_js_1.default(integerSubunits).div(Math.pow(10, constants_1.maxPrecisionForCurrencyAmounts));
         return new CurrencyAmount(decimalAmount, data);
     }
 }

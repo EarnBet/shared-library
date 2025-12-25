@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PreciseCurrencyAmount = exports.MatchingCurrencyValidator = void 0;
 const precise_numbers_1 = require("../../../math/precise-numbers");
+const constants_1 = require("./constants");
 class MatchingCurrencyValidator {
     constructor(currency) {
         this.currency = currency;
@@ -19,7 +20,7 @@ class MatchingCurrencyValidator {
 exports.MatchingCurrencyValidator = MatchingCurrencyValidator;
 class PreciseCurrencyAmount extends precise_numbers_1.PreciseDecimal {
     constructor(decimalValue, currency) {
-        super(decimalValue, currency.precision);
+        super(decimalValue, constants_1.maxPrecisionForCurrencyAmounts);
         this.currency = currency;
     }
     get quantity() {
