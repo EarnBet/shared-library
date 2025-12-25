@@ -13,7 +13,7 @@ class PreciseMath {
     }
     add(other) {
         this.validator.isMatchingType(other);
-        const newInteger = this.startingValue.bigInteger.plus(other.integer);
+        const newInteger = this.startingValue.bigInteger.plus(other.integerForMath);
         const newNumber = this.factory.newAmountFromInteger(newInteger, this.precision);
         return new PreciseMath(newNumber, this.factory);
     }
@@ -23,7 +23,7 @@ class PreciseMath {
     }
     subtract(other) {
         this.validator.isMatchingType(other);
-        const newInteger = this.startingValue.bigInteger.minus(other.integer);
+        const newInteger = this.startingValue.bigInteger.minus(other.integerForMath);
         const newNumber = this.factory.newAmountFromInteger(newInteger, this.precision);
         return new PreciseMath(newNumber, this.factory);
     }
@@ -67,8 +67,8 @@ class PreciseMath {
     get decimal() {
         return this.number.decimal;
     }
-    get integer() {
-        return this.number.integer;
+    get integerForMath() {
+        return this.number.integerForMath;
     }
     get isZero() {
         return this.number.isZero;

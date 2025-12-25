@@ -11,6 +11,8 @@ declare class CurrencyAmountWithPrice extends NumberForPreciseMathBase<IPreciseC
     get amountInUSD(): string;
     get priceInUSD(): number;
     get quantity(): string;
+    get integerForBlockChain(): string;
+    get quantityForBlockChain(): string;
 }
 declare class CurrencyAmountWithPriceFactory implements ICurrencyAmountWithPriceFactory {
     readonly coinDataProvider: ICoinDataProvider;

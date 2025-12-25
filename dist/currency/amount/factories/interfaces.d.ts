@@ -8,6 +8,8 @@ import { ICurrencyPriceService } from "../price-service/interfaces";
 export interface IPreciseCurrencyAmount extends IPreciseNumber {
     readonly currency: ICurrency;
     readonly quantity: string;
+    readonly integerForBlockChain: string;
+    readonly quantityForBlockChain: string;
 }
 export interface IPreciseCurrencyAmountWithPrice extends IPreciseCurrencyAmount {
     readonly priceInUSD: number;
