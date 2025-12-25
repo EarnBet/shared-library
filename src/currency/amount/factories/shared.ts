@@ -6,6 +6,7 @@ import { IMatchingNumberTypeValidator } from "../../../math/interfaces";
 import { PreciseDecimal } from "../../../math/precise-numbers";
 
 import { IPreciseCurrencyAmount, ICurrencyAmount } from "./interfaces";
+import { maxPrecisionForCurrencyAmounts } from "./constants";
 
 export class MatchingCurrencyValidator
   implements IMatchingNumberTypeValidator<IPreciseCurrencyAmount>
@@ -29,7 +30,7 @@ export class PreciseCurrencyAmount
   implements IPreciseCurrencyAmount
 {
   constructor(decimalValue: BigSource, readonly currency: ICurrency) {
-    super(decimalValue, currency.precision);
+    super(decimalValue, maxPrecisionForCurrencyAmounts);
   }
 
   get quantity() {

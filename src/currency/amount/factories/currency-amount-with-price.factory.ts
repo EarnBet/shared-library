@@ -19,6 +19,7 @@ import {
 import { PreciseCurrencyAmount, MatchingCurrencyValidator } from "./shared";
 import { getRealCoinPriceService } from "../price-service/coin-price.service";
 import { ICurrencyPriceService } from "../price-service/interfaces";
+import { maxPrecisionForCurrencyAmounts } from "./constants";
 
 class PreciseCurrencyAmountWithPrice
   extends PreciseCurrencyAmount
@@ -37,7 +38,7 @@ class PreciseCurrencyAmountWithPrice
 
     return new Big(this.decimal)
       .times(this.priceInUSD)
-      .round(6, Big.roundDown)
+      .round(maxPrecisionForCurrencyAmounts, Big.roundDown)
       .toString();
   }
 
@@ -101,10 +102,12 @@ class CurrencyAmountWithPrice
     readonly currency: ICurrency,
     priceInUSD: number
   ) {
+    const precision = maxPrecisionForCurrencyAmounts;
+
     super(
-      currency.precision,
+      precision,
       new Big(decimalValue)
-        .times(Math.pow(10, currency.precision))
+        .times(Math.pow(10, precision))
         .round(0, Big.roundDown),
       new PreciseCurrencyAmountWithPriceFactory(currency, priceInUSD)
     );
@@ -172,7 +175,7 @@ class CurrencyAmountWithPriceFactory
     const data = await this.coinDataProvider.getCoinDataBySymbol(tokenSymbol);
 
     const decimalAmount = new Big(integerSubunits).div(
-      Math.pow(10, data.precision)
+      Math.pow(10, maxPrecisionForCurrencyAmounts)
     );
 
     return new CurrencyAmountWithPrice(
