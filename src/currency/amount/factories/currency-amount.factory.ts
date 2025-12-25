@@ -70,6 +70,14 @@ class CurrencyAmount
   get quantity() {
     return this.number.quantity;
   }
+
+  get integerForBlockChain() {
+    return this.number.integerForBlockChain;
+  }
+
+  get quantityForBlockChain() {
+    return this.number.quantityForBlockChain;
+  }
 }
 
 class CurrencyAmountFactory implements ICurrencyAmountFactory {
