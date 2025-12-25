@@ -15,6 +15,7 @@ import {
   ICurrencyAmountFactory,
 } from "./interfaces";
 import { MatchingCurrencyValidator, PreciseCurrencyAmount } from "./shared";
+import { maxPrecisionForCurrencyAmounts } from "./constants";
 
 class PreciseCurrencyAmountFactory
   implements IPreciseNumberFactory<IPreciseCurrencyAmount>
@@ -55,10 +56,12 @@ class CurrencyAmount
   implements ICurrencyAmount
 {
   constructor(decimalValue: BigSource, readonly currency: ICurrency) {
+    const precision = maxPrecisionForCurrencyAmounts;
+
     super(
-      currency.precision,
+      precision,
       new Big(decimalValue)
-        .times(Math.pow(10, currency.precision))
+        .times(Math.pow(10, precision))
         .round(0, Big.roundDown),
       new PreciseCurrencyAmountFactory(currency)
     );
@@ -103,7 +106,7 @@ class CurrencyAmountFactory implements ICurrencyAmountFactory {
     const data = await this.coinDataProvider.getCoinDataBySymbol(tokenSymbol);
 
     const decimalAmount = new Big(integerSubunits).div(
-      Math.pow(10, data.precision)
+      Math.pow(10, maxPrecisionForCurrencyAmounts)
     );
 
     return new CurrencyAmount(decimalAmount, data);
