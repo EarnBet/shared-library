@@ -17,6 +17,7 @@ const PRICES = {
   USDC: 1,
   USDT: 1,
   STACK: 3.11,
+  USDT_TRX: 1,
 
   EBET: 0.00001,
 
