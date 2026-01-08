@@ -64,6 +64,6 @@ __decorate([
     __metadata("design:type", Date)
 ], DepositStatus.prototype, "credited_at", void 0);
 exports.DepositStatus = DepositStatus = __decorate([
-    (0, typeorm_1.Entity)({ name: "deposit_status" })
+    (0, typeorm_1.Entity)({ name: "deposit_status", database: "currency" })
 ], DepositStatus);
 //# sourceMappingURL=deposit-status.entity.js.map
