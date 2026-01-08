@@ -1,7 +1,7 @@
 import { Column, Entity } from "typeorm";
 import { ISavedDepositStatusRow } from "./interfaces";
 
-@Entity({ name: "deposit_status" })
+@Entity({ name: "deposit_status", database: "currency" })
 export class DepositStatus implements ISavedDepositStatusRow {
   @Column({ type: "int", nullable: false, primary: true })
   transaction_id: number;
