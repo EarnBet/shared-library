@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DepositStatusModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const db_connections_module_1 = require("../../../database/db-connections.module");
+const currency_connection_module_1 = require("../../../database/currency-connection.module");
 const constants_1 = require("../../../database/constants");
 const deposit_status_entity_1 = require("./entities/deposit-status.entity");
 const deposit_status_repository_1 = require("./repositories/deposit-status.repository");
@@ -20,7 +20,7 @@ exports.DepositStatusModule = DepositStatusModule;
 exports.DepositStatusModule = DepositStatusModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            db_connections_module_1.SharedDatabaseConnectionsModule,
+            currency_connection_module_1.CurrencyDatabaseConnectionModule,
             typeorm_1.TypeOrmModule.forFeature([deposit_status_entity_1.DepositStatus], constants_1.SharedDatabaseConnectionName.CURRENCY),
         ],
         providers: [deposit_status_service_1.DepositStatusService, deposit_status_repository_1.DepositStatusRepository],

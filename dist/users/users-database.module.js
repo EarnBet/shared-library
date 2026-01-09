@@ -14,14 +14,14 @@ const user_entity_1 = require("./entities/user.entity");
 const username_banned_words_entity_1 = require("./entities/username-banned-words.entity");
 const username_banned_word_repository_1 = require("./repositories/username-banned-word.repository");
 const constants_1 = require("../database/constants");
-const db_connections_module_1 = require("../database/db-connections.module");
+const earnbet_connection_module_1 = require("../database/earnbet-connection.module");
 let UsersDatabaseModule = class UsersDatabaseModule {
 };
 exports.UsersDatabaseModule = UsersDatabaseModule;
 exports.UsersDatabaseModule = UsersDatabaseModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            db_connections_module_1.SharedDatabaseConnectionsModule,
+            earnbet_connection_module_1.EarnbetDatabaseConnectionModule,
             typeorm_1.TypeOrmModule.forFeature([user_entity_1.User, username_banned_words_entity_1.UsernameBannedWord], constants_1.SharedDatabaseConnectionName.EARNBET),
         ],
         providers: [user_repository_1.UserRepository, username_banned_word_repository_1.UsernameBannedWordRepository],

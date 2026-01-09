@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SharedCoinsModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const db_connections_module_1 = require("../../database/db-connections.module");
+const currency_connection_module_1 = require("../../database/currency-connection.module");
 const constants_1 = require("../../database/constants");
 const coins_controller_1 = require("./controllers/coins.controller");
 const coin_entity_1 = require("./entities/coin.entity");
@@ -22,12 +22,12 @@ exports.SharedCoinsModule = SharedCoinsModule;
 exports.SharedCoinsModule = SharedCoinsModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            db_connections_module_1.SharedDatabaseConnectionsModule,
+            currency_connection_module_1.CurrencyDatabaseConnectionModule,
             typeorm_1.TypeOrmModule.forFeature([coin_entity_1.Coin], constants_1.SharedDatabaseConnectionName.CURRENCY),
         ],
         providers: [coins_service_1.CoinsService, coin_data_provider_1.CoinDataProvider, coin_repository_1.CoinRepository],
         controllers: [coins_controller_1.CoinsController],
-        exports: [coin_data_provider_1.CoinDataProvider, db_connections_module_1.SharedDatabaseConnectionsModule],
+        exports: [coin_data_provider_1.CoinDataProvider, currency_connection_module_1.CurrencyDatabaseConnectionModule],
     })
 ], SharedCoinsModule);
 //# sourceMappingURL=coins.module.js.map
