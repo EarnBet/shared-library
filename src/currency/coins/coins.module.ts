@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { SharedDatabaseConnectionsModule } from "../../database/db-connections.module";
+import { CurrencyDatabaseConnectionModule } from "../../database/currency-connection.module";
 import { SharedDatabaseConnectionName } from "../../database/constants";
 
 import { CoinsController } from "./controllers/coins.controller";
@@ -13,12 +13,12 @@ import { CoinDataProvider } from "./services/coin-data-provider";
 @Module({
   imports: [
     // for database connection
-    SharedDatabaseConnectionsModule,
+    CurrencyDatabaseConnectionModule,
     // for database entity
     TypeOrmModule.forFeature([Coin], SharedDatabaseConnectionName.CURRENCY),
   ],
   providers: [CoinsService, CoinDataProvider, CoinRepository],
   controllers: [CoinsController],
-  exports: [CoinDataProvider, SharedDatabaseConnectionsModule],
+  exports: [CoinDataProvider, CurrencyDatabaseConnectionModule],
 })
 export class SharedCoinsModule {}
