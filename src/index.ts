@@ -32,6 +32,9 @@ export * from "./currency/transactions/deposit-status/services/deposit-status.se
 export * from "./currency/transactions/deposit-status/repositories/deposit-status.repository";
 export * from "./currency/transactions/deposit-status/entities/interfaces";
 
+export * from "./currency/transactions/withdrawal-requests/inputs/interfaces";
+export * from "./currency/transactions/withdrawal-requests/withdrawal-requests-repository.module";
+
 export * from "./math/precise-numbers";
 export * from "./math/precise-math";
 export * from "./math/interfaces";
