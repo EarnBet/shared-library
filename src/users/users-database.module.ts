@@ -9,6 +9,8 @@ import { UserRepository } from "./repositories/user.repository";
 import { User } from "./entities/user.entity";
 import { UsernameBannedWord } from "./entities/username-banned-words.entity";
 import { UsernameBannedWordRepository } from "./repositories/username-banned-word.repository";
+import { SharedDatabaseConnectionName } from "../database/constants";
+import { EarnbetDatabaseConnectionModule } from "../database/earnbet-connection.module";
 
 @Module({
   imports: [
