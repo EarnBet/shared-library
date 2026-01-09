@@ -1,7 +1,9 @@
 export * from "./config";
 export * from "./config/shared-config.module";
 
-export * from "./database/db-connections.module";
+export * from "./database/earnbet-connection.module";
+export * from "./database/currency-connection.module";
+
 export * from "./database/constants";
 export * from "./database/functions";
 
@@ -28,6 +30,9 @@ export * from "./currency/transactions/deposit-status/deposit-status.module";
 export * from "./currency/transactions/deposit-status/services/deposit-status.service";
 export * from "./currency/transactions/deposit-status/repositories/deposit-status.repository";
 export * from "./currency/transactions/deposit-status/entities/interfaces";
+
+export * from "./currency/transactions/withdrawal-requests/inputs/interfaces";
+export * from "./currency/transactions/withdrawal-requests/withdrawal-requests-repository.module";
 
 export * from "./math/precise-numbers";
 export * from "./math/precise-math";
