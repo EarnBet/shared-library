@@ -53,7 +53,7 @@ export class WithdrawalRequestsRepository extends TypeOrmRepository<WithdrawalRe
   }
 
   private getAllConfirmedRequestsOnHold() {
-    return this.repository.findBy({ is_on_hold: 1, confirmed_at: IsNotNull() });
+    return this.repository.find({ is_on_hold: 1, confirmed_at: IsNotNull() });
   }
 
   approveRequest({ request_id, approved_by_user_id }: IApproveRequestInput) {
@@ -78,7 +78,7 @@ export class WithdrawalRequestsRepository extends TypeOrmRepository<WithdrawalRe
   }
 
   getAllRequestsForProcessing() {
-    return this.repository.findBy({
+    return this.repository.find({
       // must be confirmed
       confirmed_at: IsNotNull(),
       // must NOT be on hold
