@@ -5,7 +5,7 @@ import { PreciseMath } from "./precise-math";
 export interface IPreciseNumber {
   readonly precision: number;
   readonly decimal: string;
-  readonly integer: string;
+  readonly integerForMath: string;
   readonly isZero: boolean;
   readonly isPositive: boolean;
   readonly isNegative: boolean;

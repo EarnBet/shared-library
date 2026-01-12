@@ -20,7 +20,7 @@ export class PreciseMath<T extends IPreciseNumber> implements IPreciseMath<T> {
   add(other: T) {
     this.validator.isMatchingType(other);
 
-    const newInteger = this.startingValue.bigInteger.plus(other.integer);
+    const newInteger = this.startingValue.bigInteger.plus(other.integerForMath);
 
     const newNumber = this.factory.newAmountFromInteger(
       newInteger,
@@ -38,7 +38,9 @@ export class PreciseMath<T extends IPreciseNumber> implements IPreciseMath<T> {
   subtract(other: T) {
     this.validator.isMatchingType(other);
 
-    const newInteger = this.startingValue.bigInteger.minus(other.integer);
+    const newInteger = this.startingValue.bigInteger.minus(
+      other.integerForMath
+    );
 
     const newNumber = this.factory.newAmountFromInteger(
       newInteger,
@@ -104,8 +106,8 @@ export class PreciseMath<T extends IPreciseNumber> implements IPreciseMath<T> {
     return this.number.decimal;
   }
 
-  get integer() {
-    return this.number.integer;
+  get integerForMath() {
+    return this.number.integerForMath;
   }
 
   get isZero() {

@@ -26,7 +26,7 @@ export class PreciseNumber implements IPreciseNumber {
   isLessThan(other: IPreciseNumber) {
     this.validateMatchingCurrency(other);
 
-    return this.bigInteger.lt(other.integer);
+    return this.bigInteger.lt(other.integerForMath);
   }
   isLessThanDecimal(other: BigSource) {
     return new Big(this.decimal).lt(other);
@@ -35,12 +35,12 @@ export class PreciseNumber implements IPreciseNumber {
   isGreaterThan(other: IPreciseNumber) {
     this.validateMatchingCurrency(other);
 
-    return this.bigInteger.gt(other.integer);
+    return this.bigInteger.gt(other.integerForMath);
   }
   isGreaterThanOrEqualTo(other: IPreciseNumber) {
     this.validateMatchingCurrency(other);
 
-    return this.bigInteger.gte(other.integer);
+    return this.bigInteger.gte(other.integerForMath);
   }
 
   isGreaterThanDecimal(other: BigSource) {
@@ -53,7 +53,7 @@ export class PreciseNumber implements IPreciseNumber {
   isEqualTo(other: IPreciseNumber) {
     this.validateMatchingCurrency(other);
 
-    return this.bigInteger.eq(other.integer);
+    return this.bigInteger.eq(other.integerForMath);
   }
   isEqualToDecimal(other: BigSource) {
     return new Big(this.decimal).eq(other);
@@ -65,7 +65,7 @@ export class PreciseNumber implements IPreciseNumber {
     }
   }
 
-  get integer() {
+  get integerForMath() {
     return this.bigInteger.toFixed(0);
   }
 
@@ -201,8 +201,8 @@ export class NumberForPreciseMathBase<T extends IPreciseNumber>
     return this.number.decimal;
   }
 
-  get integer() {
-    return this.number.integer;
+  get integerForMath() {
+    return this.number.integerForMath;
   }
 
   get isZero() {
