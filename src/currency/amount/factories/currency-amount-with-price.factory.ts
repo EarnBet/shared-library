@@ -28,7 +28,7 @@ class PreciseCurrencyAmountWithPrice
   constructor(
     decimalValue: BigSource,
     currency: ICurrency,
-    readonly priceInUSD: number
+    readonly priceInUSD: number,
   ) {
     super(decimalValue, currency);
   }
@@ -45,32 +45,30 @@ class PreciseCurrencyAmountWithPrice
   private checkPrice() {
     if (this.priceInUSD == undefined) {
       throw new Error(
-        `Price for Currency ${this.currency.symbol} IS NOT DEFINED!`
+        `Price for Currency ${this.currency.symbol} IS NOT DEFINED!`,
       );
     }
   }
 }
 
-class PreciseCurrencyAmountWithPriceFactory
-  implements IPreciseNumberFactory<IPreciseCurrencyAmountWithPrice>
-{
+class PreciseCurrencyAmountWithPriceFactory implements IPreciseNumberFactory<IPreciseCurrencyAmountWithPrice> {
   readonly validator: IMatchingNumberTypeValidator<IPreciseCurrencyAmount>;
 
   constructor(
     private readonly currency: ICurrency,
-    private readonly priceInUSD: number
+    private readonly priceInUSD: number,
   ) {
     this.validator = new MatchingCurrencyValidator(currency);
   }
 
   newAmountFromInteger(
     integer: BigSource,
-    precision: number
+    precision: number,
   ): IPreciseCurrencyAmountWithPrice {
     const number = new PreciseCurrencyAmountWithPrice(
       new Big(integer).div(Math.pow(10, precision)),
       this.currency,
-      this.priceInUSD
+      this.priceInUSD,
     );
 
     this.validator.isMatchingType(number);
@@ -79,12 +77,12 @@ class PreciseCurrencyAmountWithPriceFactory
   }
   newAmountFromDecimal(
     decimal: BigSource,
-    precision: number
+    precision: number,
   ): IPreciseCurrencyAmountWithPrice {
     const number = new PreciseCurrencyAmountWithPrice(
       decimal,
       this.currency,
-      this.priceInUSD
+      this.priceInUSD,
     );
 
     this.validator.isMatchingType(number);
@@ -100,7 +98,7 @@ class CurrencyAmountWithPrice
   constructor(
     decimalValue: BigSource,
     readonly currency: ICurrency,
-    priceInUSD: number
+    priceInUSD: number,
   ) {
     const precision = maxPrecisionForCurrencyAmounts;
 
@@ -109,7 +107,7 @@ class CurrencyAmountWithPrice
       new Big(decimalValue)
         .times(Math.pow(10, precision))
         .round(0, Big.roundDown),
-      new PreciseCurrencyAmountWithPriceFactory(currency, priceInUSD)
+      new PreciseCurrencyAmountWithPriceFactory(currency, priceInUSD),
     );
   }
 
@@ -134,16 +132,14 @@ class CurrencyAmountWithPrice
   }
 }
 
-class CurrencyAmountWithPriceFactory
-  implements ICurrencyAmountWithPriceFactory
-{
+class CurrencyAmountWithPriceFactory implements ICurrencyAmountWithPriceFactory {
   constructor(
     readonly coinDataProvider: ICoinDataProvider,
-    readonly priceService: ICurrencyPriceService
+    readonly priceService: ICurrencyPriceService,
   ) {}
 
   async newAmountFromQuantity(
-    quantity: string
+    quantity: string,
   ): Promise<CurrencyAmountWithPrice> {
     const [amount, tokenSymbol] = quantity.split(" ");
 
@@ -152,44 +148,44 @@ class CurrencyAmountWithPriceFactory
 
   async newAmountFromDecimal(
     decimalAmount: BigSource,
-    tokenSymbol: string
+    tokenSymbol: string,
   ): Promise<CurrencyAmountWithPrice> {
     const data = await this.coinDataProvider.getCoinDataBySymbol(tokenSymbol);
 
     return new CurrencyAmountWithPrice(
       decimalAmount,
       data,
-      await this.priceService.getPriceInUSD(data.symbol)
+      await this.priceService.getPriceInUSD(data.symbol),
     );
   }
 
   async newAmountFromDecimalAndCoinId(
     decimalAmount: BigSource,
-    coinId: CoinId
+    coinId: CoinId,
   ): Promise<CurrencyAmountWithPrice> {
     const data = await this.coinDataProvider.getCoinData(coinId);
 
     return new CurrencyAmountWithPrice(
       decimalAmount,
       data,
-      await this.priceService.getPriceInUSD(data.symbol)
+      await this.priceService.getPriceInUSD(data.symbol),
     );
   }
 
   async newAmountFromInteger(
     integerSubunits: BigSource,
-    tokenSymbol: string
+    tokenSymbol: string,
   ): Promise<CurrencyAmountWithPrice> {
     const data = await this.coinDataProvider.getCoinDataBySymbol(tokenSymbol);
 
     const decimalAmount = new Big(integerSubunits).div(
-      Math.pow(10, maxPrecisionForCurrencyAmounts)
+      Math.pow(10, data.precision),
     );
 
     return new CurrencyAmountWithPrice(
       decimalAmount,
       data,
-      await this.priceService.getPriceInUSD(data.symbol)
+      await this.priceService.getPriceInUSD(data.symbol),
     );
   }
 }
@@ -199,7 +195,7 @@ let currencyAmountWithPriceFactory: CurrencyAmountWithPriceFactory;
 export function getCurrencyAmountWithPriceFactory(
   coinDataProvider: ICoinDataProvider,
   updateInterval: number,
-  priceService: ICurrencyPriceService = undefined
+  priceService: ICurrencyPriceService = undefined,
 ): CurrencyAmountWithPriceFactory {
   if (currencyAmountWithPriceFactory == undefined) {
     if (priceService == undefined) {
@@ -208,7 +204,7 @@ export function getCurrencyAmountWithPriceFactory(
 
     currencyAmountWithPriceFactory = new CurrencyAmountWithPriceFactory(
       coinDataProvider,
-      priceService
+      priceService,
     );
   }
 
