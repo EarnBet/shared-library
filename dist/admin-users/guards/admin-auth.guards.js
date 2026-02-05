@@ -13,6 +13,7 @@ exports.UseRootAdminGuard = UseRootAdminGuard;
 exports.UseSuperAdminGuard = UseSuperAdminGuard;
 exports.UseRegularAdminGuard = UseRegularAdminGuard;
 exports.UseSupportAdminGuard = UseSupportAdminGuard;
+exports.UseSupportStaffAdminGuard = UseSupportStaffAdminGuard;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("../../auth/services/auth.service");
 const auth_guard_1 = require("../../auth/guards/auth.guard");
@@ -80,6 +81,15 @@ SupportAdminAuthGuard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
 ], SupportAdminAuthGuard);
+let SupportStaffAdminAuthGuard = class SupportStaffAdminAuthGuard extends AdminAuthGuard {
+    constructor(authService, service) {
+        super(authService, service, admin_roles_1.AdminUserRole.SUPPORT_STAFF);
+    }
+};
+SupportStaffAdminAuthGuard = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
+], SupportStaffAdminAuthGuard);
 function UseRootAdminGuard() {
     return (0, common_1.UseGuards)(RootAdminAuthGuard);
 }
@@ -91,5 +101,8 @@ function UseRegularAdminGuard() {
 }
 function UseSupportAdminGuard() {
     return (0, common_1.UseGuards)(SupportAdminAuthGuard);
+}
+function UseSupportStaffAdminGuard() {
+    return (0, common_1.UseGuards)(SupportStaffAdminAuthGuard);
 }
 //# sourceMappingURL=admin-auth.guards.js.map

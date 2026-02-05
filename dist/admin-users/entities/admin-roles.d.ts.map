@@ -1,1 +1,1 @@
-{"version":3,"file":"admin-roles.d.ts","sourceRoot":"","sources":["../../../src/admin-users/entities/admin-roles.ts"],"names":[],"mappings":"AAAA,oBAAY,aAAa;IACvB,UAAU,IAAI;IACd,WAAW,IAAA;IACX,aAAa,IAAA;IACb,aAAa,IAAA;CACd;AAED,eAAO,MAAM,oBAAoB,iBAKhC,CAAC"}
+{"version":3,"file":"admin-roles.d.ts","sourceRoot":"","sources":["../../../src/admin-users/entities/admin-roles.ts"],"names":[],"mappings":"AAAA,oBAAY,aAAa;IACvB,UAAU,IAAI;IACd,WAAW,IAAA;IACX,aAAa,IAAA;IACb,aAAa,IAAA;IACb,aAAa,IAAA;CACd;AAED,eAAO,MAAM,oBAAoB,iBAMhC,CAAC"}
