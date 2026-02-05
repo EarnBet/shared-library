@@ -3,6 +3,7 @@ export enum AdminUserRole {
   SUPER_ADMIN,
   REGULAR_ADMIN,
   SUPPORT_ADMIN,
+  SUPPORT_STAFF,
 }
 
 export const ALL_ADMIN_USER_ROLES = [
@@ -10,4 +11,5 @@ export const ALL_ADMIN_USER_ROLES = [
   AdminUserRole.SUPER_ADMIN,
   AdminUserRole.REGULAR_ADMIN,
   AdminUserRole.SUPPORT_ADMIN,
+  AdminUserRole.SUPPORT_STAFF,
 ];

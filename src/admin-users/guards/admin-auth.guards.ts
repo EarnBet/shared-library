@@ -16,7 +16,7 @@ class AdminAuthGuard extends AuthGuard implements CanActivate {
   constructor(
     authService: AuthService,
     private service: SharedAdminUsersService,
-    private role: AdminUserRole
+    private role: AdminUserRole,
   ) {
     super(authService);
   }
@@ -76,6 +76,13 @@ class SupportAdminAuthGuard extends AdminAuthGuard {
   }
 }
 
+@Injectable()
+class SupportStaffAdminAuthGuard extends AdminAuthGuard {
+  constructor(authService: AuthService, service: SharedAdminUsersService) {
+    super(authService, service, AdminUserRole.SUPPORT_STAFF);
+  }
+}
+
 export function UseRootAdminGuard() {
   return UseGuards(RootAdminAuthGuard);
 }
@@ -90,4 +97,8 @@ export function UseRegularAdminGuard() {
 
 export function UseSupportAdminGuard() {
   return UseGuards(SupportAdminAuthGuard);
+}
+
+export function UseSupportStaffAdminGuard() {
+  return UseGuards(SupportStaffAdminAuthGuard);
 }
