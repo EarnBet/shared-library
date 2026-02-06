@@ -10,7 +10,11 @@ export declare class MatchingCurrencyValidator implements IMatchingNumberTypeVal
 }
 export declare class PreciseCurrencyAmount extends PreciseDecimal implements IPreciseCurrencyAmount {
     readonly currency: ICurrency;
+    readonly precisionForBlockChain: number;
     constructor(decimalValue: BigSource, currency: ICurrency);
     get quantity(): string;
+    get quantityForBlockChain(): string;
+    get integerForBlockChain(): string;
+    get decimalForBlockChain(): string;
 }
 //# sourceMappingURL=shared.d.ts.map

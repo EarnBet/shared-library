@@ -5,7 +5,7 @@ import { generateAuthToken } from "../../auth/util/auth.functions";
 
 import { UserRepository } from "../repositories/user.repository";
 import { UsernameBannedWordRepository } from "../repositories/username-banned-word.repository";
-import { ILoginInput, ILoginUserInput } from "./inputs";
+import { ILoginUserInput } from "./inputs";
 import { User } from "../entities/user.entity";
 
 @Injectable()
@@ -15,8 +15,11 @@ export class SharedUsersService {
     private bannedWords: UsernameBannedWordRepository
   ) {}
 
-  async login(input: ILoginInput) {
-    // correct password validation is being done at input layer
+  /** correct password validation should already be done at input layer!  */
+  async createTokenForAuthenticatedUser(input: {
+    username: string;
+    ip: string;
+  }) {
     const user = await this.findByExactUsername(input.username);
 
     await this.users.updateUserIp(user.id, input.ip);

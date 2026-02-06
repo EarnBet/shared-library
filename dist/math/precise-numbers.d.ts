@@ -16,7 +16,7 @@ export declare class PreciseNumber implements IPreciseNumber {
     isEqualTo(other: IPreciseNumber): boolean;
     isEqualToDecimal(other: BigSource): boolean;
     protected validateMatchingCurrency(other: IPreciseNumber): void;
-    get integer(): string;
+    get integerForMath(): string;
     get isZero(): boolean;
     get isPositive(): boolean;
     get isNegative(): boolean;
@@ -44,7 +44,7 @@ export declare class NumberForPreciseMathBase<T extends IPreciseNumber> implemen
     isEqualTo(other: T): boolean;
     isEqualToDecimal(other: BigSource): boolean;
     get decimal(): string;
-    get integer(): string;
+    get integerForMath(): string;
     get isZero(): boolean;
     get isPositive(): boolean;
     get isNegative(): boolean;

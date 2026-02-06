@@ -8,6 +8,7 @@ const big_js_1 = __importDefault(require("big.js"));
 const precise_numbers_1 = require("../../../math/precise-numbers");
 const shared_1 = require("./shared");
 const coin_price_service_1 = require("../price-service/coin-price.service");
+const constants_1 = require("./constants");
 class PreciseCurrencyAmountWithPrice extends shared_1.PreciseCurrencyAmount {
     constructor(decimalValue, currency, priceInUSD) {
         super(decimalValue, currency);
@@ -17,12 +18,12 @@ class PreciseCurrencyAmountWithPrice extends shared_1.PreciseCurrencyAmount {
         this.checkPrice();
         return new big_js_1.default(this.decimal)
             .times(this.priceInUSD)
-            .round(6, big_js_1.default.roundDown)
+            .round(constants_1.maxPrecisionForCurrencyAmounts, big_js_1.default.roundDown)
             .toString();
     }
     checkPrice() {
         if (this.priceInUSD == undefined) {
-            throw new Error("Price for Currency IS NOT DEFINED!");
+            throw new Error(`Price for Currency ${this.currency.symbol} IS NOT DEFINED!`);
         }
     }
 }
@@ -45,8 +46,9 @@ class PreciseCurrencyAmountWithPriceFactory {
 }
 class CurrencyAmountWithPrice extends precise_numbers_1.NumberForPreciseMathBase {
     constructor(decimalValue, currency, priceInUSD) {
-        super(currency.precision, new big_js_1.default(decimalValue)
-            .times(Math.pow(10, currency.precision))
+        const precision = constants_1.maxPrecisionForCurrencyAmounts;
+        super(precision, new big_js_1.default(decimalValue)
+            .times(Math.pow(10, precision))
             .round(0, big_js_1.default.roundDown), new PreciseCurrencyAmountWithPriceFactory(currency, priceInUSD));
         this.currency = currency;
     }
@@ -58,6 +60,12 @@ class CurrencyAmountWithPrice extends precise_numbers_1.NumberForPreciseMathBase
     }
     get quantity() {
         return this.number.quantity;
+    }
+    get integerForBlockChain() {
+        return this.number.integerForBlockChain;
+    }
+    get quantityForBlockChain() {
+        return this.number.quantityForBlockChain;
     }
 }
 class CurrencyAmountWithPriceFactory {
@@ -84,10 +92,10 @@ class CurrencyAmountWithPriceFactory {
     }
 }
 let currencyAmountWithPriceFactory;
-function getCurrencyAmountWithPriceFactory(coinDataProvider, priceService = undefined) {
+function getCurrencyAmountWithPriceFactory(coinDataProvider, updateInterval, priceService = undefined) {
     if (currencyAmountWithPriceFactory == undefined) {
         if (priceService == undefined) {
-            priceService = (0, coin_price_service_1.getRealCoinPriceService)(coinDataProvider);
+            priceService = (0, coin_price_service_1.getRealCoinPriceService)(coinDataProvider, updateInterval);
         }
         currencyAmountWithPriceFactory = new CurrencyAmountWithPriceFactory(coinDataProvider, priceService);
     }

@@ -1,16 +1,27 @@
 import { sleep } from "../../../util/timer-util";
 import { httpGetJson } from "../../../util/http-util";
 import { ICoinsService } from "../../coins/services/interfaces";
-import { ICurrencyPriceService } from "./interfaces";
+import { ICurrencyPriceService, IPriceMap } from "./interfaces";
+
+import { EventEmitter } from "events"; //we'll use built-in EventEmitter instead of the one from NestJS
+import { CurrencyAmountEvent } from "../outputs/events.enum";
 
 class CoinPriceService implements ICurrencyPriceService {
+  //this class should be used in factory pattern
   private symbols: string[] = [];
-  private prices: { [coin: string]: number } = {};
+  private prices: IPriceMap = {};
 
   private isInit = false;
 
-  constructor(database: ICoinsService) {
+  private eventEmitter: EventEmitter;
+
+  constructor(database: ICoinsService, private updateInterval: number) {
+    this.eventEmitter = new EventEmitter();
     this.init(database);
+  }
+
+  subscribe(subscriber: (prices: IPriceMap) => void) {
+    this.eventEmitter.on(CurrencyAmountEvent.COIN_PRICE_UPDATED, subscriber);
   }
 
   private async init(database: ICoinsService) {
@@ -18,7 +29,7 @@ class CoinPriceService implements ICurrencyPriceService {
 
     this.symbols = coins.map((row) => row.symbol);
 
-    setInterval(this.updateCoinPrices, 1000 * 60 * 60);
+    setInterval(this.updateCoinPrices, this.updateInterval);
 
     await this.updateCoinPrices();
 
@@ -37,6 +48,8 @@ class CoinPriceService implements ICurrencyPriceService {
         this.prices[symbol] = price;
       }
     }
+
+    this.eventEmitter.emit(CurrencyAmountEvent.COIN_PRICE_UPDATED, this.prices);
   };
 
   async getPriceInUSD(symbol: string): Promise<number> {
@@ -95,10 +108,11 @@ async function fetchPriceOfCoin(symbol: string): Promise<number> {
 let coinPriceService: CoinPriceService;
 
 export function getRealCoinPriceService(
-  database: ICoinsService
+  database: ICoinsService,
+  updateInterval: number
 ): ICurrencyPriceService {
   if (coinPriceService == undefined) {
-    coinPriceService = new CoinPriceService(database);
+    coinPriceService = new CoinPriceService(database, updateInterval);
   }
 
   return coinPriceService;

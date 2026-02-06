@@ -1,12 +1,15 @@
 import { UserRepository } from "../repositories/user.repository";
 import { UsernameBannedWordRepository } from "../repositories/username-banned-word.repository";
-import { ILoginInput, ILoginUserInput } from "./inputs";
+import { ILoginUserInput } from "./inputs";
 import { User } from "../entities/user.entity";
 export declare class SharedUsersService {
     private users;
     private bannedWords;
     constructor(users: UserRepository, bannedWords: UsernameBannedWordRepository);
-    login(input: ILoginInput): Promise<{
+    createTokenForAuthenticatedUser(input: {
+        username: string;
+        ip: string;
+    }): Promise<{
         id: number;
         username: string;
         email: string;

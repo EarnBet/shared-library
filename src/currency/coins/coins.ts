@@ -56,5 +56,5 @@ export enum CoinSymbol {
 
   SOL = "SOL",
 
-  USDT_TRON = "USDT_TRON",
+  USDT_TRON = "USDT_TRX",
 }

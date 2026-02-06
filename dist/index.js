@@ -16,7 +16,9 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./config"), exports);
 __exportStar(require("./config/shared-config.module"), exports);
-__exportStar(require("./database/db-connections.module"), exports);
+__exportStar(require("./database/earnbet-connection.module"), exports);
+__exportStar(require("./database/currency-connection.module"), exports);
+__exportStar(require("./database/softswiss-connection.module"), exports);
 __exportStar(require("./database/constants"), exports);
 __exportStar(require("./database/functions"), exports);
 __exportStar(require("./database/typeorm/typeorm-repository.base"), exports);
@@ -39,6 +41,7 @@ __exportStar(require("./currency/transactions/deposit-status/deposit-status.modu
 __exportStar(require("./currency/transactions/deposit-status/services/deposit-status.service"), exports);
 __exportStar(require("./currency/transactions/deposit-status/repositories/deposit-status.repository"), exports);
 __exportStar(require("./currency/transactions/deposit-status/entities/interfaces"), exports);
+__exportStar(require("./currency/transactions/deposit-status/entities/deposit-status.entity"), exports);
 __exportStar(require("./math/precise-numbers"), exports);
 __exportStar(require("./math/precise-math"), exports);
 __exportStar(require("./math/interfaces"), exports);
@@ -72,4 +75,9 @@ __exportStar(require("./admin-users/guards/admin-auth.guards"), exports);
 __exportStar(require("./admin-users/services/admin-users.shared.service"), exports);
 __exportStar(require("./admin-users/repositories/admin-user.shared.repository"), exports);
 __exportStar(require("./admin-users/admin-users.shared.module"), exports);
+__exportStar(require("./external-games/actions/entities/action.entity"), exports);
+__exportStar(require("./external-games/actions/entities/action-group.entity"), exports);
+__exportStar(require("./external-games/actions/entities/constants"), exports);
+__exportStar(require("./external-games/actions/repositories/action.repository"), exports);
+__exportStar(require("./external-games/actions/actions-db.module"), exports);
 //# sourceMappingURL=index.js.map

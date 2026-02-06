@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mockCurrencyPriceService = void 0;
+exports.MockCurrencyPriceService = void 0;
 const PRICES = {
     BTC: 41897.46,
     ETH: 3155.55,
@@ -17,15 +17,39 @@ const PRICES = {
     DAI: 1,
     USDC: 1,
     USDT: 1,
+    USDT_TRON: 1,
     STACK: 3.11,
     EBET: 0.00001,
+    SOL: 100,
     USD: 1,
     FUN: 0,
 };
 class MockCurrencyPriceService {
+    constructor(updateInterval) {
+        this.updateInterval = updateInterval;
+    }
     async getPriceInUSD(currencySymbol) {
         return PRICES[currencySymbol];
     }
+    subscribe(callback) {
+        setInterval(() => {
+            this.changePrices();
+            callback(PRICES);
+        }, this.updateInterval);
+    }
+    changePrices() {
+        for (const symbol in PRICES) {
+            if (symbol === "USD" || symbol === "FUN") {
+                continue;
+            }
+            const minus = Math.random() > 0.5 ? -1 : 1;
+            const rnd = Math.random();
+            const limiter = PRICES[symbol] * 0.01;
+            const change = Math.min(limiter, rnd);
+            const proposed_price = PRICES[symbol] + change * minus;
+            PRICES[symbol] = Math.max(0.0001, proposed_price);
+        }
+    }
 }
-exports.mockCurrencyPriceService = new MockCurrencyPriceService();
+exports.MockCurrencyPriceService = MockCurrencyPriceService;
 //# sourceMappingURL=coin-price.service.mock.js.map

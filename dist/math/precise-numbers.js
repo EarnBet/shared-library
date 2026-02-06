@@ -14,18 +14,18 @@ class PreciseNumber {
     }
     isLessThan(other) {
         this.validateMatchingCurrency(other);
-        return this.bigInteger.lt(other.integer);
+        return this.bigInteger.lt(other.integerForMath);
     }
     isLessThanDecimal(other) {
         return new big_js_1.Big(this.decimal).lt(other);
     }
     isGreaterThan(other) {
         this.validateMatchingCurrency(other);
-        return this.bigInteger.gt(other.integer);
+        return this.bigInteger.gt(other.integerForMath);
     }
     isGreaterThanOrEqualTo(other) {
         this.validateMatchingCurrency(other);
-        return this.bigInteger.gte(other.integer);
+        return this.bigInteger.gte(other.integerForMath);
     }
     isGreaterThanDecimal(other) {
         return new big_js_1.Big(this.decimal).gt(other);
@@ -35,7 +35,7 @@ class PreciseNumber {
     }
     isEqualTo(other) {
         this.validateMatchingCurrency(other);
-        return this.bigInteger.eq(other.integer);
+        return this.bigInteger.eq(other.integerForMath);
     }
     isEqualToDecimal(other) {
         return new big_js_1.Big(this.decimal).eq(other);
@@ -45,7 +45,7 @@ class PreciseNumber {
             throw new Error("both amounts must be the same precision!");
         }
     }
-    get integer() {
+    get integerForMath() {
         return this.bigInteger.toFixed(0);
     }
     get isZero() {
@@ -149,8 +149,8 @@ class NumberForPreciseMathBase {
     get decimal() {
         return this.number.decimal;
     }
-    get integer() {
-        return this.number.integer;
+    get integerForMath() {
+        return this.number.integerForMath;
     }
     get isZero() {
         return this.number.isZero;

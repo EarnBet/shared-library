@@ -15,10 +15,9 @@ import {
   ICurrencyAmountFactory,
 } from "./interfaces";
 import { MatchingCurrencyValidator, PreciseCurrencyAmount } from "./shared";
+import { maxPrecisionForCurrencyAmounts } from "./constants";
 
-class PreciseCurrencyAmountFactory
-  implements IPreciseNumberFactory<IPreciseCurrencyAmount>
-{
+class PreciseCurrencyAmountFactory implements IPreciseNumberFactory<IPreciseCurrencyAmount> {
   readonly validator: IMatchingNumberTypeValidator<IPreciseCurrencyAmount>;
 
   constructor(private readonly currency: ICurrency) {
@@ -27,11 +26,11 @@ class PreciseCurrencyAmountFactory
 
   newAmountFromInteger(
     integer: BigSource,
-    precision: number
+    precision: number,
   ): IPreciseCurrencyAmount {
     const number = new PreciseCurrencyAmount(
       new Big(integer).div(Math.pow(10, precision)),
-      this.currency
+      this.currency,
     );
 
     this.validator.isMatchingType(number);
@@ -40,7 +39,7 @@ class PreciseCurrencyAmountFactory
   }
   newAmountFromDecimal(
     decimal: BigSource,
-    precision: number
+    precision: number,
   ): IPreciseCurrencyAmount {
     const number = new PreciseCurrencyAmount(decimal, this.currency);
 
@@ -54,18 +53,31 @@ class CurrencyAmount
   extends NumberForPreciseMathBase<IPreciseCurrencyAmount>
   implements ICurrencyAmount
 {
-  constructor(decimalValue: BigSource, readonly currency: ICurrency) {
+  constructor(
+    decimalValue: BigSource,
+    readonly currency: ICurrency,
+  ) {
+    const precision = maxPrecisionForCurrencyAmounts;
+
     super(
-      currency.precision,
+      precision,
       new Big(decimalValue)
-        .times(Math.pow(10, currency.precision))
+        .times(Math.pow(10, precision))
         .round(0, Big.roundDown),
-      new PreciseCurrencyAmountFactory(currency)
+      new PreciseCurrencyAmountFactory(currency),
     );
   }
 
   get quantity() {
     return this.number.quantity;
+  }
+
+  get integerForBlockChain() {
+    return this.number.integerForBlockChain;
+  }
+
+  get quantityForBlockChain() {
+    return this.number.quantityForBlockChain;
   }
 }
 
@@ -80,7 +92,7 @@ class CurrencyAmountFactory implements ICurrencyAmountFactory {
 
   async newAmountFromDecimal(
     decimalAmount: BigSource,
-    tokenSymbol: string
+    tokenSymbol: string,
   ): Promise<CurrencyAmount> {
     const data = await this.coinDataProvider.getCoinDataBySymbol(tokenSymbol);
 
@@ -89,7 +101,7 @@ class CurrencyAmountFactory implements ICurrencyAmountFactory {
 
   async newAmountFromDecimalAndCoinId(
     decimalAmount: BigSource,
-    coinId: CoinId
+    coinId: CoinId,
   ): Promise<CurrencyAmount> {
     const data = await this.coinDataProvider.getCoinData(coinId);
 
@@ -98,30 +110,14 @@ class CurrencyAmountFactory implements ICurrencyAmountFactory {
 
   async newAmountFromInteger(
     integerSubunits: BigSource,
-    tokenSymbol: string
+    tokenSymbol: string,
   ): Promise<CurrencyAmount> {
     const data = await this.coinDataProvider.getCoinDataBySymbol(tokenSymbol);
 
     const decimalAmount = new Big(integerSubunits).div(
-      Math.pow(10, data.precision)
+      Math.pow(10, data.precision),
     );
 
     return new CurrencyAmount(decimalAmount, data);
   }
 }
-
-/*
-let currencyAmountFactory: CurrencyAmountFactory;
-
-export function getCurrencyAmountFactory(
-  coinDataProvider: ICoinDataProvider
-): CurrencyAmountFactory {
-  if (currencyAmountFactory == undefined) {
-    //await coinDataProvider.init();
-
-    currencyAmountFactory = new CurrencyAmountFactory(coinDataProvider);
-  }
-
-  return currencyAmountFactory;
-}
-*/

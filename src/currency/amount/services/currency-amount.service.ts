@@ -7,7 +7,8 @@ import { CoinDataProvider } from "../../coins/services/coin-data-provider";
 import { getCurrencyAmountWithPriceFactory } from "../factories/currency-amount-with-price.factory";
 import { ICurrencyAmountWithPriceFactory } from "../factories/interfaces";
 import { ICurrencyPriceOutput } from "../outputs/interfaces";
-import { mockCurrencyPriceService } from "../price-service/coin-price.service.mock";
+import { IPriceMap } from "../price-service/interfaces";
+import { MockCurrencyPriceService } from "../price-service/coin-price.service.mock";
 
 @Injectable()
 export class CurrencyAmountService {
@@ -63,14 +64,25 @@ export class CurrencyAmountService {
     return this.getFactory().priceService.getPriceInUSD(currencySymbol);
   }
 
+  subscribeToPriceUpdates(callback: (price: IPriceMap) => void) {
+    return this.getFactory().priceService.subscribe(callback);
+  }
+
   getFactory() {
     if (!this.factory) {
       const shouldUseRealPriceService =
         this.sharedConfigService.shouldUseRealCurrencyPriceService();
 
+      const updateIntervalForCurrencyPriceService =
+        this.sharedConfigService.coinPriceUpdateInterval();
+      console.log({ updateIntervalForCurrencyPriceService });
+
       this.factory = getCurrencyAmountWithPriceFactory(
         this.coinDataProvider,
-        shouldUseRealPriceService ? undefined : mockCurrencyPriceService
+        updateIntervalForCurrencyPriceService,
+        shouldUseRealPriceService
+          ? undefined
+          : new MockCurrencyPriceService(updateIntervalForCurrencyPriceService)
       );
     }
 

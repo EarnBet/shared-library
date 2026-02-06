@@ -20,7 +20,7 @@ let SharedUsersService = class SharedUsersService {
         this.users = users;
         this.bannedWords = bannedWords;
     }
-    async login(input) {
+    async createTokenForAuthenticatedUser(input) {
         const user = await this.findByExactUsername(input.username);
         await this.users.updateUserIp(user.id, input.ip);
         const token = (0, auth_functions_1.generateAuthToken)(user);

@@ -26,10 +26,14 @@ class TypeOrmRepository {
         return this.repository.findOne({ where: Object.assign({}, item) });
     }
     findOneById(id) {
-        return this.repository.findOne(id);
+        return this.repository.findOneById(id);
     }
     find(item) {
         return this.repository.find({ where: Object.assign({}, item) });
+    }
+    async findFirstOne() {
+        const [first] = await this.repository.find({ take: 1 });
+        return first;
     }
     findAll() {
         return this.repository.find();

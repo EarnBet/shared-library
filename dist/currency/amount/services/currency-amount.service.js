@@ -52,10 +52,17 @@ let CurrencyAmountService = class CurrencyAmountService {
     getPriceInUSD(currencySymbol) {
         return this.getFactory().priceService.getPriceInUSD(currencySymbol);
     }
+    subscribeToPriceUpdates(callback) {
+        return this.getFactory().priceService.subscribe(callback);
+    }
     getFactory() {
         if (!this.factory) {
             const shouldUseRealPriceService = this.sharedConfigService.shouldUseRealCurrencyPriceService();
-            this.factory = (0, currency_amount_with_price_factory_1.getCurrencyAmountWithPriceFactory)(this.coinDataProvider, shouldUseRealPriceService ? undefined : coin_price_service_mock_1.mockCurrencyPriceService);
+            const updateIntervalForCurrencyPriceService = this.sharedConfigService.coinPriceUpdateInterval();
+            console.log({ updateIntervalForCurrencyPriceService });
+            this.factory = (0, currency_amount_with_price_factory_1.getCurrencyAmountWithPriceFactory)(this.coinDataProvider, updateIntervalForCurrencyPriceService, shouldUseRealPriceService
+                ? undefined
+                : new coin_price_service_mock_1.MockCurrencyPriceService(updateIntervalForCurrencyPriceService));
         }
         return this.factory;
     }
