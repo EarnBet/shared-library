@@ -59,7 +59,7 @@ class CurrencyAmountFactory {
     }
     async newAmountFromInteger(integerSubunits, tokenSymbol) {
         const data = await this.coinDataProvider.getCoinDataBySymbol(tokenSymbol);
-        const decimalAmount = new big_js_1.default(integerSubunits).div(Math.pow(10, constants_1.maxPrecisionForCurrencyAmounts));
+        const decimalAmount = new big_js_1.default(integerSubunits).div(Math.pow(10, data.precision));
         return new CurrencyAmount(decimalAmount, data);
     }
 }
