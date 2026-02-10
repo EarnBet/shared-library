@@ -18,7 +18,7 @@ export abstract class TypeOrmRepository<Entity> {
   }
 
   insert(
-    items: QueryDeepPartialEntity<Entity> | QueryDeepPartialEntity<Entity>[]
+    items: QueryDeepPartialEntity<Entity> | QueryDeepPartialEntity<Entity>[],
   ) {
     return this.repository.insert(items);
   }
@@ -39,7 +39,11 @@ export abstract class TypeOrmRepository<Entity> {
   }
 
   findOneById(id: string | number): Promise<Entity | undefined> {
-    return this.repository.findOneById(id);
+    const cond: any = {
+      id,
+    };
+    return this.repository.findOneBy({ ...cond });
+    // return this.repository.findOneById(id);
   }
 
   find(item: FindOptionsWhere<Entity>): Promise<Entity[]> {
