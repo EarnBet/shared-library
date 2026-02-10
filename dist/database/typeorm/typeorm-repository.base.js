@@ -29,7 +29,7 @@ class TypeOrmRepository {
         const cond = {
             id,
         };
-        return this.repository.findOneBy(Object.assign({}, cond));
+        return this.repository.findOne({ where: Object.assign({}, cond) });
     }
     find(item) {
         return this.repository.find({ where: Object.assign({}, item) });
