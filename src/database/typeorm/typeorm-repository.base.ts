@@ -39,8 +39,9 @@ export abstract class TypeOrmRepository<Entity> {
   }
 
   findOneById(id: string | number): Promise<Entity | undefined> {
+    const id_col = this.repository.metadata.primaryColumns[0].propertyName;
     const cond: any = {
-      id,
+      [id_col]: id,
     };
     return this.repository.findOne({ where: { ...cond } });
     // return this.repository.findOneById(id);
