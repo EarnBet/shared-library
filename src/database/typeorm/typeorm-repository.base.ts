@@ -42,7 +42,7 @@ export abstract class TypeOrmRepository<Entity> {
     const cond: any = {
       id,
     };
-    return this.repository.findOneBy({ ...cond });
+    return this.repository.findOne({ where: { ...cond } });
     // return this.repository.findOneById(id);
   }
 
