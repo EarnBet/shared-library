@@ -26,8 +26,9 @@ class TypeOrmRepository {
         return this.repository.findOne({ where: Object.assign({}, item) });
     }
     findOneById(id) {
+        const id_col = this.repository.metadata.primaryColumns[0].propertyName;
         const cond = {
-            id,
+            [id_col]: id,
         };
         return this.repository.findOne({ where: Object.assign({}, cond) });
     }
