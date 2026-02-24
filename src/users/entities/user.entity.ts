@@ -33,7 +33,7 @@ export class User implements IAuthenticatedUser {
   })
   password: string;
 
-  @Column({ nullable: false, length: 30 })
+  @Column({ nullable: false, length: 39 })
   ip: string;
 
   @Column({ nullable: false, type: "date" })
