@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UseRootAdminGuard = UseRootAdminGuard;
 exports.UseSuperAdminGuard = UseSuperAdminGuard;
 exports.UseRegularAdminGuard = UseRegularAdminGuard;
-exports.UseSupportAdminGuard = UseSupportAdminGuard;
+exports.UseSupportManagerGuard = UseSupportManagerGuard;
 exports.UseSupportStaffAdminGuard = UseSupportStaffAdminGuard;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("../../auth/services/auth.service");
@@ -72,15 +72,15 @@ RegularAdminAuthGuard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
 ], RegularAdminAuthGuard);
-let SupportAdminAuthGuard = class SupportAdminAuthGuard extends AdminAuthGuard {
+let SupportManagerAuthGuard = class SupportManagerAuthGuard extends AdminAuthGuard {
     constructor(authService, service) {
-        super(authService, service, admin_roles_1.AdminUserRole.SUPPORT_ADMIN);
+        super(authService, service, admin_roles_1.AdminUserRole.SUPPORT_MANAGER);
     }
 };
-SupportAdminAuthGuard = __decorate([
+SupportManagerAuthGuard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
-], SupportAdminAuthGuard);
+], SupportManagerAuthGuard);
 let SupportStaffAdminAuthGuard = class SupportStaffAdminAuthGuard extends AdminAuthGuard {
     constructor(authService, service) {
         super(authService, service, admin_roles_1.AdminUserRole.SUPPORT_STAFF);
@@ -99,8 +99,8 @@ function UseSuperAdminGuard() {
 function UseRegularAdminGuard() {
     return (0, common_1.UseGuards)(RegularAdminAuthGuard);
 }
-function UseSupportAdminGuard() {
-    return (0, common_1.UseGuards)(SupportAdminAuthGuard);
+function UseSupportManagerGuard() {
+    return (0, common_1.UseGuards)(SupportManagerAuthGuard);
 }
 function UseSupportStaffAdminGuard() {
     return (0, common_1.UseGuards)(SupportStaffAdminAuthGuard);
