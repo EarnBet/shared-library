@@ -70,7 +70,7 @@ class RegularAdminAuthGuard extends AdminAuthGuard {
 }
 
 @Injectable()
-class SupportManagerAuthGuard extends AdminAuthGuard {
+class SupportManagerAdminAuthGuard extends AdminAuthGuard {
   constructor(authService: AuthService, service: SharedAdminUsersService) {
     super(authService, service, AdminUserRole.SUPPORT_MANAGER);
   }
@@ -95,8 +95,8 @@ export function UseRegularAdminGuard() {
   return UseGuards(RegularAdminAuthGuard);
 }
 
-export function UseSupportManagerGuard() {
-  return UseGuards(SupportManagerAuthGuard);
+export function UseSupportManagerAdminGuard() {
+  return UseGuards(SupportManagerAdminAuthGuard);
 }
 
 export function UseSupportStaffAdminGuard() {
