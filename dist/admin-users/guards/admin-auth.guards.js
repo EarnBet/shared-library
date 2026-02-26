@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UseRootAdminGuard = UseRootAdminGuard;
 exports.UseSuperAdminGuard = UseSuperAdminGuard;
 exports.UseRegularAdminGuard = UseRegularAdminGuard;
-exports.UseSupportManagerGuard = UseSupportManagerGuard;
+exports.UseSupportManagerAdminGuard = UseSupportManagerAdminGuard;
 exports.UseSupportStaffAdminGuard = UseSupportStaffAdminGuard;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("../../auth/services/auth.service");
@@ -72,15 +72,15 @@ RegularAdminAuthGuard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
 ], RegularAdminAuthGuard);
-let SupportManagerAuthGuard = class SupportManagerAuthGuard extends AdminAuthGuard {
+let SupportManagerAdminAuthGuard = class SupportManagerAdminAuthGuard extends AdminAuthGuard {
     constructor(authService, service) {
         super(authService, service, admin_roles_1.AdminUserRole.SUPPORT_MANAGER);
     }
 };
-SupportManagerAuthGuard = __decorate([
+SupportManagerAdminAuthGuard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [auth_service_1.AuthService, admin_users_shared_service_1.SharedAdminUsersService])
-], SupportManagerAuthGuard);
+], SupportManagerAdminAuthGuard);
 let SupportStaffAdminAuthGuard = class SupportStaffAdminAuthGuard extends AdminAuthGuard {
     constructor(authService, service) {
         super(authService, service, admin_roles_1.AdminUserRole.SUPPORT_STAFF);
@@ -99,8 +99,8 @@ function UseSuperAdminGuard() {
 function UseRegularAdminGuard() {
     return (0, common_1.UseGuards)(RegularAdminAuthGuard);
 }
-function UseSupportManagerGuard() {
-    return (0, common_1.UseGuards)(SupportManagerAuthGuard);
+function UseSupportManagerAdminGuard() {
+    return (0, common_1.UseGuards)(SupportManagerAdminAuthGuard);
 }
 function UseSupportStaffAdminGuard() {
     return (0, common_1.UseGuards)(SupportStaffAdminAuthGuard);
