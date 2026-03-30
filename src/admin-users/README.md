@@ -8,4 +8,6 @@ The lower your role number is, the more privileges that you have. For example, R
 
 2 - Regular Admin
 
-3 - Support Admin
+3 - Support Manager
+
+4 - Support Staff
